@@ -1,0 +1,10 @@
+<view class="page detail">
+  <view class="title">Title</view>
+  <view class="info">
+    <text>Date Author</text>
+    <text>Share</text>
+  </view>
+  <view class="content">
+    content
+  </view>
+</view>

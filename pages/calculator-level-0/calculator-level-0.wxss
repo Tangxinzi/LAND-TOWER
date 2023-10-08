@@ -1,0 +1,49 @@
+page {
+  font-size: 14px;
+}
+
+.section {
+  padding: 1em;
+  margin: 1em;
+  background-color: rgba(204, 204, 204, 0.267);
+  border-radius: 10px;
+  overflow: hidden; 
+}
+
+.add {
+  box-shadow: 1px 1px 8px #000;
+  position: fixed;
+  right: 3em;
+  bottom: 3em;
+  color: #FFF;
+  background-color: #000;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 100%;
+}
+
+.picker {
+  display: flex;
+  padding: 1em 0;
+  border-top: 1px solid #CCC;
+}
+
+.picker text {
+  flex: 1;
+  display: inline-block;
+}
+
+.picker .center {
+  text-align: center;
+}
+
+.picker .right {
+  text-align: right;
+}
+
+.picker input {
+  position: relative;
+}

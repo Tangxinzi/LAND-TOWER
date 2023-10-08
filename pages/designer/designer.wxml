@@ -1,0 +1,8 @@
+<view class="character-container">
+  <view class="character-card" wx:for="{{ [0, 1, 2] }}" wx:key="data">
+    <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
+    <view class="character-name">人物1姓名</view>
+    <view class="character-label">标签1</view>
+    <view class="character-profession">职业1</view>
+  </view>
+</view>

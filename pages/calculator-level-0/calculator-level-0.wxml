@@ -1,0 +1,40 @@
+<view class="">
+  <view class="section" style="padding: 0 1em;">
+    <view class="picker" style="border: 0;">
+      <text>人工费</text>
+      <text class="center">辅材费</text>
+      <text class="right">主材费</text>
+    </view>
+    <view class="picker">
+      <text>¥{{ estimatedNumber[0] }}</text>
+      <text class="center">¥{{ estimatedNumber[1] }}</text>
+      <text class="right">¥{{ estimatedNumber[2] }}</text>
+    </view>
+    <view class="picker">
+      <text class="right">项目面积 {{ countArea || 0 }}㎡\n预估总价 ¥{{ count || 0 }}</text>
+    </view>
+  </view>
+  <!-- <text style="margin: 0 1em;">注：每人7平米，800元/平米计算</text> -->
+  <view class="section" style="padding: 0 1em;">
+    <view class="picker" style="border: 0;">
+      <text>需求类型</text>
+      <text class="center">子项 ✖️（间 / 人）</text>
+      <text class="right">面积 ㎡</text>
+      <!-- <text class="right">价格</text> -->
+    </view>
+    <picker wx:for="{{ number }}" data-index="{{ index }}" wx:key="number" mode="multiSelector" bindchange="bindMultiPickerChange" bindtap="handlePickerTap" bindcolumnchange="bindMultiPickerChangeColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker">
+        <text>{{ index + 1 }}. {{ multiValue[index].text[0] }}</text>
+        <text class="center">{{ multiValue[index].text[1] }} ✖️ {{ multiValue[index].text[2] }}</text>
+        <view>
+          <input id="input-area-{{ index }}" data-indexnumber="{{ index }}" bindinput="bindInputChange" catch:tap="handleInputTouchStart" type="number" placeholder="点击输入" style="text-align: right;" value="{{ multiValue[index].area || '' }}" />
+        </view>
+        <!-- <text class="right">{{ multiValue[index].number || '' }}</text> -->
+      </view>
+    </picker>
+  </view>
+  <view class="section">
+    <input type="number" placeholder="留下您的联系方式" />
+  </view>
+  <view class="add" bind:tap="add">＋</view>
+</view>

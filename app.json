@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/calculator-level-0/calculator-level-0",
+    "pages/calculator/calculator",
+    "pages/designer/designer",
+    "pages/event/event",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/detail/detail",
+    "pages/mall/mall"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/event/event"
+      },
+      {
+        "text": "设计师",
+        "pagePath": "pages/designer/designer"
+      },
+      {
+        "text": "商城",
+        "pagePath": "pages/mall/mall"
+      },
+      {
+        "text": "计算器",
+        "pagePath": "pages/calculator-level-0/calculator-level-0"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/index/index"
+      }
+    ]
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
