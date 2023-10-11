@@ -1,0 +1,51 @@
+<view class="">
+  <view class="section" style="padding: 0 1em;">
+    <view class="picker" style="border: 0;">
+      <text class="td">人工费</text>
+      <text class="td center">辅材费</text>
+      <text class="td right">主材费</text>
+    </view>
+    <view class="picker">
+      <text class="td">¥{{ estimatedNumber[0] }}</text>
+      <text class="td center">¥{{ estimatedNumber[1] }}</text>
+      <text class="td right">¥{{ estimatedNumber[2] }}</text>
+    </view>
+    <view class="picker">
+      <text class="right" style="width: 100%;">
+        <text style="display: none;">项目面积 {{ countArea || 0 }}㎡\n</text>
+        <text>预估总价 ¥{{ count || 0 }}</text>  
+      </text>
+    </view>
+  </view>
+  <view class="section flex-between">
+    <input type="number" bindinput="inputChange" placeholder="请输入办公面积" />
+    <text>办公面积 ㎡</text>
+  </view>
+  <!-- <text style="margin: 0 1em;">注：每人7平米，800元/平米计算</text> -->
+  <view class="section" style="padding: 0 1em;">
+    <view class="picker" style="border: 0;">
+      <text class="td">功能</text>
+      <text class="td center">数量</text>
+      <!-- <text class="td right">办公面积 ㎡</text> -->
+      <!-- <text class="right">价格</text> -->
+    </view>
+    <picker wx:for="{{ number }}" data-index="{{ index }}" wx:key="number" mode="multiSelector" bindchange="bindMultiPickerChange" bindtap="handlePickerTap" bindcolumnchange="bindMultiPickerChangeColumnChange" value="{{ multiValue[index].value }}" range="{{ multiArray }}">
+      <view class="picker" bind:tap="bindPicker" data-index="{{ index }}">
+        <text class="td">{{ index + 1 }}. {{ multiValue[index].text[0] }}</text>
+        <text class="td center">{{ multiValue[index].text[1] }} ✖️ {{ multiValue[index].text[2] }}</text>
+        <!-- <view class="td">
+          <input id="input-area-{{ index }}" data-indexnumber="{{ index }}" bindinput="bindInputChange" catch:tap="handleInputTouchStart" type="number" placeholder="点击输入" style="text-align: right;" value="{{ multiValue[index].area || '' }}" />
+        </view> -->
+        <!-- <text class="right">{{ multiValue[index].number || '' }}</text> -->
+      </view>
+    </picker>
+    <view class="picker" style="text-align: center; font-weight: 600;" bind:tap="add">
+      <text style="width: 100%;">点击此处添加新的需求</text>
+    </view>
+  </view>
+  <view class="section flex-between">
+    <input type="number" placeholder="留下您的联系方式" />
+    <text>联系方式</text>
+  </view>
+  <!-- <view class="add" bind:tap="add">＋</view> -->
+</view>
