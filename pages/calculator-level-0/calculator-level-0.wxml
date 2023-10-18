@@ -11,10 +11,9 @@
         <text class="td center">¥{{ estimatedNumber[1] }}</text>
         <text class="td right">¥{{ estimatedNumber[2] }}</text>
       </view>
-      <view class="picker">
-        <text class="right" style="width: 100%;">
-          <text>预估总价 ¥{{ count || '0.00' }}</text>  
-        </text>
+      <view class="picker right" style="flex-direction: column; align-items: flex-end;">
+        <view>预估面积 {{ countArea || '0.00' }}㎡</view>
+        <view>预估总价 ¥{{ count || '0.00' }}</view>
       </view>      
     </block>
     <block wx:else>
@@ -25,14 +24,18 @@
       </view>
       <view class="picker">
         <text class="right" style="width: 100%;">
-          <text>预估总价 ¥0.00</text>  
+          <text>预估面积 0.00㎡\n预估总价 ¥0.00</text>  
         </text>
       </view>
     </block>
   </view>
-  <view class="section flex-between">
-    <input type="number" data-type="area" bindinput="inputChange" placeholder="请输入办公面积" />
+  <view class="section flex-between" bind:tap="{{ countArea > 0 ? 'ifReload' : '' }}">
+    <input disabled="{{ countArea > 0 ? true : false }}" type="number" data-type="area" bindinput="inputChange" placeholder="请输入办公面积" />
     <text>㎡ 办公面积</text>
+  </view>
+  <view class="section flex-between">
+    <input type="number" data-type="phone" bindinput="inputChange" placeholder="留下您的联系方式" />
+    <text>联系方式</text>
   </view>
   <view class="section" style="padding: 0 1em;">
     <view class="picker" style="border: 0;">
@@ -48,17 +51,17 @@
       </view>
     </picker>
     
-    <picker mode="selector" header-text="添加功能区" class="picker" style="" bind:tap="addSpaceArea" range="{{ ['前厅', '等候区', '会议室', '办公室', '工位数'] }}" bindchange="bindSelectorPickerChange">
+    <picker mode="selector" header-text="添加功能区" class="picker" style="" bind:tap="addSpaceArea" range="{{ ['前厅', '等候区', '洽谈间', '会议室', '办公室', '工位数'] }}" bindchange="bindSelectorPickerChange">
       <view style="text-align: center; font-weight: 600; width: calc(100vw - 4em);">
         点击此处添加新的功能需求
       </view>
     </picker>
   </view>
-  <view class="section flex-between">
-    <input type="number" data-type="phone" bindinput="inputChange" placeholder="留下您的联系方式" />
-    <text>联系方式</text>
+  <view class="tips">
+    <button open-type="contact" type="">本计算内容为预估价格，如需了解请点击咨询</button>
   </view>
-  <view bind:tap="calcPrice" class="calc">
-    <text>点击计算预估总价</text>
+  <view class="calcs">
+    <view class="calc" bind:tap="reload">重置计算器</view>
+    <view class="calc" bind:tap="calcPrice" style="background-color: rgb(0, 0, 0);" bind:tap="calcPrice">点击计算预估总价</view>
   </view>
 </view>

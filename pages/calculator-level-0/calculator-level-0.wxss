@@ -11,13 +11,20 @@ page {
   overflow: hidden; 
 }
 
-.calc {
+.calcs {
   position: fixed;
   bottom: 0;
   left: 0;
   margin: 0;
-  padding: 1em;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  z-index: 1111;
+}
+
+.calc {
+  flex: 1;
+  padding: 1em;
   text-align: center; background-color: grey; color: #FFF;
 }
 
@@ -46,7 +53,7 @@ page {
 .picker {
   display: flex;
   padding: 1em 0;
-  border-top: 1px solid #CCC;
+  border-top: 1px solid rgba(204, 204, 204, 0.26);
 }
 
 .picker .td {
@@ -66,4 +73,24 @@ page {
 
 .picker input {
   position: relative;
+}
+
+.tips {
+  color: #666; 
+  font-size: 14px;
+  text-align: center; 
+}
+
+.tips button {
+  width: 200px;
+  padding: 0;
+  font-size: 12px;
+  display: inline;
+  font-weight: 400;
+  color: #666;
+  background-color: #FFF;
+}
+
+.tips button::after {
+  content: none;
 }
