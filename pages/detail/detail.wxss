@@ -9,10 +9,10 @@
 }
 
 .content {
-  color: grey;
+  /* color: grey;
   background-color: #c5c5c62a;
   height: 600px;
   line-height: 600px;
-  text-align: center;
+  text-align: center; */
   margin-top: 10px;
 }

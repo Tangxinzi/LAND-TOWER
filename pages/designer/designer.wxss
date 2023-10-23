@@ -1,44 +1,49 @@
-h1 {
-  color: #333333;
-  text-align: center;
-  margin-bottom: 30px;
+page {
+  background: #ffffff;
 }
 
-.character-container {
+.lists {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
+  flex-flow: wrap;
 }
 
-.character-card {
+.lists .list {
+  position: relative;
+  /* font-size: 0; */
+  width: calc((100vw - 3.3em) / 2);
+  height: 260px;
+  margin-bottom: 1em;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #f2f1f6;
+  background-color: #FFF;
+}
+
+.lists .list:nth-child(even) {
+  margin-left: 1em;
+}
+
+.lists .list .content {
+  position: absolute;
+  left: 1em;
+  bottom: 1em;
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFF;
+}
+
+.lists .list .theme,
+.lists .list .theme image {
   width: 100%;
-  background-color: #FFFFFF;
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  height: 260px;
+  font-size: 0;
 }
 
-.character-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.character-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.character-label {
-  font-style: italic;
-  color: #777777;
-  margin-bottom: 5px;
-}
-
-.character-profession {
-  font-size: 14px;
-  margin-bottom: 15px;
+.lists .list image.avatar {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5em;
+  border-radius: 100%;
 }

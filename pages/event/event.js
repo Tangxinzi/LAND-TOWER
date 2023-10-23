@@ -1,18 +1,21 @@
-// pages/event/event.js
+import siteinfo from '../../lib/siteinfo';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    siteinfo,
+    articles: {}
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad(options) {
-
+    wx.request({
+      url: `${ siteinfo.site }/land/article?type=json`,
+      method: 'GET',
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({ articles: response.data.data })
+        }
+      }
+    })
   },
 
   /**

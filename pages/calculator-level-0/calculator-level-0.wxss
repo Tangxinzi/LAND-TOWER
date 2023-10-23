@@ -3,6 +3,28 @@ page {
   padding-bottom: 120px;
 }
 
+.navigation-bar button {
+  width: 200px;
+  font-size: 14px;
+  padding: 0;
+  display: inline;
+  font-weight: 400;
+  color: #666;
+  background-color: #FFF;
+}
+
+.navigation-bar .kefu {
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: 0 0.5em 0 0;
+}
+
+.navigation-bar .left {
+  display: flex;
+  align-items: center;
+}
+
 .section {
   padding: 1em;
   margin: 1em;
@@ -57,9 +79,14 @@ page {
 }
 
 .picker .td {
-  /* flex: 1; */
+  position: relative;
   width: 33.3%;
   display: inline-block;
+}
+
+.picker .td .more {
+  position: absolute;
+  right: 0;
 }
 
 .picker .center {
@@ -93,4 +120,18 @@ page {
 
 .tips button::after {
   content: none;
+}
+
+button .kefu {
+  /* position: fixed;
+  right: 1em;
+  bottom: 100px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 100%;
+  border: 1px solid #999; */
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: 10px auto;
 }

@@ -1,0 +1,26 @@
+<view class="page designer-detail">
+  <view class="header">
+    <view class="header-user">
+      <view>
+        <view class="nickname">{{ designer.nickname }}</view>
+        <view class="labels">
+          <text class="label" wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
+        </view>
+      </view>
+      <view class="image" style="background-image: url({{ siteinfo.site + designer.avatar_url }})"></view>
+    </view>
+    <view class="detail">
+      <text>{{ designer.detail }}</text>
+    </view>
+  </view>
+  <view class="character-container">
+    <view class="title flex-between">
+      <text>作品集</text>
+    </view>
+    <view class="cards">
+      <view class="card" wx:for="{{ [0, 1, 2, 3, 4, 5, 6, 7] }}" wx:key="card">
+        <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,23 +1,23 @@
-// pages/detail/detail.js
+import siteinfo from '../../lib/siteinfo';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    siteinfo,
+    article: {}
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad(options) {
-
+    wx.request({
+      url: `${ siteinfo.site }/land/article/show/${ options.id }?type=json`,
+      method: 'GET',
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({ article: response.data.data })
+        }
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  
   onReady() {
 
   },

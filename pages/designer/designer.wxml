@@ -1,4 +1,15 @@
-<view class="character-container">
+<view class="page mall">
+  <view class="lists">
+    <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.id }}" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
+      <view class="theme">
+        <image src="{{ siteinfo.site + item.avatar_url }}" mode="aspectFill" />
+      </view>
+      <view class="content">{{ item.nickname }}</view>
+    </navigator>
+  </view>
+</view>
+
+<view class="character-container" style="display: none;">
   <view class="character-card" wx:for="{{ [0, 1, 2] }}" wx:key="data">
     <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
     <view class="character-name">人物1姓名</view>

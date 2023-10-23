@@ -1,10 +1,10 @@
 <view class="page detail">
-  <view class="title">Title</view>
+  <view class="title">{{ article.article_title }}</view>
   <view class="info">
-    <text>Date Author</text>
+    <text>{{ article.article_author }}\n{{ article.created_at }}</text>
     <text>Share</text>
   </view>
   <view class="content">
-    content
+    <rich-text nodes="{{ article.article_detail }}"></rich-text>
   </view>
 </view>

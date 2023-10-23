@@ -8,7 +8,7 @@ Page({
 
   onLoad(options) {
     wx.request({
-      url: `${ siteinfo.site }/land/designer?type=json`,
+      url: `${ siteinfo.site }/land/designer/show/${ options.id }?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -18,6 +18,9 @@ Page({
     })
   },
 
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
   onReady() {
 
   },

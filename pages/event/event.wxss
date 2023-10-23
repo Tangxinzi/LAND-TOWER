@@ -13,19 +13,23 @@ page .page-title {
 .list-posts .list-item {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 1em;
 }
 
 .list-posts .list-item image {
-  flex-basis: 40%;
-  height: 90px;
+  flex-basis: 34%;
+  height: 80px;
   margin-right: 1em;
   border-radius: 8px;
+  overflow: hidden;
+  box-sizing: content-box;
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  background-color: rgba(128, 128, 128, 0.1);
 }
 
 .list-posts .list-item .content {
-  height: 90px;
-  flex-basis: 60%;
+  flex-basis: 66%;
+  height: 80px;
 }
 
 .list-posts .list-item .title {
@@ -49,7 +53,7 @@ page .page-title {
   overflow: hidden;
   border: 1px solid #CCC;
   margin: -1px;
-  margin-bottom: 10px;
+  margin-bottom: 1em;
 }
 
 .list-videos .list-item image {

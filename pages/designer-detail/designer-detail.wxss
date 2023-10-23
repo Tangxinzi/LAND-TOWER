@@ -1,0 +1,70 @@
+.header .header-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .nickname {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 1px;
+}
+
+.header .image {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background-size: 100%;
+}
+
+.header .labels .label {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: baseline;
+  margin: 0 .64285714em 0 0;
+  background-color: #e8e8e8;
+  background-image: none;
+  padding: .5833em;
+  color: rgba(0,0,0,.6);
+  text-transform: none;
+  font-weight: 700;
+  border: 0 solid transparent;
+  border-radius: .28571429rem;
+  transition: background .1s ease;
+
+  font-size: 12px;
+  background-color: #949494!important;
+  color: #fff!important;
+}
+
+.header .detail {
+  margin-top: 1em;
+  font-size: 14px;
+}
+
+.character-container {
+  margin-top: 3em;
+}
+
+.cards {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cards .card {
+  margin-left: 1em;
+}
+
+.cards .card:nth-child(3n + 1) {
+  margin-left: 0;
+}
+
+.cards .card, .cards .card image {
+  width: calc((100vw - 4em) / 3);
+  height: calc((100vw - 4em) / 3);
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
