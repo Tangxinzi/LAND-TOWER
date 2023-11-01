@@ -18,8 +18,8 @@
         <text class="td right">¥{{ estimatedNumber[2] }}</text>
       </view>
       <view class="picker right flex-between">
-        <view>预估功能区使用面积 <text style="color: {{ countArea > input.area ? 'red' : '#000' }}">{{ countArea || '0.00' }}㎡</text></view>
-        <view>预估总价 ¥{{ count || '0.00' }}</view>
+        <view>建议面积 <text style="color: {{ countArea > input.area ? 'red' : '#000' }}">{{ countArea || '0.00' }}㎡</text></view>
+        <view>预估总价 <text data-value="{{ estimatedNumber[0] + estimatedNumber[1] + estimatedNumber[2] }}" style="color: {{ estimatedNumber[3] != count ? 'red' : '#000' }}">¥{{ count || '0.00' }}</text></view>
       </view>      
     </block>
     <block wx:else>
@@ -29,7 +29,7 @@
         <text class="td right">¥0.00</text>
       </view>
       <view class="picker right flex-between">
-        <view>预估功能区使用面积 0.00㎡</view>
+        <view>建议面积 0.00㎡</view>
         <view>预估总价 ¥0.00</view>
       </view>
     </block>

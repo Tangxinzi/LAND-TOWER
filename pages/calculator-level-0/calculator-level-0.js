@@ -4,7 +4,7 @@ Page({
   data: {
     count: 0,
     countArea: 0,
-    estimatedNumber: ['0.00', '0.00', '0.00'],
+    estimatedNumber: ['0.00', '0.00', '0.00', '0.00'],
     spaceArea: ['前厅', '等候区', '洽谈间', '会议室', '独立办公室', '工位数', '打印区', '茶水区', '储藏间'],
     spaceAreaOrignal: ['前厅', '等候区', '洽谈间', '会议室', '独立办公室', '工位数', '打印区', '茶水区', '储藏间'],
     multiArray: [ [''], multiArrayNumber ],
@@ -27,7 +27,7 @@ Page({
   },
 
   inputChange(event) {
-    if (event.currentTarget.dataset.type == 'area' && event.detail.value < 150) {
+    if (event.currentTarget.dataset.type == 'area' && event.detail.value > 0 && event.detail.value < 150) {
       wx.showModal({
         title: '提示',
         content: '办公面积过低了哦，需要联系我们的客服咨询吗？',
@@ -63,7 +63,7 @@ Page({
       })
     } else {
       this.setData({ ['input.showPrice']: false })
-      this.setData({ [ `input.${ event.currentTarget.dataset.type }` ]: event.detail.value })  
+      this.setData({ [ `input.${ event.currentTarget.dataset.type }` ]: parseFloat(event.detail.value) })  
     }
   },
 
@@ -189,7 +189,8 @@ Page({
         // 工位数
         area = this.getAreaBetween(text[0]);
         number = 500 * area * unit;
-        flag = unit <= parseInt(this.data.input.area / 7.5)
+        // flag = unit <= parseInt(this.data.input.area / 7.2) // 工位最大值 = 办公面积 / 7.2
+        flag = unit <= 300
         break;
       case '　　　':
         // 茶水区
@@ -337,6 +338,7 @@ Page({
     let estimatedNumber = [0, 0, 0], multiValue = this.data.multiValue
     for (let index = 0; index < multiValue.length; index++) {
       const text = multiValue[index].text[0], number = multiValue[index].number;
+      console.log(text);
       switch (text) {
         case '　':
           // 前厅
@@ -345,6 +347,10 @@ Page({
         case '　　':
           // 工位数
           estimatedNumber[0] += number * 0.4, estimatedNumber[1] += number * 0.24, estimatedNumber[2] += number * 0.36;
+          break;
+        case '　　　':
+          // 茶水区
+          estimatedNumber[0] += number * 0.4, estimatedNumber[1] += number * 0.23, estimatedNumber[2] += number * 0.37;
           break;
         case '　　　　　　':
           // 独立办公室
@@ -365,20 +371,19 @@ Page({
         case '20人会议室':
           estimatedNumber[0] += number * 0.35, estimatedNumber[1] += number * 0.30, estimatedNumber[2] += number * 0.35;
           break;
-        case '财务室':
-          estimatedNumber[0] += number * 0.38, estimatedNumber[1] += number * 0.25, estimatedNumber[2] += number * 0.37;
-          break;
-        case '经理室':
-          estimatedNumber[0] += number * 0.41, estimatedNumber[1] += number * 0.29, estimatedNumber[2] += number * 0.3;
-          break;
-        case '储藏间':
+        // case '财务室':
+        //   estimatedNumber[0] += number * 0.38, estimatedNumber[1] += number * 0.25, estimatedNumber[2] += number * 0.37;
+        //   break;
+        // case '经理室':
+        //   estimatedNumber[0] += number * 0.41, estimatedNumber[1] += number * 0.29, estimatedNumber[2] += number * 0.3;
+        //   break;
+        case '　　　　':
+          // 储藏间
           estimatedNumber[0] += number * 0.42, estimatedNumber[1] += number * 0.28, estimatedNumber[2] += number * 0.3;
           break;
-        case '打印区':
+        case '　　　　　':
+          // 打印区
           estimatedNumber[0] += number * 0.42, estimatedNumber[1] += number * 0.34, estimatedNumber[2] += number * 0.24;
-          break;
-        case '茶水区':
-          estimatedNumber[0] += 0.4, estimatedNumber[1] += 0.23, estimatedNumber[2] += 0.37;
           break;
       }
     }
@@ -387,7 +392,8 @@ Page({
       estimatedNumber: [
         estimatedNumber[0].toFixed(2),
         estimatedNumber[1].toFixed(2),
-        estimatedNumber[2].toFixed(2)
+        estimatedNumber[2].toFixed(2),
+        parseFloat(estimatedNumber[0] + estimatedNumber[1] + estimatedNumber[2]).toFixed(2)
       ]
     })
   },
@@ -495,7 +501,7 @@ Page({
   slideButtonTap(e) {
     console.log(e);
     const index = e.currentTarget.dataset.index, value = e.currentTarget.dataset.value
-    this.setData({ ['slideShow[' + index + ']']: !this.data.slideShow[index] })
+    this.setData({ slideShow: [] })
 
     if (e.detail.index == 0) {
       const multiValue = this.data.multiValue, spaceArea = this.data.spaceArea
@@ -512,6 +518,8 @@ Page({
       this.setData({ multiValue, spaceArea })
       wx.showToast({ title: `删除${ value }`, icon: 'success' })
     }
+
+    this.countEstimatedNumber() // 统计三个分类价格
   },
 
   checkArea() {

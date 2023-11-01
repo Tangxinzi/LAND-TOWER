@@ -1,3 +1,5 @@
+<mp-searchbar></mp-searchbar>
+
 <view class="page">
   <view class="page-title" style="margin-top: 0;">文章</view>
   <view class="list-posts">
