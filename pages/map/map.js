@@ -1,22 +1,18 @@
-import siteinfo from '../../lib/siteinfo';
-
+// pages/map/map.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    siteinfo,
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    articles: {},
+
   },
-  
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad(options) {
-    wx.request({
-      url: `${ siteinfo.site }/land/article?type=json`,
-      method: 'GET',
-      success: (response) => {
-        if (response.data.status == 200) {
-          this.setData({ articles: response.data.data })
-        }
-      }
-    })
+
   },
 
   /**

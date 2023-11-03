@@ -6,7 +6,14 @@
       <view class="theme">
         <image src="{{ siteinfo.site + item.avatar_url }}" mode="aspectFill" />
       </view>
-      <view class="content">{{ item.nickname }}</view>
+      <view class="content">
+        <text class="nickname">{{ item.nickname }}</text>
+        <view class="info">
+          <text>设计师介绍</text>
+          <text>设计师介绍</text>
+          <text>设计师介绍</text>
+        </view>
+      </view>
     </navigator>
   </view>
 </view>

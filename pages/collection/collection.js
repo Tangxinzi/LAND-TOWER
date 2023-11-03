@@ -3,25 +3,29 @@ import siteinfo from '../../lib/siteinfo';
 Page({
   data: {
     siteinfo,
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    articles: {},
+    designer: [],
+    type: 0
   },
-  
+
+  switch(event) {
+    console.log(event);
+    this.setData({
+      type: event.currentTarget.dataset.type
+    })
+  },
+
   onLoad(options) {
     wx.request({
-      url: `${ siteinfo.site }/land/article?type=json`,
+      url: `${ siteinfo.site }/land/designer?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
-          this.setData({ articles: response.data.data })
+          this.setData({ designer: response.data.data })
         }
       }
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady() {
 
   },

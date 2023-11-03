@@ -1,0 +1,19 @@
+<mp-searchbar></mp-searchbar>
+
+<view class="page mall">
+  <view class="cases">
+    <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.id }}" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
+      <view class="theme">
+        <image src="" mode="aspectFill" />
+      </view>
+      <view class="content">
+        <text class="nickname">案列</text>
+        <view class="info">
+          <text>介绍介绍介绍介绍介绍</text>
+          <text></text>
+          <text></text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

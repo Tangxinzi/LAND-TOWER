@@ -1,8 +1,47 @@
 <mp-searchbar></mp-searchbar>
-
+<swiper indicator-dots="{{ true }}" autoplay="{{ true }}" interval="3000" duration="500">
+  <block wx:for="{{ ['yellow', 'red', 'skyblue'] }}" wx:key="color">
+    <swiper-item style="background-color: {{ item }};">
+      
+    </swiper-item>
+  </block>
+</swiper>
 <view class="page">
-  <view class="page-title" style="margin-top: 0;">文章</view>
-  <view class="list-posts">
+  <view class="blocks">
+    <view class="block" wx:for="{{ ['案例', '设计师', '计算器', '关注我们'] }}">
+      <text>{{ item }}</text>
+    </view>
+  </view>
+  <view class="page-title flex-between" style="margin-top: 0;">
+    <text>优秀案例</text>
+    <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
+  </view>
+  <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
+    <view class="scroll-view-item_H" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
+      <view class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
+        <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
+        <view class="content">
+          <text class="title">案例名称</text>
+          <view class="author">描述 / 关键词</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="page-title flex-between" style="margin-top: 0;">
+    <text>设计师推荐</text>
+    <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
+  </view>
+  <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
+    <view class="scroll-view-item_H" style="width: 140px;" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
+      <view class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
+        <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
+        <view class="content">
+          <text class="title">设计师</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="list-posts" style="display: none;">
     <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
       <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
       <view class="content">
@@ -22,6 +61,21 @@
           <text class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</text>
           <!-- <text class="author">Author: John Doe</text> -->
         </view>
+      </view>
+    </view>
+  </view>
+  <view class="page-title flex-between" style="margin-top: 0;">
+    <text>联系我们</text>
+    <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
+  </view>
+  <view class="contact">
+    <navigator url="/pages/map/map" hover-class="none">
+      <image style="width: 100%; height: 180px;" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
+    </navigator>
+    <view class="content">
+      <view>岚图共建</view>
+      <view style="font-size: 14px; margin-top: 5px;">
+        <text>联系\n 邮箱\n 地址</text>
       </view>
     </view>
   </view>

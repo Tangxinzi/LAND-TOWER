@@ -1,9 +1,19 @@
-/**index.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100rpx 0 200rpx;
+  box-sizing: border-box;
+} 
+
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #aaa;
+  margin-bottom: 50px;
 }
 
 .userinfo-avatar {
@@ -16,4 +26,17 @@
 
 .usermotto {
   margin-top: 200px;
+}
+
+.rows {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.rows .row text {
+  font-size: 14px;
+  text-align: center;
+  display: block;
 }

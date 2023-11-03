@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "设计师",
+  "navigationBarTitleText": "收藏",
   "usingComponents": {
     "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
   }

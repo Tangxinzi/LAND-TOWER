@@ -2,12 +2,9 @@
   padding: 1em;
 }
 
-.container {
-  height: 100%;
+.flex-between {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+}

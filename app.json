@@ -1,16 +1,18 @@
 {
-  "entryPagePath": "pages/calculator-level-0/calculator-level-0",
   "pages": [
+    "pages/event/event",
     "pages/calculator-level-0/calculator-level-0",
     "pages/calculator/calculator",
     "pages/designer/designer",
-    "pages/event/event",
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail",
     "pages/mall/mall",
     "pages/kefu/kefu",
-    "pages/designer-detail/designer-detail"
+    "pages/designer-detail/designer-detail",
+    "pages/collection/collection",
+    "pages/map/map",
+    "pages/cases/cases"
   ],
   "window": {
     "backgroundTextStyle": "light",

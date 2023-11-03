@@ -55,16 +55,11 @@
 }
 
 .cards .card {
-  margin-left: 1em;
-}
 
-.cards .card:nth-child(3n + 1) {
-  margin-left: 0;
 }
 
 .cards .card, .cards .card image {
-  width: calc((100vw - 4em) / 3);
-  height: calc((100vw - 4em) / 3);
+  width: 100%;
   margin-bottom: 1em;
   border-radius: 5px;
 }

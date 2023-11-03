@@ -18,7 +18,7 @@
       <text>作品集</text>
     </view>
     <view class="cards">
-      <view class="card" wx:for="{{ [0, 1, 2, 3, 4, 5, 6, 7] }}" wx:key="card">
+      <view class="card" wx:for="{{ [0, 1, 2] }}" wx:key="card">
         <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
       </view>
     </view>
