@@ -1,5 +1,5 @@
 <mp-searchbar></mp-searchbar>
-<swiper indicator-dots="{{ true }}" autoplay="{{ true }}" interval="3000" duration="500">
+<swiper indicator-dots="{{ true }}" autoplay="{{ true }}" interval="3000" duration="500" circular="{{ true }}">
   <block wx:for="{{ ['yellow', 'red', 'skyblue'] }}" wx:key="color">
     <swiper-item style="background-color: {{ item }};">
       
@@ -8,37 +8,37 @@
 </swiper>
 <view class="page">
   <view class="blocks">
-    <view class="block" wx:for="{{ ['案例', '设计师', '计算器', '关注我们'] }}">
+    <view class="block" wx:for="{{ ['案例', '设计师', '计算器', '关注我们'] }}" wx:key="item" bind:tap="block" data-text="{{ item }}">
       <text>{{ item }}</text>
     </view>
   </view>
-  <view class="page-title flex-between" style="margin-top: 0;">
+  <navigator class="page-title flex-between" hover-class="none" style="margin-top: 0;" url="/pages/cases/cases">
     <text>优秀案例</text>
     <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
-  </view>
+  </navigator>
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
-    <view class="scroll-view-item_H" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
-      <view class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
-        <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
+    <navigator url="/pages/cases-detail/cases-detail" class="scroll-view-item_H" style="width: 260px;" hover-class="none" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
+      <navigator class="list-item" style="width: 240px;" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
+        <view class="theme" style="width: 240px; background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
         <view class="content">
           <text class="title">案例名称</text>
           <view class="author">描述 / 关键词</view>
         </view>
-      </view>
-    </view>
+      </navigator>
+    </navigator>
   </scroll-view>
   <view class="page-title flex-between" style="margin-top: 0;">
     <text>设计师推荐</text>
     <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
   </view>
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
-    <view class="scroll-view-item_H" style="width: 140px;" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
-      <view class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
-        <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
+    <view class="scroll-view-item_H" style="width: 160px;" wx:for="{{ designer }}" wx:key="designer">
+      <navigator class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
+        <view class="theme" style="background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
         <view class="content">
-          <text class="title">设计师</text>
+          <text class="title">{{ item.nickname }}</text>
         </view>
-      </view>
+      </navigator>
     </view>
   </scroll-view>
   <view class="list-posts" style="display: none;">

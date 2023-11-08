@@ -1,14 +1,17 @@
+<view class="header-user">
+  <view class="image" style="background-image: url({{ siteinfo.site + designer.avatar_url }})"></view>
+  <view class="header-info">
+    <view class="flex-between" style="width: 100%; margin-bottom: 0.75em;">
+      <view class="nickname">{{ designer.nickname }}</view>
+      <mp-icon icon="like" color="#FFF" size="40"></mp-icon>
+    </view>
+    <view class="labels">
+      <text class="label" wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
+    </view>
+  </view>
+</view>
 <view class="page designer-detail">
   <view class="header">
-    <view class="header-user">
-      <view>
-        <view class="nickname">{{ designer.nickname }}</view>
-        <view class="labels">
-          <text class="label" wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
-        </view>
-      </view>
-      <view class="image" style="background-image: url({{ siteinfo.site + designer.avatar_url }})"></view>
-    </view>
     <view class="detail">
       <text>{{ designer.detail }}</text>
     </view>
@@ -18,9 +21,10 @@
       <text>作品集</text>
     </view>
     <view class="cards">
-      <view class="card" wx:for="{{ [0, 1, 2] }}" wx:key="card">
+      <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail" wx:for="{{ [0, 1, 2] }}" wx:key="card">
         <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
-      </view>
+        <view class="title">名称 {{ item }}</view>
+      </navigator>
     </view>
   </view>
 </view>

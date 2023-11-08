@@ -1,24 +1,32 @@
-.header .header-user {
-  display: flex;
+.header-user {
+  position: relative;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
-.header .nickname {
-  font-size: 20px;
+.header-user .header-info {
+  position: absolute;
+  left: 1em;
+  bottom: 30px;
+  width: calc(100% - 2em);
+}
+
+.header-user .nickname {
+  color: #FFF;
+  font-size: 30px;
   font-weight: 600;
-  margin-bottom: 1px;
 }
 
-.header .image {
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
+.header-user .image {
+  width: 100vw;
+  height: 100vw;
   background-size: 100%;
+  background-repeat: no-repeat;
 }
 
-.header .labels .label {
+.header-user .labels .label {
   display: inline-block;
   line-height: 1;
   vertical-align: baseline;
@@ -55,11 +63,13 @@
 }
 
 .cards .card {
-
-}
-
-.cards .card, .cards .card image {
   width: 100%;
   margin-bottom: 1em;
   border-radius: 5px;
+}
+
+.cards .card image {
+  width: 100%;
+  border-radius: 5px;
+  height: 160px;
 }

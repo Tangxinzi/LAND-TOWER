@@ -4,6 +4,7 @@ Page({
   data: {
     siteinfo,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    designer: {},
     articles: {},
   },
   
@@ -17,6 +18,33 @@ Page({
         }
       }
     })
+
+    wx.request({
+      url: `${ siteinfo.site }/land/designer?type=json`,
+      method: 'GET',
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({ designer: response.data.data })
+        }
+      }
+    })
+  },
+
+  block(event) {
+    switch (event.currentTarget.dataset.text) {
+      case '案例':
+        wx.navigateTo({ url: '/pages/cases/cases' })
+        break;
+      case '设计师':
+        wx.switchTab({ url: '/pages/designer/designer' })
+        break;
+      case '计算器':
+        wx.switchTab({ url: '/pages/calculator-level-0/calculator-level-0' })
+        break;
+      case '关注我们':
+        // wx.switchTab({ url: '/pages/calculator-level-0/calculator-level-0' })
+        break;
+    }
   },
 
   /**

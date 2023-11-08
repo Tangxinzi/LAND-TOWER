@@ -1,28 +1,37 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
+<view class="user" wx:if="{{ userinfo }}">
+  <view class="container">
+    <view class="userinfo">
+      <block wx:if="{{canIUseOpenData}}">
+        <view class="userinfo-avatar" bindtap="bindViewTap">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <open-data type="userNickName"></open-data>
+      </block>
+    </view>
+    <view class="rows">
+      <navigator class="row" hover-class="none" url="/pages/collection/collection">
+        <text>1</text>
+        <text>收藏</text>
+      </navigator>
+      <view style="border-right: 1px solid rgba(204, 204, 204, 0.329);"></view>
+      <view class="row">
+        <text>1</text>
+        <text>消息</text>
       </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-  </view>
-  <view class="rows">
-    <navigator class="row" hover-class="none" url="/pages/collection/collection">
-      <text>1</text>
-      <text>收藏</text>
-    </navigator>
-    <view style="border-right: 1px solid rgba(204, 204, 204, 0.329);"></view>
-    <view class="row">
-      <text>1</text>
-      <text>消息</text>
     </view>
   </view>
+  <mp-cells>
+    <mp-cell value="联系客服" link></mp-cell>
+    <mp-cell value="关于我们" link></mp-cell>
+    <mp-cell value="关注公众号" link></mp-cell>
+  </mp-cells>
 </view>
-
-<mp-cells>
-  <mp-cell value="联系客服" link></mp-cell>
-  <mp-cell value="关于我们" link></mp-cell>
-  <mp-cell value="关注公众号" link></mp-cell>
-</mp-cells>
+<view class="login" wx:else>
+  <view class="container">
+    <view class="logo">
+      <image src="" mode="" />
+      <view>办公室设计大师</view>
+    </view>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号登录</button>
+  </view>
+</view>

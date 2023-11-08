@@ -31,18 +31,30 @@ page .page-title {
 .list-case .list-item {
   margin-right: 1em;
   font-size: 14px;
-  height: 200px;
-  border: 1px solid rgba(128, 128, 128, 0.1);
+  box-sizing: border-box;
 }
 
-.list-case .list-item image {
-  width: 100%;
+.list-case .list-item .theme {
+  width: 140px;
   height: 140px;
+  font-size: 0;
+  background-size: 100%;
   background-color: rgba(128, 128, 128, 0.1);
 }
 
 .list-case .list-item .content {
-  padding: 0.5em;
+  font-size: 14px;
+  margin-top: 0.5em;
+  box-sizing: border-box;
+}
+
+.list-case .list-item .content .title {
+  font-size: 14px;
+}
+
+.list-case .list-item .content .author {
+  color: #999;
+  font-size: 12px;
 }
 
 /* list-posts */

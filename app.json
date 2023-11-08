@@ -12,7 +12,8 @@
     "pages/designer-detail/designer-detail",
     "pages/collection/collection",
     "pages/map/map",
-    "pages/cases/cases"
+    "pages/cases/cases",
+    "pages/cases-detail/cases-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,12 +36,6 @@
         "pagePath": "pages/designer/designer",
         "iconPath": "/assets/icons/icon-02.png",
         "selectedIconPath": "/assets/icons/icon-02-active.png"
-      },
-      {
-        "text": "商城",
-        "pagePath": "pages/mall/mall",
-        "iconPath": "/assets/icons/icon-03.png",
-        "selectedIconPath": "/assets/icons/icon-03-active.png"
       },
       {
         "text": "计算器",

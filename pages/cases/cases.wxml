@@ -2,7 +2,7 @@
 
 <view class="page mall">
   <view class="cases">
-    <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.id }}" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
+    <navigator class="case" hover-class="none" url="/pages/cases-detail/cases-detail" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
       <view class="theme">
         <image src="" mode="aspectFill" />
       </view>

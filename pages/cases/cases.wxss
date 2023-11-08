@@ -1,1 +1,14 @@
-/* pages/cases/cases.wxss */
+.cases .case {
+  border: 1px solid #f2f1f6;
+  margin-bottom: 1em;
+  border-radius: 4px;
+}
+
+.cases .theme {
+  height: 180px;
+  background-color: #f2f1f6;
+}
+
+.cases .content {
+  padding: 0.75em;
+}

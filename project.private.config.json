@@ -3,5 +3,6 @@
   "projectname": "LAND%26TOWER",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "3.1.5"
 }
