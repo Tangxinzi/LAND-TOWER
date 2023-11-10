@@ -1,3 +1,33 @@
-<view style="width: 100%; height: 400px; line-height: 400px; text-align: center;">
-  <text>案例详情</text>
+<view class="header-user">
+  <view class="image" style="background-image: url(https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0)"></view>
+  <view class="header-info">
+    <view class="flex-between" style="width: 100%; margin-bottom: 0.75em;">
+      <view class="nickname">Title</view>
+      <mp-icon icon="like" color="#FFF" size="40"></mp-icon>
+    </view>
+    <view class="labels">
+      <text>办公写字楼</text>
+      <text>办公写字楼</text>
+    </view>
+  </view>
+</view>
+<view class="page designer-detail">
+  <view class="header">
+    <view class="detail">
+      <text>Detail\n</text>
+      <text>位置：北京\n位置：北京\n位置：北京\n</text>
+    </view>
+  </view>
+  <view class="character-container">
+    <!-- <view class="title flex-between">
+      <text>作品集</text>
+    </view> -->
+    <view class="cards">
+      <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail" wx:for="{{ [0] }}" wx:key="card">
+        <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
+        <view class="title">名称 {{ item }}</view>
+        <view class="detail">设计重点或施工难点：原状：投资公司遗留，前台超级大，不透光、没有储物空间，办公室不隔音。</view>
+      </navigator>
+    </view>
+  </view>
 </view>

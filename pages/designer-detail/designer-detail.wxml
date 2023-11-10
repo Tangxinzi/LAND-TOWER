@@ -6,7 +6,7 @@
       <mp-icon icon="like" color="#FFF" size="40"></mp-icon>
     </view>
     <view class="labels">
-      <text class="label" wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
+      <text wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
     </view>
   </view>
 </view>
@@ -17,9 +17,9 @@
     </view>
   </view>
   <view class="character-container">
-    <view class="title flex-between">
+    <!-- <view class="title flex-between">
       <text>作品集</text>
-    </view>
+    </view> -->
     <view class="cards">
       <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail" wx:for="{{ [0, 1, 2] }}" wx:key="card">
         <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />

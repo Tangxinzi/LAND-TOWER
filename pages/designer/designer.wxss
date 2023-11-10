@@ -16,7 +16,7 @@ page {
   height: 295px;
   margin-bottom: 1em;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0;
   /* border: 1px solid #f2f1f6; */
   background-color: #FFF;
   margin-bottom: 1em;
@@ -38,12 +38,13 @@ page {
 }
 
 .lists .list .content .nickname {
+  color: #333;
   font-size: 14px;
 }
 
 .lists .list .content .info text {
   font-size: 12px;
-  color: #999;
+  color: #8e8e8e;
   margin-right: 1em;
 }
 

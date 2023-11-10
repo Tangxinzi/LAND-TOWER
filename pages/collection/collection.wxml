@@ -9,7 +9,7 @@
   <view class="lists" wx:if="{{ type == 0 }}">
     <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.id }}" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
       <view class="theme">
-        <image src="{{ siteinfo.site + item.avatar_url }}" mode="aspectFill" />
+        <view class="theme" style="background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
       </view>
       <view class="content">
         <text class="nickname">{{ item.nickname }}</text>

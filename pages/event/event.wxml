@@ -1,25 +1,27 @@
 <mp-searchbar></mp-searchbar>
 <swiper indicator-dots="{{ true }}" autoplay="{{ true }}" interval="3000" duration="500" circular="{{ true }}">
-  <block wx:for="{{ ['yellow', 'red', 'skyblue'] }}" wx:key="color">
-    <swiper-item style="background-color: {{ item }};">
-      
+    <swiper-item>
+      <image src="/assets/images/header-1.png" mode="aspectFill" />
     </swiper-item>
-  </block>
+    <swiper-item>
+      <image src="/assets/images/header-2.jpeg" mode="aspectFill" />
+    </swiper-item>
 </swiper>
 <view class="page">
   <view class="blocks">
-    <view class="block" wx:for="{{ ['案例', '设计师', '计算器', '关注我们'] }}" wx:key="item" bind:tap="block" data-text="{{ item }}">
-      <text>{{ item }}</text>
+    <view class="block" wx:for="{{ items }}" wx:key="item" bind:tap="block" data-text="{{ item.text }}">
+      <image src="{{ item.icon }}" mode=""/>
+      <text>{{ item.text }}</text>
     </view>
   </view>
   <navigator class="page-title flex-between" hover-class="none" style="margin-top: 0;" url="/pages/cases/cases">
-    <text>优秀案例</text>
+    <text>优秀案例<text class="sub">Example Demonstrates</text></text>
     <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
   </navigator>
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
-    <navigator url="/pages/cases-detail/cases-detail" class="scroll-view-item_H" style="width: 260px;" hover-class="none" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
-      <navigator class="list-item" style="width: 240px;" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
-        <view class="theme" style="width: 240px; background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
+    <navigator url="/pages/cases-detail/cases-detail" class="scroll-view-item_H" style="width: 280px;" hover-class="none" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
+      <navigator class="list-item" style="width: 270px;" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
+        <view class="theme" style="width: 270px; background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
         <view class="content">
           <text class="title">案例名称</text>
           <view class="author">描述 / 关键词</view>
@@ -28,15 +30,16 @@
     </navigator>
   </scroll-view>
   <view class="page-title flex-between" style="margin-top: 0;">
-    <text>设计师推荐</text>
+    <text>设计师<text class="sub">Desginer</text></text>
     <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
   </view>
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
     <view class="scroll-view-item_H" style="width: 160px;" wx:for="{{ designer }}" wx:key="designer">
-      <navigator class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
+      <navigator class="list-item" hover-class="none" url="/pages/designer-detail/designer-detail?id={{ item.id }}">
         <view class="theme" style="background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
         <view class="content">
           <text class="title">{{ item.nickname }}</text>
+          <view class="author">{{ item.labels[0] }}</view>
         </view>
       </navigator>
     </view>
@@ -65,18 +68,30 @@
     </view>
   </view>
   <view class="page-title flex-between" style="margin-top: 0;">
-    <text>联系我们</text>
+    <text>联系我们<text class="sub">Contact Us</text></text>
     <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
   </view>
   <view class="contact">
-    <navigator url="/pages/map/map" hover-class="none">
-      <image style="width: 100%; height: 180px;" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
-    </navigator>
-    <view class="content">
-      <view>岚图共建</view>
-      <view style="font-size: 14px; margin-top: 5px;">
-        <text>联系\n 邮箱\n 地址</text>
+    <view class="content" style="position: absolute;">
+      <view class="flex-between">
+        <text>在线时间：</text>
+        <text>周一到周五 9:00-18:00</text>
+      </view>
+      <view class="flex-between">
+        <text>24小时服务：</text>
+        <text>13810517401</text>
+      </view>
+      <view class="flex-between">
+        <text>公司邮箱：</text>
+        <text>lantugongjian@landtower.co</text>
+      </view>
+      <view class="flex-between">
+        <text>公司地址：</text>
+        <text>北京市朝阳区方恒国际中心B座</text>
       </view>
     </view>
+    <navigator url="/pages/map/map" hover-class="none">
+      <image style="width: 100%;" src="/assets/images/contact-us.png" mode="widthFix" />
+    </navigator>
   </view>
 </view>

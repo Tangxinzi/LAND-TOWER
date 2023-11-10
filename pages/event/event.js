@@ -4,6 +4,24 @@ Page({
   data: {
     siteinfo,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    items: [
+      {
+        text: '案例',
+        icon: '/assets/icons/shouye-anli.png'
+      },
+      {
+        text: '设计师',
+        icon: '/assets/icons/shouye-shejishi.png'
+      },
+      {
+        text: '计算器',
+        icon: '/assets/icons/shouye-guanzhuwomen.png'
+      },
+      {
+        text: '关注我们',
+        icon: '/assets/icons/shouye-jisuanqi.png'
+      },
+    ],
     designer: {},
     articles: {},
   },

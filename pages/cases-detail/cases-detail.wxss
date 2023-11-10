@@ -1,1 +1,100 @@
-/* pages/cases-detail/cases-detail.wxss */
+.header-user {
+  position: relative;
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; */
+}
+
+.header-user .header-info {
+  position: absolute;
+  left: 1em;
+  bottom: 30px;
+  width: calc(100% - 2em);
+}
+
+.header-user .nickname {
+  color: #FFF;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.header-user .image {
+  width: 100vw;
+  height: 100vw;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.header-user .labels .label {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: baseline;
+  margin: 0 .64285714em 0 0;
+  background-color: #e8e8e8;
+  background-image: none;
+  padding: .5833em;
+  color: rgba(0,0,0,.6);
+  text-transform: none;
+  font-weight: 700;
+  border: 0 solid transparent;
+  border-radius: .28571429rem;
+  transition: background .1s ease;
+
+  font-size: 12px;
+  background-color: #949494!important;
+  color: #fff!important;
+}
+
+.header-user .labels text {
+  font-size: 14px;
+  color: #FFF;
+  padding-right: 1em;
+  margin-right: 1em;
+  border-right: 1px solid #FFF;
+  height: 10px;
+  line-height: .7;
+}
+
+.header-user .labels text:last-child {
+  border: none;
+}
+
+.header .detail {
+  color: #9a9a9a;
+  margin-top: 1em;
+  font-size: 14px;
+}
+
+.character-container {
+  margin-top: 2em;
+}
+
+.cards {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cards .card {
+  width: 100%;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+.cards .card .title {
+  color: #9A9A9A;
+  font-size: 14px;
+}
+
+.cards .card .detail {
+  margin-top: 1em;
+  font-size: 14px;
+}
+
+.cards .card image {
+  width: 100%;
+  border-radius: 0;
+  height: 160px;
+}

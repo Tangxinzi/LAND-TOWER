@@ -8,3 +8,14 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.weui-search-bar__form, .weui-search-bar__label {
+  border-radius: 0;
+}
+
+mp-searchbar .weui-search-bar {
+  margin: 1em;
+  padding: 0 1em 0 0.5em;
+  background-color: #FFF;
+  border: 1px solid #888;
+}

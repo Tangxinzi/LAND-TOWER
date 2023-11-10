@@ -1,7 +1,6 @@
 .cases .case {
-  border: 1px solid #f2f1f6;
   margin-bottom: 1em;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .cases .theme {
@@ -9,6 +8,20 @@
   background-color: #f2f1f6;
 }
 
+.cases .theme image {
+  width: 100%;
+}
+
 .cases .content {
-  padding: 0.75em;
+  padding: 0.75em 0;
+}
+
+.cases .content .title {
+  font-size: 14px;
+  color: #101010;
+}
+
+.cases .content .info {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
 }

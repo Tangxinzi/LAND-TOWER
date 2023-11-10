@@ -1,18 +1,21 @@
-// pages/cases-detail/cases-detail.js
+import siteinfo from '../../lib/siteinfo';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    siteinfo,
+    designer: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
-
+    wx.request({
+      url: `${ siteinfo.site }/land/designer/show/${ options.id }?type=json`,
+      method: 'GET',
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({ designer: response.data.data })
+        }
+      }
+    })
   },
 
   /**

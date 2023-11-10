@@ -7,11 +7,9 @@
         <image src="" mode="aspectFill" />
       </view>
       <view class="content">
-        <text class="nickname">案列</text>
+        <text class="title">案列</text>
         <view class="info">
           <text>介绍介绍介绍介绍介绍</text>
-          <text></text>
-          <text></text>
         </view>
       </view>
     </navigator>
