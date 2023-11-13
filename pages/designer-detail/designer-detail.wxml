@@ -3,7 +3,7 @@
   <view class="header-info">
     <view class="flex-between" style="width: 100%; margin-bottom: 0.75em;">
       <view class="nickname">{{ designer.nickname }}</view>
-      <mp-icon icon="like" color="#FFF" size="40"></mp-icon>
+      <mp-icon bind:tap="bindColl" type="{{ coll.status ? 'field' : 'outline' }}" icon="like" color="{{ coll.status ? 'red' : '#FFF' }}" size="40"></mp-icon>
     </view>
     <view class="labels">
       <text wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
@@ -22,7 +22,7 @@
     </view> -->
     <view class="cards">
       <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail" wx:for="{{ [0, 1, 2] }}" wx:key="card">
-        <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
+        <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="widthFix" />
         <view class="title">名称 {{ item }}</view>
       </navigator>
     </view>

@@ -11,6 +11,7 @@
 
 .weui-search-bar__form, .weui-search-bar__label {
   border-radius: 0;
+  justify-content: flex-start;
 }
 
 mp-searchbar .weui-search-bar {

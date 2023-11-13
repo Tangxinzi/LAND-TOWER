@@ -1,0 +1,14 @@
+<view class="container">
+  <view>
+    <button class="avatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image wx:if="{{ userinfo.avatar_url }}" src="{{ siteinfo.site + userinfo.avatar_url }}" mode="aspectFill" />
+      <mp-icon wx:else icon="me" color="#666" size="40"></mp-icon>
+    </button> 
+    <view class="nickname">
+      <input type="nickname" placeholder="输入昵称" data-name="nickname" bindinput="inputUserinfo" bindnicknamereview="nicknameReview" bindblur="inputBlur" value="{{ userinfo.nickname || '' }}" />
+    </view>
+  </view>
+
+
+  <button class="submit" bind:tap="" type="primary" bind:tap="updateUserinfo">更新</button>
+</view>

@@ -16,11 +16,11 @@
   </view>
   <navigator class="page-title flex-between" hover-class="none" style="margin-top: 0;" url="/pages/cases/cases">
     <text>优秀案例<text class="sub">Example Demonstrates</text></text>
-    <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
+    <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
   </navigator>
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
-    <navigator url="/pages/cases-detail/cases-detail" class="scroll-view-item_H" style="width: 280px;" hover-class="none" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
-      <navigator class="list-item" style="width: 270px;" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
+    <navigator url="/pages/cases-detail/cases-detail" class="scroll-view-item_H" hover-class="none" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
+      <navigator class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
         <view class="theme" style="width: 270px; background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
         <view class="content">
           <text class="title">案例名称</text>
@@ -31,7 +31,7 @@
   </scroll-view>
   <view class="page-title flex-between" style="margin-top: 0;">
     <text>设计师<text class="sub">Desginer</text></text>
-    <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
+    <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
   </view>
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
     <view class="scroll-view-item_H" style="width: 160px;" wx:for="{{ designer }}" wx:key="designer">
@@ -67,10 +67,10 @@
       </view>
     </view>
   </view>
-  <view class="page-title flex-between" style="margin-top: 0;">
+  <navigator class="page-title flex-between" hover-class="none" style="margin-top: 0;" url="/pages/map/map">
     <text>联系我们<text class="sub">Contact Us</text></text>
-    <mp-icon icon="arrow" size="14" color="rgba(0, 0, 0, 0.6)"></mp-icon>
-  </view>
+    <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
+  </navigator>
   <view class="contact">
     <view class="content" style="position: absolute;">
       <view class="flex-between">

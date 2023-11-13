@@ -29,7 +29,6 @@ page .page-title .sub {
 }
 .scroll-view-item_H{
   display: inline-block;
-  width: 250px;
   height: 220px;
 }
 .list-case {
@@ -45,7 +44,6 @@ page .page-title .sub {
 }
 
 .list-case .list-item .theme {
-  width: 140px;
   height: 180px;
   font-size: 0;
   background-size: 100%;

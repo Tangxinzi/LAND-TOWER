@@ -1,21 +1,19 @@
 <view class="user" wx:if="{{ userinfo }}">
   <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseOpenData}}">
-        <view class="userinfo-avatar" bindtap="bindViewTap">
-          <open-data type="userAvatarUrl"></open-data>
-        </view>
-        <open-data type="userNickName"></open-data>
-      </block>
-    </view>
+    <navigator class="userinfo" hover-class="none" url="/pages/userinfo-update/userinfo-update">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <image src="{{ userinfo.avatar_url ? siteinfo.site + userinfo.avatar_url : '/assets/images/wx_avatar.png' }}" mode="aspectFill" />
+      </view>
+      <text>{{ userinfo.nickname || '点击完善信息' }}</text>
+    </navigator>
     <view class="rows">
       <navigator class="row" hover-class="none" url="/pages/collection/collection">
-        <text>1</text>
+        <text class="number">{{ userinfo.collection_num || 0 }}</text>
         <text>收藏</text>
       </navigator>
       <view style="border-right: 1px solid rgba(204, 204, 204, 0.329);"></view>
       <view class="row">
-        <text>1</text>
+        <text class="number">{{ userinfo.message_num || 0 }}</text>
         <text>消息</text>
       </view>
     </view>

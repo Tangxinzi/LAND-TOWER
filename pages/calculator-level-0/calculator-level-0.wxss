@@ -1,6 +1,12 @@
 page {
+  color: #101010;
+  background-color: #f0f0f2;
   font-size: 14px;
   padding-bottom: 120px;
+}
+
+.text-color {
+  color: #9a9a9a;
 }
 
 .navigation-bar button {
@@ -28,8 +34,8 @@ page {
 .section {
   padding: 1em;
   margin: 1em;
-  background-color: rgba(204, 204, 204, 0.267);
-  border-radius: 10px;
+  background-color: #FFF;
+  border-radius: 0;
   overflow: hidden; 
 }
 
@@ -115,7 +121,6 @@ page {
   display: inline;
   font-weight: 400;
   color: #666;
-  background-color: #FFF;
 }
 
 .tips button::after {
@@ -134,4 +139,21 @@ button .kefu {
   height: 24px;
   display: block;
   margin: 10px auto;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.calc-icon {
+  text-align: center;
+}
+
+.calc-icon image {
+  width: 40px;
+  height: 40px;
+}
+
+.calc-icon text {
+  display: block;
 }

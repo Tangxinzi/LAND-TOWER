@@ -47,7 +47,7 @@
 }
 
 .header-user .labels text {
-  font-size: 14px;
+  font-size: 12.5px;
   color: #FFF;
   padding-right: 1em;
   margin-right: 1em;
@@ -90,6 +90,6 @@
 
 .cards .card image {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 0;
   height: 160px;
 }

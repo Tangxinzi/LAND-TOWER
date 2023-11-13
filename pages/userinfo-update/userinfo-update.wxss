@@ -1,0 +1,62 @@
+.container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.container .avatar-wrapper {
+  padding: 0;
+  width: 80px !important;
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.container .avatar {
+  display: block;
+  margin: 100px auto 0;
+  padding: 0;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 80px;
+  overflow: hidden;
+  background-color: #f2f1f6;
+}
+
+.container .avatar mp-icon {
+  position: relative;
+  top: -2px;
+  width: 80px;
+  height: 80px;
+  display: block;
+}
+
+.container .avatar image {
+  position: relative;
+  top: -3px;
+  width: 100%;
+  height: 100%;
+}
+
+.container .nickname {
+  display: block;
+  margin: 20px auto 0;
+  text-align: center;
+  width: 100px;
+  padding: 10px;
+  border-bottom: 2px solid #cccccc;
+}
+
+.submit button {
+  font-weight: 400;
+  font-size: 14px !important;
+  background-color: transparent;
+  border: 1px solid #CCC;
+  border-radius: 10px !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

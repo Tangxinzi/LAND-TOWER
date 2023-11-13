@@ -12,7 +12,7 @@ page {
 .lists .list {
   position: relative;
   /* font-size: 0; */
-  width: calc((100vw - 3.3em) / 2);
+  width: calc((100vw - 3em) / 2);
   height: 295px;
   margin-bottom: 1em;
   overflow: hidden;

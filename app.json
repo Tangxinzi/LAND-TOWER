@@ -13,7 +13,8 @@
     "pages/collection/collection",
     "pages/map/map",
     "pages/cases/cases",
-    "pages/cases-detail/cases-detail"
+    "pages/cases-detail/cases-detail",
+    "pages/userinfo-update/userinfo-update"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,31 +24,31 @@
   },
   "tabBar": {
     "color": "#707070",
-    "selectedColor": "#000",
+    "selectedColor": "#009600",
     "list": [
       {
         "text": "首页",
         "pagePath": "pages/event/event",
-        "iconPath": "/assets/icons/icon-01.png",
-        "selectedIconPath": "/assets/icons/icon-01-active.png"
+        "iconPath": "/assets/bottom/tab-01.png",
+        "selectedIconPath": "/assets/bottom/tab-01-active.png"
       },
       {
         "text": "设计师",
         "pagePath": "pages/designer/designer",
-        "iconPath": "/assets/icons/icon-02.png",
-        "selectedIconPath": "/assets/icons/icon-02-active.png"
+        "iconPath": "/assets/bottom/tab-02.png",
+        "selectedIconPath": "/assets/bottom/tab-02-active.png"
       },
       {
         "text": "计算器",
         "pagePath": "pages/calculator-level-0/calculator-level-0",
-        "iconPath": "/assets/icons/icon-04.png",
-        "selectedIconPath": "/assets/icons/icon-04-active.png"
+        "iconPath": "/assets/bottom/tab-03.png",
+        "selectedIconPath": "/assets/bottom/tab-03-active.png"
       },
       {
         "text": "我的",
         "pagePath": "pages/index/index",
-        "iconPath": "/assets/icons/icon-05.png",
-        "selectedIconPath": "/assets/icons/icon-05-active.png"
+        "iconPath": "/assets/bottom/tab-04.png",
+        "selectedIconPath": "/assets/bottom/tab-04-active.png"
       }
     ]
   },

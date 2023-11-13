@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "更新",
+  "usingComponents": {
+    "mp-icon": "weui-miniprogram/icon/icon"
+  }
+}

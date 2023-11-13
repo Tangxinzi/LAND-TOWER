@@ -1,8 +1,10 @@
 import siteinfo from '../../lib/siteinfo';
+const app = getApp()
 
 Page({
   data: {
     siteinfo,
+    userinfo: wx.getStorageSync('userinfo'),
     designer: [],
     type: 0
   },
@@ -16,14 +18,28 @@ Page({
 
   onLoad(options) {
     wx.request({
-      url: `${ siteinfo.site }/land/designer?type=json`,
+      url: `${ siteinfo.site }/land/user/collection?openid=${ this.data.userinfo.wechat_open_id }&type=designer`,
       method: 'GET',
       success: (response) => {
-        if (response.data.status == 200) {
-          this.setData({ designer: response.data.data })
-        }
+        this.setData({ designer: response.data.data })
+      },
+      fail: () => {
+        wx.showToast({
+          title: '登录失败',
+          icon: 'none'
+        })
       }
     })
+
+    // wx.request({
+    //   url: `${ siteinfo.site }/land/designer?type=json`,
+    //   method: 'GET',
+    //   success: (response) => {
+    //     if (response.data.status == 200) {
+    //       this.setData({ designer: response.data.data })
+    //     }
+    //   }
+    // })
   },
 
   onReady() {

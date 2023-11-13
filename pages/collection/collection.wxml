@@ -7,16 +7,14 @@
   </view>
 
   <view class="lists" wx:if="{{ type == 0 }}">
-    <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.id }}" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
+    <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.content.id }}" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
       <view class="theme">
-        <view class="theme" style="background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
+        <view class="theme" style="background-image: url({{ siteinfo.site + item.content.avatar_url }});"></view>
       </view>
       <view class="content">
-        <text class="nickname">{{ item.nickname }}</text>
+        <text class="nickname">{{ item.content.nickname }}</text>
         <view class="info">
-          <text>设计师介绍</text>
-          <text>设计师介绍</text>
-          <text>设计师介绍</text>
+          <text wx:for="{{ item.content.labels }}" wx:for-item="label" wx:key="label" wx:if="{{ index < 2 }}">{{ label }}\n</text>
         </view>
       </view>
     </navigator>
