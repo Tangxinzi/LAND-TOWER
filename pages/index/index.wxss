@@ -60,7 +60,6 @@ page {
   width: 70px;
   height: 70px;
   border-radius: 4px;
-  border: 1px solid #CCC;
   margin-bottom: 20px;
 }
 
@@ -74,6 +73,23 @@ page {
   background-color: transparent;
   border: 1px solid #CCC;
   border-radius: 10px !important;
+  margin-top: 100px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.weui-cell__bd {
+  font-size: 14px;
+}
+
+.navigate.button {
+  color: #000;
+  margin: 0;
+  padding: 0;
+  width: auto !important;
+  background-color: transparent;
+  font-weight: 400;
+  border-bottom: 0.5px solid #f2f1f6;
+  padding: 12px 16px;
+  font-size: 14px;
 }

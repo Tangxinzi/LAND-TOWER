@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    maker: [
+      {
+        id: 1,
+        longitude: "116.48124",
+        latitude: "39.99025",
+        title: '岚图共建'
+      }
+    ]
   },
 
   /**

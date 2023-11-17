@@ -1,5 +1,9 @@
 {
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "",
   "usingComponents": {
-    "mp-icon": "weui-miniprogram/icon/icon"
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
+    "mp-icon": "weui-miniprogram/icon/icon",
+    "towxml":"/towxml/towxml"
   }
 }

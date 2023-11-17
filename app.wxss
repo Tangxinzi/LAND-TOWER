@@ -14,9 +14,34 @@
   justify-content: flex-start;
 }
 
+.weui-search-bar__cancel-btn {
+  font-size: 14px;
+}
+
 mp-searchbar .weui-search-bar {
   margin: 1em;
   padding: 0 1em 0 0.5em;
   background-color: #FFF;
   border: 1px solid #888;
+  z-index: 1;
+}
+
+.weui-search-bar__box .weui-search-bar__input,
+.weui-search-bar__box,
+.weui-search-bar__form,
+.weui-search-bar_focusing {
+  background-color: #FFF;
+}
+
+.h2w__main {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.h2w {
+  font-size: 14px !important;
+}
+
+.h2w__main image, .h2w__main video {
+  margin: 40rpx 0 40rpx 0;
 }

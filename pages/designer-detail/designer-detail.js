@@ -1,11 +1,12 @@
 import siteinfo from '../../lib/siteinfo';
+const app = getApp()
 
 Page({
   data: {
     siteinfo,
     userinfo: wx.getStorageSync('userinfo'),
     coll: {},
-    designer: []
+    designer: {}
   },
 
   fetch(options) {
@@ -14,6 +15,16 @@ Page({
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
+          response.data.data.detail = app.towxml(`${ response.data.data.detail }`, 'html', {
+            base: siteinfo.site,
+            theme: 'light',
+            events: {
+              tap: (e)=>{
+                console.log('tap',e);
+              }
+            }
+          })
+          
           this.setData({ designer: response.data.data, options })
           this.collStatus()
         }

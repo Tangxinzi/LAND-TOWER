@@ -1,11 +1,12 @@
+<mp-navigation-bar ext-class="navigation-bar" title="设计师" background="#FFF"></mp-navigation-bar>
 <view class="header-user">
   <view class="image" style="background-image: url({{ siteinfo.site + designer.avatar_url }})"></view>
   <view class="header-info">
-    <view class="flex-between" style="width: 100%; margin-bottom: 0.75em;">
+    <view class="flex-between" style="width: 100%;">
       <view class="nickname">{{ designer.nickname }}</view>
-      <mp-icon bind:tap="bindColl" type="{{ coll.status ? 'field' : 'outline' }}" icon="like" color="{{ coll.status ? 'red' : '#FFF' }}" size="40"></mp-icon>
+      <mp-icon bind:tap="bindColl" type="{{ coll.status ? 'field' : 'outline' }}" icon="like" color="{{ coll.status ? 'red' : '#FFF' }}" size="28"></mp-icon>
     </view>
-    <view class="labels">
+    <view class="labels" wx:if="{{ work.labels.length }}">
       <text wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
     </view>
   </view>
@@ -13,7 +14,11 @@
 <view class="page designer-detail">
   <view class="header">
     <view class="detail">
-      <text>{{ designer.detail }}</text>
+      <!-- <view class="labels">
+        标签：<text wx:for="{{ designer.labels }}" wx:key="label" wx:if="{{ index < 3 }}">{{ item }}</text>
+      </view> -->
+      <!-- <text>{{ designer.detail }}</text> -->
+      <towxml nodes="{{ designer.detail }}" />
     </view>
   </view>
   <view class="character-container">
@@ -21,9 +26,10 @@
       <text>作品集</text>
     </view> -->
     <view class="cards">
-      <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail" wx:for="{{ [0, 1, 2] }}" wx:key="card">
-        <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="widthFix" />
-        <view class="title">名称 {{ item }}</view>
+      <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}" wx:for="{{ designer.works }}" wx:key="card">
+        <image class="" src="{{ item.theme_url }}" mode="aspectFill" />
+        <view class="character-image" style="{{ siteinfo.site + item.theme_url }}"></view>
+        <view class="title">{{ item.title }}</view>
       </navigator>
     </view>
   </view>

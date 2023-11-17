@@ -1,10 +1,12 @@
+<mp-navigation-bar ext-class="navigation-bar" title="" background="#FFF" back="{{ false }}">
+</mp-navigation-bar>
 <mp-searchbar></mp-searchbar>
 <swiper indicator-dots="{{ true }}" autoplay="{{ true }}" interval="3000" duration="500" circular="{{ true }}">
     <swiper-item>
-      <image src="/assets/images/header-1.png" mode="aspectFill" />
+      <image src="/assets/images/header-03.png" mode="aspectFill" />
     </swiper-item>
     <swiper-item>
-      <image src="/assets/images/header-2.jpeg" mode="aspectFill" />
+      <image src="/assets/images/header-04.png" mode="aspectFill" />
     </swiper-item>
 </swiper>
 <view class="page">
@@ -19,14 +21,16 @@
     <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
   </navigator>
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
-    <navigator url="/pages/cases-detail/cases-detail" class="scroll-view-item_H" hover-class="none" wx:for="{{ [0, 1, 2, 3, 4] }}" wx:key="item">
-      <navigator class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
-        <view class="theme" style="width: 270px; background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
+    <navigator url="/pages/cases-detail/cases-detail?id={{ item.id }}" class="scroll-view-item_H" hover-class="none" wx:for="{{ works }}" wx:key="item">
+      <view class="list-item">
+        <view class="theme" style="width: 270px; background-image: url({{ siteinfo.site + item.theme_url }});"></view>
         <view class="content">
-          <text class="title">案例名称</text>
-          <view class="author">描述 / 关键词</view>
+          <text class="title">{{ item.title }}</text>
+          <view class="author one-line">
+            <text wx:for="{{ item.labels }}" wx:key="label" wx:for-item="label">{{ label }} </text>
+          </view>
         </view>
-      </navigator>
+      </view>
     </navigator>
   </scroll-view>
   <view class="page-title flex-between" style="margin-top: 0;">
@@ -45,7 +49,7 @@
     </view>
   </scroll-view>
   <view class="list-posts" style="display: none;">
-    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
+    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}">
       <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
       <view class="content">
         <text class="title">{{ item.article_title }}</text>
@@ -91,7 +95,7 @@
       </view>
     </view>
     <navigator url="/pages/map/map" hover-class="none">
-      <image style="width: 100%;" src="/assets/images/contact-us.png" mode="widthFix" />
+      <image style="width: 100%;" src="/assets/images/contact-us-01.png" mode="widthFix" />
     </navigator>
   </view>
 </view>

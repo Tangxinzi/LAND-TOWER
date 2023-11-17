@@ -1,3 +1,7 @@
+.page {
+  padding-top: 0;
+}
+
 .cases .case {
   margin-bottom: 1em;
   border-radius: 0;
@@ -5,6 +9,9 @@
 
 .cases .theme {
   height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: #f2f1f6;
 }
 
@@ -24,4 +31,19 @@
 .cases .content .info {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.4);
+}
+
+.labels {
+  margin-bottom: 1em;
+}
+
+.labels text {
+  font-size: 14px;
+  margin-right: 20px;
+  padding-bottom: 4px;
+}
+
+.labels text.active {
+  color: #65b55c;
+  border-bottom: 2px solid #65b55c;
 }

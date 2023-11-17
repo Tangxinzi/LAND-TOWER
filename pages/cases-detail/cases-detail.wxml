@@ -1,33 +1,29 @@
-<view class="header-user">
-  <view class="image" style="background-image: url(https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0)"></view>
+<mp-navigation-bar ext-class="navigation-bar" title="详情" background="#FFF">
+</mp-navigation-bar>
+<view class="header-user" wx:if="{{ work }}">
+  <view class="image" style="background-image: url({{ siteinfo.site + work.theme_url }})"></view>
   <view class="header-info">
-    <view class="flex-between" style="width: 100%; margin-bottom: 0.75em;">
-      <view class="nickname">Title</view>
-      <mp-icon icon="like" color="#FFF" size="40"></mp-icon>
-    </view>
-    <view class="labels">
-      <text>办公写字楼</text>
-      <text>办公写字楼</text>
+    <view class="flex-between" style="width: 100%;">
+      <view class="nickname">{{ work.title }}</view>
+      <mp-icon bind:tap="bindColl" type="{{ coll.status ? 'field' : 'outline' }}" icon="like" color="{{ coll.status ? 'red' : '#FFF' }}" size="28"></mp-icon>
     </view>
   </view>
 </view>
 <view class="page designer-detail">
   <view class="header">
     <view class="detail">
-      <text>Detail\n</text>
-      <text>位置：北京\n位置：北京\n位置：北京\n</text>
+      <!-- <text>{{ work.introduction || '' }}\n</text> -->
+      <text wx:if="{{ work.title }}">项目名称：{{ work.title || '' }}\n</text>
+      <text wx:if="{{ work.location }}">项目地址：{{ work.location || '' }}\n</text>
+      <text wx:if="{{ work.area }}">面积：{{ work.area ? work.area + '平' : '' }}\n</text>
+      <text wx:if="{{ work.team }}">设计团队：{{ work.team || '' }}\n</text>
+      <view class="labels" wx:if="{{ work.labels.length }}">
+        Tag: <text wx:for="{{ work.labels }}" wx:key="label" wx:if="{{ index < 3 }}">{{ item }}</text>
+      </view>
     </view>
   </view>
   <view class="character-container">
-    <!-- <view class="title flex-between">
-      <text>作品集</text>
-    </view> -->
-    <view class="cards">
-      <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail" wx:for="{{ [0] }}" wx:key="card">
-        <image class="character-image" src="https://mmbiz.qpic.cn/mmbiz_jpg/5icqa03loyM1BsnXh9ArxKEZRgFbicSTTXkc3NWHVtQuKHDydQW2YsjdtEetZJ0rzbCSibWgxnibGE0ugsf6wn2ichw/0" mode="aspectFill" />
-        <view class="title">名称 {{ item }}</view>
-        <view class="detail">设计重点或施工难点：原状：投资公司遗留，前台超级大，不透光、没有储物空间，办公室不隔音。</view>
-      </navigator>
-    </view>
+    <!-- <rich-text nodes="{{ work.detail }}"></rich-text> -->
+    <towxml nodes="{{ work.detail }}" />
   </view>
 </view>

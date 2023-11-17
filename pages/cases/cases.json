@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "优秀案例",
+  "navigationStyle": "custom",
   "usingComponents": {
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
   }
 }

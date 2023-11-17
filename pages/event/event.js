@@ -15,13 +15,14 @@ Page({
       },
       {
         text: '计算器',
-        icon: '/assets/icons/shouye-guanzhuwomen.png'
-      },
-      {
-        text: '关注我们',
         icon: '/assets/icons/shouye-jisuanqi.png'
       },
+      {
+        text: '联系我们',
+        icon: '/assets/icons/shouye-guanzhuwomen.png'
+      },
     ],
+    works: [],
     designer: {},
     articles: {},
   },
@@ -46,6 +47,16 @@ Page({
         }
       }
     })
+    
+    wx.request({
+      url: `${ siteinfo.site }/land/work/catalog/1?type=json`,
+      method: 'GET',
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({ works: response.data.data })
+        }
+      }
+    })
   },
 
   block(event) {
@@ -59,7 +70,8 @@ Page({
       case '计算器':
         wx.switchTab({ url: '/pages/calculator-level-0/calculator-level-0' })
         break;
-      case '关注我们':
+      case '联系我们':
+        wx.navigateTo({ url: '/pages/map/map' })
         // wx.switchTab({ url: '/pages/calculator-level-0/calculator-level-0' })
         break;
     }

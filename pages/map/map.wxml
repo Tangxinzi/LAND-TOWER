@@ -1,3 +1,5 @@
+<mp-navigation-bar ext-class="navigation-bar" title="联系我们" background="#FFF">
+</mp-navigation-bar>
 <view class="contact">
   <view class="content" style="position: absolute;">
     <view class="flex-between">
@@ -18,7 +20,8 @@
     </view>
   </view>
   <navigator url="/pages/map/map" hover-class="none">
-    <image style="width: 100%;" src="/assets/images/contact-us.png" mode="widthFix" />
+    <image style="width: 100%;" src="/assets/images/contact-us-01.png" mode="widthFix" />
   </navigator>
 </view>
-<map longitude="" latitude=""/>
+12967456.915,
+<map markers="{{ maker }}" show-scale="{{ true }}" scale="16" longitude="116.48124" latitude="39.99025" />

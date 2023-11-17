@@ -5,7 +5,7 @@ Page({
   data: {
     siteinfo,
     userinfo: wx.getStorageSync('userinfo'),
-    designer: [],
+    data: [],
     type: 0
   },
 
@@ -14,14 +14,15 @@ Page({
     this.setData({
       type: event.currentTarget.dataset.type
     })
+    this.fetch()
   },
 
-  onLoad(options) {
+  fetch() {
     wx.request({
-      url: `${ siteinfo.site }/land/user/collection?openid=${ this.data.userinfo.wechat_open_id }&type=designer`,
+      url: `${ siteinfo.site }/land/user/collection?openid=${ this.data.userinfo.wechat_open_id }&type=${ this.data.type == 0 ? 'designer' : 'work' }`,
       method: 'GET',
       success: (response) => {
-        this.setData({ designer: response.data.data })
+        this.setData({ data: response.data.data })
       },
       fail: () => {
         wx.showToast({
@@ -30,6 +31,10 @@ Page({
         })
       }
     })
+  },
+
+  onLoad(options) {
+    this.fetch()
 
     // wx.request({
     //   url: `${ siteinfo.site }/land/designer?type=json`,

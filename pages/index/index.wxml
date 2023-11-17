@@ -1,8 +1,10 @@
+<mp-navigation-bar ext-class="navigation-bar" title="" background="#FFF" back="{{ false }}">
+</mp-navigation-bar>
 <view class="user" wx:if="{{ userinfo }}">
   <view class="container">
     <navigator class="userinfo" hover-class="none" url="/pages/userinfo-update/userinfo-update">
       <view class="userinfo-avatar" bindtap="bindViewTap">
-        <image src="{{ userinfo.avatar_url ? siteinfo.site + userinfo.avatar_url : '/assets/images/wx_avatar.png' }}" mode="aspectFill" />
+        <image src="{{ userinfo.avatar_url ? siteinfo.site + userinfo.avatar_url : '/assets/icons/avatar.png' }}" mode="aspectFill" />
       </view>
       <text>{{ userinfo.nickname || '点击完善信息' }}</text>
     </navigator>
@@ -19,15 +21,18 @@
     </view>
   </view>
   <mp-cells>
-    <mp-cell value="联系客服" link></mp-cell>
-    <mp-cell value="关于我们" link></mp-cell>
-    <mp-cell value="关注公众号" link></mp-cell>
+    <button class="navigate button flex-between" open-type="contact">
+      <text>联系客服</text>
+      <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>
+    </button>
+    <mp-cell value="关于我们" bind:tap="navigator" data-url="/pages/map/map" link></mp-cell>
+    <!-- <mp-cell value="关注公众号" link></mp-cell> -->
   </mp-cells>
 </view>
 <view class="login" wx:else>
-  <view class="container">
+  <view class="container" style="justify-content: space-around;">
     <view class="logo">
-      <image src="" mode="" />
+      <image src="/assets/icons/avatar.png" mode="" />
       <view>办公室设计大师</view>
     </view>
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号登录</button>

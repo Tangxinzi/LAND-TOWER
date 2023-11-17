@@ -1,4 +1,7 @@
 {
-  "navigationBarTitleText": "联系我们",
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
+  }
 }

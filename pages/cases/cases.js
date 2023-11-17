@@ -7,16 +7,28 @@ Page({
     type: 1
   },
 
-  onLoad(options) {
+  switch(event) {
+    this.setData({
+      type: event.currentTarget.dataset.type
+    })
+
+    this.catalog()
+  },
+
+  catalog() {
     wx.request({
-      url: `${ siteinfo.site }/land/designer?type=json`,
+      url: `${ siteinfo.site }/land/work/catalog/${ this.data.type }?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
-          this.setData({ designer: response.data.data })
+          this.setData({ works: response.data.data })
         }
       }
     })
+  },
+
+  onLoad(options) {
+    this.catalog()
   },
 
   onReady() {

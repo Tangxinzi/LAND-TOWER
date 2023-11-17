@@ -3,11 +3,11 @@
 <view class="page mall">
   <view class="labels">
     <text class="{{ type == 0 ? 'active' : '' }}" bind:tap="switch" data-type="0">设计师</text>
-    <text class="{{ type == 1 ? 'active' : '' }}" bind:tap="switch" data-type="1">优秀案例</text>
+    <text class="{{ type == 1 ? 'active' : '' }}" bind:tap="switch" data-type="1">作品</text>
   </view>
 
   <view class="lists" wx:if="{{ type == 0 }}">
-    <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.content.id }}" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
+    <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.content.id }}" hover-class="none" wx:for="{{ data }}" wx:key="designer">
       <view class="theme">
         <view class="theme" style="background-image: url({{ siteinfo.site + item.content.avatar_url }});"></view>
       </view>
@@ -21,17 +21,11 @@
   </view>
 
   <view class="cases" wx:if="{{ type == 1 }}">
-    <navigator class="list" url="/pages/cases-detail/cases-detail" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
-      <view class="theme">
-        <image src="" mode="aspectFill" />
-      </view>
+    <navigator class="list" url="/pages/cases-detail/cases-detail?id={{ item.id }}" hover-class="none" wx:for="{{ data }}" wx:key="work">
+      <view class="theme" style="background-image: url({{ siteinfo.site + item.content.theme_url }});"></view>
       <view class="content">
-        <text class="nickname">案列</text>
-        <view class="info">
-          <text>介绍介绍介绍介绍介绍</text>
-          <text></text>
-          <text></text>
-        </view>
+        <text class="title">{{ item.content.title }}</text>
+        <view class="author one-line">{{ item.content.introduction }}</view>
       </view>
     </navigator>
   </view>

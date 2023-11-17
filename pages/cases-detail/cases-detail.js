@@ -1,68 +1,72 @@
 import siteinfo from '../../lib/siteinfo';
+const app = getApp()
 
 Page({
   data: {
     siteinfo,
-    designer: []
+    userinfo: wx.getStorageSync('userinfo'),
+    coll: {},
+    work: {}
   },
 
   onLoad(options) {
     wx.request({
-      url: `${ siteinfo.site }/land/designer/show/${ options.id }?type=json`,
+      url: `${ siteinfo.site }/land/work/show/${ options.id }?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
-          this.setData({ designer: response.data.data })
+          response.data.data.detail = app.towxml(`${ response.data.data.detail }`, 'html', {
+            base: siteinfo.site,
+            theme: 'light',
+            events: {
+              tap: (e)=>{
+                console.log('tap',e);
+              }
+            }
+          })
+
+          this.setData({ options, work: response.data.data })
+          this.collStatus()
         }
       }
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
 
+  collStatus() {
+    wx.request({
+      url: `${ siteinfo.site }/land/user/like/${ this.data.options.id }`,
+      method: 'GET',
+      data: {
+        type: 'work',
+        openid: this.data.userinfo.wechat_open_id,
+      },
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({
+            coll: response.data.data
+          })
+        }
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  bindColl() {
+    wx.request({
+      url: `${ siteinfo.site }/land/user/like/${ this.data.options.id }`,
+      method: 'POST',
+      data: {
+        type: 'work',
+        openid: this.data.userinfo.wechat_open_id,
+      },
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.collStatus()
+        }
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage() {
 
   }

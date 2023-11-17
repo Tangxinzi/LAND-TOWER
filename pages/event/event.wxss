@@ -38,6 +38,7 @@ page .page-title .sub {
 }
 
 .list-case .list-item {
+  overflow: hidden;
   margin-right: 1em;
   font-size: 14px;
   box-sizing: border-box;
@@ -46,7 +47,9 @@ page .page-title .sub {
 .list-case .list-item .theme {
   height: 180px;
   font-size: 0;
-  background-size: 100%;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
   background-color: rgba(128, 128, 128, 0.1);
 }
 

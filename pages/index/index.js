@@ -24,27 +24,40 @@ Page({
     })
   },
 
+  navigator(e) {
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url
+    })
+  },
+
   getPhoneNumber(e) {
+    wx.showLoading({ title: 'Loading...' })
     wx.login({
       success: (login) => {
         wx.request({
           url: `${ siteinfo.site }/land/user/wx-login?code=${ login.code }`,
-          success: (response) => {
-            this.setData({ userinfo: response.data })
-            wx.setStorageSync('userinfo', response.data)
+          success: (loginResponse) => {
+            wx.request({
+              url: `${ siteinfo.site }/land/user/get-phone-number?code=${ e.detail.code }&openid=${ loginResponse.data.wechat_open_id }`,
+              success: (response) => {
+                if (response.data.status == 200) {
+                  loginResponse.data.phone = response.data.phoneNumber
+                  this.setData({ userinfo: loginResponse.data })
+                  wx.setStorageSync('userinfo', loginResponse.data)     
+                  wx.hideLoading()
+                }
+              },
+              fail: () => {
+                wx.hideLoading()
+                wx.showToast({ title: '登录失败', icon: 'none' })
+              }
+            })
           },
           fail: () => {
-            wx.showToast({
-              title: '登录失败',
-              icon: 'none'
-            })
+            wx.hideLoading()
+            wx.showToast({ title: '登录失败', icon: 'none' })
           }
         })
-
-        console.log(e);
-        console.log(e.detail.code)  // 动态令牌
-        console.log(e.detail.errMsg) // 回调信息（成功失败都会返回）
-        console.log(e.detail.errno)  // 错误码（失败时返回）
       },
     })
   }
