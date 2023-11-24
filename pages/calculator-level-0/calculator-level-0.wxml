@@ -68,13 +68,15 @@
     <input type="number" data-type="phone" bindinput="inputChange" placeholder="留下您的联系方式" />
     <text>联系方式</text>
   </view> -->
+  <view class="flex-between" style="margin: 1em 1em -0.5em;">
+    <text style="color: #333;">办公区与协作空间</text>
+    <picker mode="selector" header-text="添加功能区" class="add-bind" range="{{ ['工位数', '独立办公室', '会议室', '洽谈间'] }}" bindchange="bindSelectorPickerChange">
+      <mp-icon type="field" icon="add" color="#333" size="16"></mp-icon>
+      <text style="color: #333;">添加</text>
+    </picker>
+  </view>
   <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
-    <view class="picker" style="border: 0;">
-      <text class="td">功能</text>
-      <text class="td center">子项</text>
-      <text class="td center">数量</text>
-    </view>
-    <picker wx:for="{{ spaceArea }}" wx:key="spaceArea" data-index="{{ index }}" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[index].value }}" range="{{ multiArray }}">
+    <picker wx:for="{{ spaceArea }}" wx:if="{{ index < 4 }}" wx:key="spaceArea" data-index="{{ index }}" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[index].value }}" range="{{ multiArray }}">
       <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[index] }}" duration="0.5">
         <view class="picker" bind:tap="bindPicker" data-index="{{ index }}">
           <text class="td">{{ index + 1 }}. {{ item }}</text>
@@ -85,10 +87,6 @@
           </view>
         </view>
       </mp-slideview>
-    </picker>
-    
-    <picker mode="selector" header-text="添加功能区" class="picker" range="{{ spaceAreaOrignal }}" bindchange="bindSelectorPickerChange">
-      <view style="text-align: center; color: #666; width: calc(100vw - 4em);">点击此处添加新的功能需求</view>
     </picker>
   </view>
   <view class="tips">

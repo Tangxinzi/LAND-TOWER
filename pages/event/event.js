@@ -6,7 +6,7 @@ Page({
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     items: [
       {
-        text: '案例',
+        text: '项目分享',
         icon: '/assets/icons/shouye-anli.png'
       },
       {
@@ -61,7 +61,7 @@ Page({
 
   block(event) {
     switch (event.currentTarget.dataset.text) {
-      case '案例':
+      case '项目分享':
         wx.navigateTo({ url: '/pages/cases/cases' })
         break;
       case '设计师':

@@ -6,7 +6,7 @@
       <view class="nickname">{{ designer.nickname }}</view>
       <mp-icon bind:tap="bindColl" type="{{ coll.status ? 'field' : 'outline' }}" icon="like" color="{{ coll.status ? 'red' : '#FFF' }}" size="28"></mp-icon>
     </view>
-    <view class="labels" wx:if="{{ work.labels.length }}">
+    <view class="labels" wx:if="{{ designer.labels.length }}">
       <text wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
     </view>
   </view>

@@ -1,10 +1,10 @@
-<mp-navigation-bar ext-class="navigation-bar" title="优秀案例" background="#FFF"></mp-navigation-bar>
-<mp-searchbar></mp-searchbar>
+<mp-navigation-bar ext-class="navigation-bar" title="办公室项目分享" background="#FFF"></mp-navigation-bar>
+<mp-searchbar bindinput="bindInput" bindclear="bindClear" throttle="800"></mp-searchbar>
 
 <view class="page mall">
   <view class="labels">
     <text class="{{ type == 1 ? 'active' : '' }}" bind:tap="switch" data-type="1">办公室项目分享</text>
-    <text class="{{ type == 2 ? 'active' : '' }}" bind:tap="switch" data-type="2">优秀案例</text>
+    <text class="{{ type == 3 ? 'active' : '' }}" bind:tap="switch" data-type="3">设计师作品集</text>
   </view>
 
   <view class="cases">

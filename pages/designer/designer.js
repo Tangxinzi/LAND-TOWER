@@ -3,12 +3,29 @@ import siteinfo from '../../lib/siteinfo';
 Page({
   data: {
     siteinfo,
-    designer: []
+    designer: [],
+    type: 1,
+    search: ''
+  },
+
+  bindClear() {
+    this.setData({ search: '' })
+    this.catalog()
   },
 
   onLoad(options) {
+    this.setData({ search: '' })
+    this.catalog()
+  },
+
+  bindInput(event) {
+    this.setData({ search: event.detail.value })
+    this.catalog(event.detail.value)
+  },
+
+  catalog(search) {
     wx.request({
-      url: `${ siteinfo.site }/land/designer?type=json`,
+      url: `${ siteinfo.site }/land/designer/catalog/${ this.data.type }?type=json&search=${ this.data.search || '' }`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -16,6 +33,27 @@ Page({
         }
       }
     })
+  },
+
+  switch(event) {
+    this.setData({
+      type: event.currentTarget.dataset.type
+    })
+
+    this.catalog()
+  },
+
+  onLoad(options) {
+    this.catalog()
+    // wx.request({
+    //   url: `${ siteinfo.site }/land/designer?type=json`,
+    //   method: 'GET',
+    //   success: (response) => {
+    //     if (response.data.status == 200) {
+    //       this.setData({ designer: response.data.data })
+    //     }
+    //   }
+    // })
   },
 
   onReady() {

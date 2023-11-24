@@ -5,8 +5,10 @@ Page({
     count: 0,
     countArea: 0,
     estimatedNumber: ['0.00', '0.00', '0.00', '0.00'],
-    spaceArea: ['前厅', '等候区', '洽谈间', '会议室', '独立办公室', '工位数', '打印区', '茶水区', '储藏间'],
-    spaceAreaOrignal: ['前厅', '等候区', '洽谈间', '会议室', '独立办公室', '工位数', '打印区', '茶水区', '储藏间'],
+    // spaceArea: ['前厅', '等候区', '洽谈间', '会议室', '独立办公室', '工位数', '打印区', '茶水间', '储藏间'],
+    // spaceAreaOrignal: ['前厅', '等候区', '洽谈间', '会议室', '独立办公室', '工位数', '打印区', '茶水间', '储藏间'],
+    spaceArea: ['工位数', '独立办公室', '会议室', '洽谈间', '前厅', '等候区', '茶水间', '打印区', '储藏间'],
+    spaceAreaOrignal: ['工位数', '独立办公室', '会议室', '洽谈间', '前厅', '等候区', '茶水间', '打印区', '储藏间'],
     multiArray: [ [''], multiArrayNumber ],
     multiValue: [
       {area: 0, number: 0, text: [], value: []},
@@ -112,7 +114,7 @@ Page({
         area = [7.2, 7.2, 7.2, 7.2]
         break;
       case '　　　':
-        // 茶水区
+        // 茶水间
         area = [25.727, 50.544, 75.816, 113.724]
         break;
       case '　　　　':
@@ -193,7 +195,7 @@ Page({
         flag = unit <= 300
         break;
       case '　　　':
-        // 茶水区
+        // 茶水间
         area = this.getAreaBetween(text[0]);
         number = 500 * area * unit;
         flag = unit <= 15
@@ -316,7 +318,7 @@ Page({
         var multiArrayNumber = [1, 2]
         this.setData({ ['multiArray[0]']: ['　　　　　'], ['multiArray[1]']: multiArrayNumber })
         break;
-      case '茶水区':
+      case '茶水间':
         var multiArrayNumber = [1, 2]
         this.setData({ ['multiArray[0]']: ['　　　'], ['multiArray[1]']: multiArrayNumber })
         break;
@@ -349,7 +351,7 @@ Page({
           estimatedNumber[0] += number * 0.4, estimatedNumber[1] += number * 0.24, estimatedNumber[2] += number * 0.36;
           break;
         case '　　　':
-          // 茶水区
+          // 茶水间
           estimatedNumber[0] += number * 0.4, estimatedNumber[1] += number * 0.23, estimatedNumber[2] += number * 0.37;
           break;
         case '　　　　　　':

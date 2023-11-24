@@ -43,7 +43,7 @@ mp-searchbar .weui-search-bar {
 }
 
 .h2w__main image, .h2w__main video {
-  margin: 40rpx 0 40rpx 0;
+  margin: 20rpx 0 20rpx 0;
 }
 
 .h2w__p {

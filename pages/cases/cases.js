@@ -4,7 +4,23 @@ Page({
   data: {
     siteinfo,
     designer: [],
-    type: 1
+    type: 1,
+    search: ''
+  },
+
+  bindClear() {
+    this.setData({ search: '' })
+    this.catalog()
+  },
+
+  onLoad(options) {
+    this.setData({ search: '' })
+    this.catalog()
+  },
+
+  bindInput(event) {
+    this.setData({ search: event.detail.value })
+    this.catalog(event.detail.value)
   },
 
   switch(event) {
@@ -15,9 +31,9 @@ Page({
     this.catalog()
   },
 
-  catalog() {
+  catalog(search) {
     wx.request({
-      url: `${ siteinfo.site }/land/work/catalog/${ this.data.type }?type=json`,
+      url: `${ siteinfo.site }/land/work/catalog/${ this.data.type }?type=json&search=${ this.data.search || '' }`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -25,10 +41,6 @@ Page({
         }
       }
     })
-  },
-
-  onLoad(options) {
-    this.catalog()
   },
 
   onReady() {

@@ -1,7 +1,11 @@
 <mp-navigation-bar ext-class="navigation-bar" title="设计师" background="#FFF" back="{{ false }}"></mp-navigation-bar>
-<mp-searchbar></mp-searchbar>
+<mp-searchbar bindinput="bindInput" bindclear="bindClear" throttle="800"></mp-searchbar>
 
 <view class="page mall">
+  <view class="labels">
+    <text class="{{ type == 1 ? 'active' : '' }}" bind:tap="switch" data-type="1">设计团队</text>
+    <text class="{{ type == 2 ? 'active' : '' }}" bind:tap="switch" data-type="2">工程管理团队</text>
+  </view>
   <view class="lists">
     <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.id }}" hover-class="none" wx:for="{{ designer }}" wx:key="designer">
       <view class="theme" style="background-image: url({{ siteinfo.site + item.avatar_url }});"></view>

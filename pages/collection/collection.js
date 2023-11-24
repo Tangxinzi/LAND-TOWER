@@ -4,24 +4,38 @@ const app = getApp()
 Page({
   data: {
     siteinfo,
-    userinfo: wx.getStorageSync('userinfo'),
+    userinfo: wx.getStorageSync('userinfo') || {},
     data: [],
-    type: 0
+    type: 0,
+    search: ''
+  },
+
+  bindClear() {
+    this.setData({ search: '' })
+    this.catalog()
+  },
+
+  onLoad(options) {
+    this.setData({ search: '' })
+    this.catalog()
+  },
+
+  bindInput(event) {
+    this.setData({ search: event.detail.value })
+    this.catalog(event.detail.value)
   },
 
   switch(event) {
-    console.log(event);
-    this.setData({
-      type: event.currentTarget.dataset.type
-    })
+    this.setData({ type: event.currentTarget.dataset.type })
     this.fetch()
   },
 
-  fetch() {
+  fetch(search) {
     wx.request({
-      url: `${ siteinfo.site }/land/user/collection?openid=${ this.data.userinfo.wechat_open_id }&type=${ this.data.type == 0 ? 'designer' : 'work' }`,
+      url: `${ siteinfo.site }/land/user/collection?openid=${ this.data.userinfo.wechat_open_id }&type=${ this.data.type == 0 ? 'designer' : 'work' }&search=${ this.data.search || '' }`,
       method: 'GET',
       success: (response) => {
+        console.log(response.data.data);
         this.setData({ data: response.data.data })
       },
       fail: () => {
@@ -35,16 +49,6 @@ Page({
 
   onLoad(options) {
     this.fetch()
-
-    // wx.request({
-    //   url: `${ siteinfo.site }/land/designer?type=json`,
-    //   method: 'GET',
-    //   success: (response) => {
-    //     if (response.data.status == 200) {
-    //       this.setData({ designer: response.data.data })
-    //     }
-    //   }
-    // })
   },
 
   onReady() {

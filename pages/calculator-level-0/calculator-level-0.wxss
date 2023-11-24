@@ -157,3 +157,14 @@ button .kefu {
 .calc-icon text {
   display: block;
 }
+
+.add-bind {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-bind mp-icon {
+  position: relative;
+  top: -2px;
+  margin-right: 4px;
+}
