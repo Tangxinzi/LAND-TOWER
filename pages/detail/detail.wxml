@@ -7,6 +7,7 @@
     <text>Share</text>
   </view>
   <view class="content">
-    <rich-text nodes="{{ article.article_detail }}"></rich-text>
+    <!-- <rich-text nodes="{{ article.article_detail }}"></rich-text> -->
+    <towxml nodes="{{ article.article_detail }}" />
   </view>
 </view>

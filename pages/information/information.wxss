@@ -1,0 +1,7 @@
+@import '../event/event.wxss';
+
+.list-case {
+  border-bottom: 0 solid #EFEFEF;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}

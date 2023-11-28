@@ -1,6 +1,6 @@
 {
   "navigationStyle": "custom",
-  "navigationBarTitleText": "好物商城",
+  "navigationBarTitleText": "好物详情",
   "usingComponents": {
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "mp-searchbar": "weui-miniprogram/searchbar/searchbar"

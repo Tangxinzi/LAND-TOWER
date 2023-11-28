@@ -48,13 +48,29 @@
       </navigator>
     </view>
   </scroll-view>
-  <view class="list-posts" style="display: none;">
-    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}">
+  <navigator class="page-title flex-between" hover-class="none" style="margin-top: 0;" url="/pages/information/information">
+    <text>活动资讯<text class="sub">Event Information</text></text>
+    <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
+  </navigator>
+  <view class="list-posts list-case">
+    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
       <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
       <view class="content">
-        <text class="title">{{ item.article_title }}</text>
-        <!-- <text class="description">{{ item.article_detail }}</text> -->
-        <view class="author">{{ item.article_author }}</view>
+        <text class="title">{{ index }}{{ item.article_title }}</text>
+        <view class="author">{{ item.created_at }}</view>
+      </view>
+    </navigator>
+  </view>
+  <view class="page-title flex-between" style="margin-top: 0;" bind:tap="block" data-text="办公好物">
+    <text>办公好物<text class="sub">Goods Recommend</text></text>
+    <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
+  </view>
+  <view class="list-posts list-case list-goods">
+    <navigator wx:for="{{ [0, 1, 2, 3] }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/good/good">
+      <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
+      <view class="content">
+        <text class="title">{{ index }}{{ item.article_title }}</text>
+        <view class="author">time</view>
       </view>
     </navigator>
   </view>
@@ -71,10 +87,14 @@
       </view>
     </view>
   </view>
-  <navigator class="page-title flex-between" hover-class="none" style="margin-top: 0;" url="/pages/map/map">
-    <text>联系我们<text class="sub">Contact Us</text></text>
-    <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
-  </navigator>
+  <view class="page-title flex-between" style="margin-top: 0;">
+    <navigator url="/pages/map/map" hover-class="none" style="flex: 1;">
+      <text>联系我们<text class="sub">Contact Us</text></text>
+    </navigator>
+    <button class="contact-button" open-type="contact">
+      <image class="kefu" src="/assets/icons/kefu.png" mode="aspectFill" />
+    </button>
+  </view>
   <view class="contact">
     <view class="content" style="position: absolute;">
       <view class="flex-between">

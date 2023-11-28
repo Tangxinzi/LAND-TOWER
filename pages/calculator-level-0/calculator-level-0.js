@@ -7,23 +7,37 @@ Page({
     estimatedNumber: ['0.00', '0.00', '0.00', '0.00'],
     // spaceArea: ['前厅', '等候区', '洽谈间', '会议室', '独立办公室', '工位数', '打印区', '茶水间', '储藏间'],
     // spaceAreaOrignal: ['前厅', '等候区', '洽谈间', '会议室', '独立办公室', '工位数', '打印区', '茶水间', '储藏间'],
-    spaceArea: ['工位数', '独立办公室', '会议室', '洽谈间', '前厅', '等候区', '茶水间', '打印区', '储藏间'],
-    spaceAreaOrignal: ['工位数', '独立办公室', '会议室', '洽谈间', '前厅', '等候区', '茶水间', '打印区', '储藏间'],
+    spaceArea: [
+      ['工位数', '独立办公室', '会议室', '洽谈间'],
+      ['前厅', '等候区'],
+      ['茶水间', '打印区', '储藏间']
+    ],
+    spaceAreaOrignal: [
+      ['工位数', '独立办公室', '会议室', '洽谈间'],
+      ['前厅', '等候区'],
+      ['茶水间', '打印区', '储藏间']
+    ],
     multiArray: [ [''], multiArrayNumber ],
     multiValue: [
-      {area: 0, number: 0, text: [], value: []},
-      {area: 0, number: 0, text: [], value: []},
-      {area: 0, number: 0, text: [], value: []},
-      {area: 0, number: 0, text: [], value: []},
-      {area: 0, number: 0, text: [], value: []},
-      {area: 0, number: 0, text: [], value: []},
-      {area: 0, number: 0, text: [], value: []},
-      {area: 0, number: 0, text: [], value: []},
-      {area: 0, number: 0, text: [], value: []},
+      [
+        {area: 0, number: 0, text: [], value: []},
+        {area: 0, number: 0, text: [], value: []},
+        {area: 0, number: 0, text: [], value: []},
+        {area: 0, number: 0, text: [], value: []}
+      ],
+      [
+        {area: 0, number: 0, text: [], value: []},
+        {area: 0, number: 0, text: [], value: []}
+      ],
+      [
+        {area: 0, number: 0, text: [], value: []},
+        {area: 0, number: 0, text: [], value: []},
+        {area: 0, number: 0, text: [], value: []}
+      ],
     ],
     input: {
       showPrice: true,
-      area: null,
+      area: '',
       phone: '17725386753'
     },
   },
@@ -83,7 +97,7 @@ Page({
     console.log(event)
     this.setData({ ['input.showPrice']: false })
     let spaceArea = this.data.spaceArea, spaceAreaOrignal = this.data.spaceAreaOrignal, multiValue = this.data.multiValue
-    spaceArea.push(spaceAreaOrignal[event.detail.value])
+    spaceArea[event.currentTarget.dataset.spacetype].push(spaceAreaOrignal[event.currentTarget.dataset.spacetype][event.detail.value])
     multiValue.splice(event.detail.value + 1, 0, {area: 0, number: 0, text: [], value: []})
     this.setData({ multiValue, spaceArea })
   },
@@ -172,13 +186,13 @@ Page({
     this.setData({ ['input.showPrice']: false })
 
     console.log(event);
-    let index = event.currentTarget.dataset.index, value = event.detail.value, number = 0, flag = true
+    let index = event.currentTarget.dataset.index, multiindex = event.currentTarget.dataset.multiindex, value = event.detail.value, number = 0, flag = true
     let text = [ 
       this.data.multiArray[0][value[0] || 0], 
       this.data.multiArray[1][value[1] || 0] 
     ]
     console.log(text);
-    let unit = text[1], area = this.data.multiValue[index] ? parseFloat(this.data.multiValue[index].area) : 0
+    let unit = text[1], area = this.data.multiValue[multiindex][index] ? parseFloat(this.data.multiValue[multiindex][index].area) : 0
 
     switch (text[0]) {
       case '　':
@@ -273,16 +287,16 @@ Page({
     }
 
     this.setData({
-      ["multiValue[" + index + "].value"]: value,
-      ["multiValue[" + index + "].text"]: text,
-      ["multiValue[" + index + "].number"]: number,
-      ["multiValue[" + index + "].area"]: area,
+      [`multiValue[${ multiindex }][${ index }].value`]: value,
+      [`multiValue[${ multiindex }][${ index }].text`]: text,
+      [`multiValue[${ multiindex }][${ index }].number`]: number,
+      [`multiValue[${ multiindex }][${ index }].area`]: area
     })
 
     let count = 0, countArea = 0
-    for (let index = 0; index < this.data.multiValue.length; index++) {
-      count += this.data.multiValue[index] ? this.data.multiValue[index].number : 0;
-      countArea += parseInt(this.data.multiValue[index].text[1] || 0) * this.data.multiValue[index].area; // 数量 * 面积
+    for (let index = 0; index < this.data.multiValue[multiindex].length; index++) {
+      count += this.data.multiValue[multiindex][index] ? this.data.multiValue[multiindex][index].number : 0;
+      countArea += parseInt(this.data.multiValue[multiindex][index].text[1] || 0) * this.data.multiValue[multiindex][index].area; // 数量 * 面积
     }
     this.setData({ count: count.toFixed(2), countArea: countArea.toFixed(2) }) // 计算总预估价格、面积
     this.countEstimatedNumber() // 统计三个分类价格
@@ -332,63 +346,65 @@ Page({
   },
 
   bindPicker(event) {    
-    const index = event.currentTarget.dataset.index;
-    this.setMultiArray(this.data.spaceArea[index])
+    const index = event.currentTarget.dataset.index, multiindex = event.currentTarget.dataset.multiindex;
+    this.setMultiArray(this.data.spaceArea[multiindex][index])
   },
 
   countEstimatedNumber() {
     let estimatedNumber = [0, 0, 0], multiValue = this.data.multiValue
-    for (let index = 0; index < multiValue.length; index++) {
-      const text = multiValue[index].text[0], number = multiValue[index].number;
-      console.log(text);
-      switch (text) {
-        case '　':
-          // 前厅
-          estimatedNumber[0] += number * 0.3, estimatedNumber[1] += number * 0.15, estimatedNumber[2] += number * 0.55;
-          break;
-        case '　　':
-          // 工位数
-          estimatedNumber[0] += number * 0.4, estimatedNumber[1] += number * 0.24, estimatedNumber[2] += number * 0.36;
-          break;
-        case '　　　':
-          // 茶水间
-          estimatedNumber[0] += number * 0.4, estimatedNumber[1] += number * 0.23, estimatedNumber[2] += number * 0.37;
-          break;
-        case '　　　　　　':
-          // 独立办公室
-          estimatedNumber[0] += number * 0.38, estimatedNumber[1] += number * 0.27, estimatedNumber[2] += number * 0.35;
-          break;
-        case '等候座位':
-          estimatedNumber[0] += number * 0.25, estimatedNumber[1] += number * 0.25, estimatedNumber[2] += number * 0.5;
-          break;
-        case '4人洽谈间':
-          estimatedNumber[0] += number * 0.29, estimatedNumber[1] += number * 0.14, estimatedNumber[2] += number * 0.57;
-          break;
-        case '8人会议室':
-          estimatedNumber[0] += number * 0.3, estimatedNumber[1] += number * 0.17, estimatedNumber[2] += number * 0.53;
-          break;
-        case '14人会议室':
-          estimatedNumber[0] += number * 0.33, estimatedNumber[1] += number * 0.20, estimatedNumber[2] += number * 0.47;
-          break;
-        case '20人会议室':
-          estimatedNumber[0] += number * 0.35, estimatedNumber[1] += number * 0.30, estimatedNumber[2] += number * 0.35;
-          break;
-        // case '财务室':
-        //   estimatedNumber[0] += number * 0.38, estimatedNumber[1] += number * 0.25, estimatedNumber[2] += number * 0.37;
-        //   break;
-        // case '经理室':
-        //   estimatedNumber[0] += number * 0.41, estimatedNumber[1] += number * 0.29, estimatedNumber[2] += number * 0.3;
-        //   break;
-        case '　　　　':
-          // 储藏间
-          estimatedNumber[0] += number * 0.42, estimatedNumber[1] += number * 0.28, estimatedNumber[2] += number * 0.3;
-          break;
-        case '　　　　　':
-          // 打印区
-          estimatedNumber[0] += number * 0.42, estimatedNumber[1] += number * 0.34, estimatedNumber[2] += number * 0.24;
-          break;
+    for (let multiindex = 0; multiindex < 3; multiindex++) {
+      for (let index = 0; index < multiValue[multiindex].length; index++) {
+        const text = multiValue[multiindex][index].text[0], number = multiValue[multiindex][index].number;
+        console.log(text);
+        switch (text) {
+          case '　':
+            // 前厅
+            estimatedNumber[0] += number * 0.3, estimatedNumber[1] += number * 0.15, estimatedNumber[2] += number * 0.55;
+            break;
+          case '　　':
+            // 工位数
+            estimatedNumber[0] += number * 0.4, estimatedNumber[1] += number * 0.24, estimatedNumber[2] += number * 0.36;
+            break;
+          case '　　　':
+            // 茶水间
+            estimatedNumber[0] += number * 0.4, estimatedNumber[1] += number * 0.23, estimatedNumber[2] += number * 0.37;
+            break;
+          case '　　　　　　':
+            // 独立办公室
+            estimatedNumber[0] += number * 0.38, estimatedNumber[1] += number * 0.27, estimatedNumber[2] += number * 0.35;
+            break;
+          case '等候座位':
+            estimatedNumber[0] += number * 0.25, estimatedNumber[1] += number * 0.25, estimatedNumber[2] += number * 0.5;
+            break;
+          case '4人洽谈间':
+            estimatedNumber[0] += number * 0.29, estimatedNumber[1] += number * 0.14, estimatedNumber[2] += number * 0.57;
+            break;
+          case '8人会议室':
+            estimatedNumber[0] += number * 0.3, estimatedNumber[1] += number * 0.17, estimatedNumber[2] += number * 0.53;
+            break;
+          case '14人会议室':
+            estimatedNumber[0] += number * 0.33, estimatedNumber[1] += number * 0.20, estimatedNumber[2] += number * 0.47;
+            break;
+          case '20人会议室':
+            estimatedNumber[0] += number * 0.35, estimatedNumber[1] += number * 0.30, estimatedNumber[2] += number * 0.35;
+            break;
+          // case '财务室':
+          //   estimatedNumber[0] += number * 0.38, estimatedNumber[1] += number * 0.25, estimatedNumber[2] += number * 0.37;
+          //   break;
+          // case '经理室':
+          //   estimatedNumber[0] += number * 0.41, estimatedNumber[1] += number * 0.29, estimatedNumber[2] += number * 0.3;
+          //   break;
+          case '　　　　':
+            // 储藏间
+            estimatedNumber[0] += number * 0.42, estimatedNumber[1] += number * 0.28, estimatedNumber[2] += number * 0.3;
+            break;
+          case '　　　　　':
+            // 打印区
+            estimatedNumber[0] += number * 0.42, estimatedNumber[1] += number * 0.34, estimatedNumber[2] += number * 0.24;
+            break;
+        }
       }
-    }
+    }    
 
     this.setData({ 
       estimatedNumber: [
@@ -486,7 +502,11 @@ Page({
 
   onLoad(options) {
     this.setData({
-      slideShow: [false, false, false, false, false, false, false, false, false],
+      slideShow: [
+        [false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false]
+      ],
       slideButtons: [
         {
           type: 'default',
@@ -501,9 +521,8 @@ Page({
   },
 
   slideButtonTap(e) {
-    console.log(e);
     const index = e.currentTarget.dataset.index, value = e.currentTarget.dataset.value
-    this.setData({ slideShow: [] })
+    this.setData({ slideShow: [[], [], []] })
 
     if (e.detail.index == 0) {
       const multiValue = this.data.multiValue, spaceArea = this.data.spaceArea
@@ -533,7 +552,22 @@ Page({
 
   tapSlideShow(event) {
     console.log(event.currentTarget);
-    const index = event.currentTarget.dataset.index
-    this.setData({ ['slideShow[' + index + ']']: !this.data.slideShow[index] })
+    const dataset = event.currentTarget.dataset
+    // this.setData({ ['slideShow[' + dataset.index + ']']: !this.data.slideShow[dataset.index] })
+    this.setData({ [`slideShow[${ dataset.slide }][${ dataset.index }]`]: !this.data.slideShow[dataset.slide][dataset.index] })
+  },
+
+  bindAddMultiValue(e) {
+    const index = e.currentTarget.dataset.index, multiindex = e.currentTarget.dataset.multiindex
+    this.setData({
+      [`multiValue[${ multiindex }][${ index }].text[1]`]: (this.data.multiValue[multiindex][index].text[1] || 0) + 1
+    })
+  },
+
+  bindSubMultiValue(e) {
+    const index = e.currentTarget.dataset.index, multiindex = e.currentTarget.dataset.multiindex, text = this.data.multiValue[multiindex][index].text[1]
+    this.setData({
+      [`multiValue[${ multiindex }][${ index }].text[1]`]: text > 1 ? text - 1 : 0
+    })
   }
 })

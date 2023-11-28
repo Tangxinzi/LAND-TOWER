@@ -1,7 +1,9 @@
 {
-  "navigationBarTitleText": "内容",
   "navigationStyle": "custom",
+  "navigationBarTitleText": "详情",
   "usingComponents": {
-    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",  
+    "mp-icon": "weui-miniprogram/icon/icon",
+    "towxml":"/towxml/towxml"
   }
 }

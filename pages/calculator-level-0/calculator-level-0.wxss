@@ -63,7 +63,7 @@ page {
   justify-content: space-between;
 }
 
-.add {
+/* .add {
   box-shadow: 1px 1px 8px #000;
   position: fixed;
   right: 3em;
@@ -76,7 +76,7 @@ page {
   line-height: 50px;
   text-align: center;
   border-radius: 100%;
-}
+} */
 
 .picker {
   display: flex;
@@ -167,4 +167,20 @@ button .kefu {
   position: relative;
   top: -2px;
   margin-right: 4px;
+}
+
+.control .add, .control .sub {
+  padding: 3px 6px;
+  font-size: 12px;
+  border-radius: 3px;
+  border: 1px solid #CCC;
+}
+
+.control .disable {
+  color: rgba(204, 204, 204, 0.3);
+  border: 1px solid rgba(204, 204, 204, 0.3);
+}
+
+.control .sum {
+  margin: 0 15px;
 }

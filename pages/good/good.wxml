@@ -1,32 +1,28 @@
-<mp-navigation-bar ext-class="navigation-bar" title="设计师" background="#FFF"></mp-navigation-bar>
+<mp-navigation-bar ext-class="navigation-bar" title="好物详情" background="#FFF"></mp-navigation-bar>
 <view class="header-user">
-  <view class="image" style="background-image: url({{ siteinfo.site + designer.avatar_url }})"></view>
+  <view class="image" style="background-image: url({{ siteinfo.site + good.avatar_url }})"></view>
   <view class="header-info">
     <view class="flex-between" style="width: 100%;">
-      <view class="nickname">{{ designer.nickname }}</view>
+      <view class="nickname">{{ good.nickname }}</view>
       <mp-icon bind:tap="bindColl" type="{{ coll.status ? 'field' : 'outline' }}" icon="like" color="{{ coll.status ? 'red' : '#FFF' }}" size="28"></mp-icon>
     </view>
-    <view class="labels" wx:if="{{ designer.labels.length }}">
-      <text wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
+    <view class="labels" wx:if="{{ good.labels.length }}">
+      <text wx:for="{{ good.labels }}" wx:key="label">{{ item }}</text>
     </view>
   </view>
 </view>
-<view class="page designer-detail">
+<view class="page good-detail">
   <view class="header">
     <view class="detail">
-      <!-- <view class="labels">
-        标签：<text wx:for="{{ designer.labels }}" wx:key="label" wx:if="{{ index < 3 }}">{{ item }}</text>
-      </view> -->
-      <!-- <text>{{ designer.detail }}</text> -->
-      <towxml nodes="{{ designer.detail }}" />
+      <towxml nodes="{{ good.detail }}" />
     </view>
   </view>
   <view class="character-container">
     <view class="title flex-between">
-      <text>项目作品</text>
+      <text>相关推荐</text>
     </view>
     <view class="cards">
-      <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}" wx:for="{{ designer.works }}" wx:key="card">
+      <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}" wx:for="{{ good.works }}" wx:key="card">
         <image class="" src="{{ item.theme_url }}" mode="aspectFill" />
         <view class="character-image" style="{{ siteinfo.site + item.theme_url }}"></view>
         <view class="title">{{ item.title }}</view>

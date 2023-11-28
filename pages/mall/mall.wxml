@@ -1,6 +1,10 @@
+<mp-navigation-bar ext-class="navigation-bar" title="好物推荐" background="#FFF" back="{{ false }}">
+</mp-navigation-bar>
+<mp-searchbar bindinput="bindInput" bindclear="bindClear" throttle="800" placeholder="输入商品 / 品牌名称"></mp-searchbar>
+
 <view class="page mall">
   <view class="lists">
-    <navigator class="list" url="" wx:for="{{ [0, 1, 2, 3] }}" wx:key="data">
+    <navigator class="list" url="" wx:for="{{ [0, 1, 2, 3] }}" wx:key="data" url="/pages/good/good" hover-class="none">
       <view class="theme">
         <image src="https://cdn-we-retail.ym.tencent.com/tsr/goods/muy-3a.png?imageMogr2/thumbnail/645x645/quality/70/strip/format/webp" mode="aspectFill" />
       </view>

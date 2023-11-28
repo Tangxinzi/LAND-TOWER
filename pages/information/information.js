@@ -1,35 +1,27 @@
 import siteinfo from '../../lib/siteinfo';
-const app = getApp()
-
-
 Page({
   data: {
-    siteinfo,
-    article: {}
+    siteinfo
   },
-  
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad(options) {
     wx.request({
-      url: `${ siteinfo.site }/land/article/show/${ options.id }?type=json`,
+      url: `${ siteinfo.site }/land/article/catalog/1?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
-          response.data.data.article_detail = app.towxml(`${ response.data.data.article_detail }`, 'html', {
-            base: siteinfo.site,
-            theme: 'light',
-            events: {
-              tap: (e)=>{
-                console.log('tap',e);
-              }
-            }
-          })
-
-          this.setData({ article: response.data.data })
+          this.setData({ articles: response.data.data })
         }
       }
     })
   },
-  
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
   onReady() {
 
   },

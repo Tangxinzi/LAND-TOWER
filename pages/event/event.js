@@ -29,7 +29,7 @@ Page({
   
   onLoad(options) {
     wx.request({
-      url: `${ siteinfo.site }/land/article?type=json`,
+      url: `${ siteinfo.site }/land/article/catalog/1?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -66,6 +66,9 @@ Page({
         break;
       case '设计师':
         wx.switchTab({ url: '/pages/designer/designer' })
+        break;
+      case '办公好物':
+        wx.navigateTo({ url: '/pages/mall/mall' })
         break;
       case '计算器':
         wx.switchTab({ url: '/pages/calculator-level-0/calculator-level-0' })

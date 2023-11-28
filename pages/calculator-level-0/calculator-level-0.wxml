@@ -70,20 +70,70 @@
   </view> -->
   <view class="flex-between" style="margin: 1em 1em -0.5em;">
     <text style="color: #333;">办公区与协作空间</text>
-    <picker mode="selector" header-text="添加功能区" class="add-bind" range="{{ ['工位数', '独立办公室', '会议室', '洽谈间'] }}" bindchange="bindSelectorPickerChange">
+    <picker mode="selector" header-text="添加办公区与协作空间" class="add-bind" data-spaceType="0" range="{{ spaceAreaOrignal[0] }}" bindchange="bindSelectorPickerChange">
       <mp-icon type="field" icon="add" color="#333" size="16"></mp-icon>
       <text style="color: #333;">添加</text>
     </picker>
   </view>
   <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
-    <picker wx:for="{{ spaceArea }}" wx:if="{{ index < 4 }}" wx:key="spaceArea" data-index="{{ index }}" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[index].value }}" range="{{ multiArray }}">
-      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[index] }}" duration="0.5">
-        <view class="picker" bind:tap="bindPicker" data-index="{{ index }}">
+    <picker wx:for="{{ spaceArea[0] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiIndex="0" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[0][index].value }}" range="{{ multiArray }}">
+      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[0][index] }}" duration="0.5">
+        <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiIndex="0">
           <text class="td">{{ index + 1 }}. {{ item }}</text>
-          <text class="td center">{{ multiValue[index].text[0] }}</text>
+          <text class="td center">{{ multiValue[0][index].text[0] }}</text>
           <view class="td center">
-            <text>{{ multiValue[index].text[1] }}</text>
-            <mp-icon style="margin: 0 1em 0 .5em;" data-index="{{ index }}" catch:tap="tapSlideShow" class="more" type="field" icon="more" color="#999" size="18"></mp-icon>
+            <text>{{ multiValue[0][index].text[1] }}</text>
+            <mp-icon style="margin: 0 1em 0 .5em;" data-index="{{ index }}" data-slide="0" catch:tap="tapSlideShow" class="more" type="field" icon="more" color="#999" size="18"></mp-icon>
+          </view>
+        </view>
+      </mp-slideview>
+    </picker>
+  </view>
+  <view class="flex-between" style="margin: 1em 1em -0.5em;">
+    <text style="color: #333;">公共区域</text>
+    <picker mode="selector" header-text="添加公共区域" class="add-bind" data-spaceType="1" range="{{ spaceAreaOrignal[1] }}" bindchange="bindSelectorPickerChange">
+      <mp-icon type="field" icon="add" color="#333" size="16"></mp-icon>
+      <text style="color: #333;">添加</text>
+    </picker>
+  </view>
+  <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
+    <picker wx:for="{{ spaceArea[1] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiIndex="1" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[1][index].value }}" range="{{ multiArray }}">
+      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[1][index] }}" duration="0.5">
+        <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiIndex="1">
+          <text class="td">{{ index + 1 }}. {{ item }}</text>
+          <text class="td center">{{ multiValue[1][index].text[0] }}</text>
+          <view class="td center">
+            <view class="control">
+              <text class="sub {{ !multiValue[1][index].text[1] ? 'disable' : '' }}"  catch:tap="bindSubMultiValue" data-index="{{ index }}" data-multiindex="1">ー</text>
+              <text class="sum">{{ multiValue[1][index].text[1] || 0 }}</text>
+              <text class="add" catch:tap="bindAddMultiValue" data-index="{{ index }}" data-multiindex="1">＋</text>
+            </view>
+            <!-- <mp-icon style="margin: 0 1em 0 .5em;" data-index="{{ index }}" data-slide="1" catch:tap="tapSlideShow" class="more" type="field" icon="more" color="#999" size="18"></mp-icon> -->
+          </view>
+        </view>
+      </mp-slideview>
+    </picker>
+  </view>
+  <view class="flex-between" style="margin: 1em 1em -0.5em;">
+    <text style="color: #333;">支持空间</text>
+    <picker mode="selector" header-text="添加支持空间" class="add-bind" data-spaceType="2" range="{{ spaceAreaOrignal[2] }}" bindchange="bindSelectorPickerChange">
+      <mp-icon type="field" icon="add" color="#333" size="16"></mp-icon>
+      <text style="color: #333;">添加</text>
+    </picker>
+  </view>
+  <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
+    <picker wx:for="{{ spaceArea[2] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiIndex="2" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[2][index].value }}" range="{{ multiArray }}">
+      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[2][index] }}" duration="0.5">
+        <view class="picker">
+          <text class="td">{{ index + 1 }}. {{ item }}</text>
+          <text class="td center">{{ multiValue[2][index].text[0] }}</text>
+          <view class="td center">
+            <view class="control">
+              <text class="sub {{ !multiValue[2][index].text[1] ? 'disable' : '' }}"  catch:tap="bindSubMultiValue" data-index="{{ index }}" data-multiindex="2">ー</text>
+              <text class="sum">{{ multiValue[2][index].text[1] || 0 }}</text>
+              <text class="add" catch:tap="bindAddMultiValue" data-index="{{ index }}" data-multiindex="2">＋</text>
+            </view>
+            <!-- <mp-icon style="margin: 0 1em 0 .5em;" data-index="{{ index }}" data-slide="2" catch:tap="tapSlideShow" class="more" type="field" icon="more" color="#999" size="18"></mp-icon> -->
           </view>
         </view>
       </mp-slideview>
