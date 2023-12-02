@@ -4,15 +4,13 @@
 
 <view class="page mall">
   <view class="lists">
-    <navigator class="list" url="" wx:for="{{ [0, 1, 2, 3] }}" wx:key="data" url="/pages/good/good" hover-class="none">
+    <navigator class="list" url="" wx:for="{{ goods }}" wx:key="data" url="/pages/good/good?id={{ item.id }}" hover-class="none">
       <view class="theme">
-        <image src="https://cdn-we-retail.ym.tencent.com/tsr/goods/muy-3a.png?imageMogr2/thumbnail/645x645/quality/70/strip/format/webp" mode="aspectFill" />
+        <image src="{{ siteinfo.site + item.good_theme_url }}" mode="aspectFill" />
       </view>
-      <view class="content">
-        商品介绍信息
-      </view>
+      <view class="content">{{ item.good_name || '' }}</view>
       <view class="userinfo">
-        <text class="price">Price</text>
+        <text class="price">{{ item.good_brand || '' }}</text>
         <!-- <text class="price">购物车</text> -->
       </view>
     </navigator>

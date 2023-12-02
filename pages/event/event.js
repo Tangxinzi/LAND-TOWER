@@ -25,6 +25,7 @@ Page({
     works: [],
     designer: {},
     articles: {},
+    goods: {}
   },
   
   onLoad(options) {
@@ -44,6 +45,17 @@ Page({
       success: (response) => {
         if (response.data.status == 200) {
           this.setData({ designer: response.data.data })
+        }
+      }
+    })
+
+
+    wx.request({
+      url: `${ siteinfo.site }/land/good?type=json`,
+      method: 'GET',
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({ goods: response.data.data })
         }
       }
     })

@@ -1,7 +1,6 @@
 import siteinfo from '../../lib/siteinfo';
 const app = getApp()
 
-
 Page({
   data: {
     siteinfo,

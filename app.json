@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/event/event",
     "pages/calculator-level-0/calculator-level-0",
     "pages/calculator-level-00/calculator-level-0",
-    "pages/event/event",
     "pages/calculator/calculator",
     "pages/designer/designer",
     "pages/index/index",
@@ -17,7 +17,8 @@
     "pages/cases-detail/cases-detail",
     "pages/userinfo-update/userinfo-update",
     "pages/information/information",
-    "pages/good/good"
+    "pages/good/good",
+    "pages/web/web"
   ],
   "window": {
     "backgroundTextStyle": "light",

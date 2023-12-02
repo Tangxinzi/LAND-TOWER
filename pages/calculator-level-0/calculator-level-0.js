@@ -521,21 +521,21 @@ Page({
   },
 
   slideButtonTap(e) {
-    const index = e.currentTarget.dataset.index, value = e.currentTarget.dataset.value
+    const index = e.currentTarget.dataset.index, value = e.currentTarget.dataset.value, spacetype = e.currentTarget.dataset.spacetype
     this.setData({ slideShow: [[], [], []] })
 
     if (e.detail.index == 0) {
       const multiValue = this.data.multiValue, spaceArea = this.data.spaceArea
-      spaceArea.splice(index + 1, 0, value);
-      multiValue.splice(index + 1, 0, {area: 0, number: 0, text: [], value: []})
+      spaceArea[spacetype].splice(index + 1, 0, value);
+      multiValue[spacetype].splice(index + 1, 0, {area: 0, number: 0, text: [], value: []})
       this.setData({ multiValue, spaceArea })
       wx.showToast({ title: `添加${ value }`, icon: 'success' })
     }
 
     if (e.detail.index == 1) {
       const multiValue = this.data.multiValue, spaceArea = this.data.spaceArea
-      multiValue.splice(index, 1)
-      spaceArea.splice(index, 1)
+      multiValue[spacetype].splice(index, 1)
+      spaceArea[spacetype].splice(index, 1)
       this.setData({ multiValue, spaceArea })
       wx.showToast({ title: `删除${ value }`, icon: 'success' })
     }

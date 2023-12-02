@@ -1,3 +1,7 @@
+page {
+  padding-bottom: 150px;
+}
+
 .page {
   padding: 30px 35px;
 }
@@ -133,4 +137,17 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(128, 128, 128, 0.1);
+}
+
+.button {
+  background-color: #009600;
+  color: #FFF;
+  padding: 1em 1em 1.5em 1em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100% !important;
+  border-radius: 0;
+  text-align: center;
+  box-sizing: border-box;
 }

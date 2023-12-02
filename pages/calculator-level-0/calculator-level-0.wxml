@@ -77,7 +77,7 @@
   </view>
   <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
     <picker wx:for="{{ spaceArea[0] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiIndex="0" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[0][index].value }}" range="{{ multiArray }}">
-      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[0][index] }}" duration="0.5">
+      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="0" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[0][index] }}" duration="0.5">
         <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiIndex="0">
           <text class="td">{{ index + 1 }}. {{ item }}</text>
           <text class="td center">{{ multiValue[0][index].text[0] }}</text>
@@ -98,7 +98,7 @@
   </view>
   <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
     <picker wx:for="{{ spaceArea[1] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiIndex="1" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[1][index].value }}" range="{{ multiArray }}">
-      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[1][index] }}" duration="0.5">
+      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="1" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[1][index] }}" duration="0.5">
         <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiIndex="1">
           <text class="td">{{ index + 1 }}. {{ item }}</text>
           <text class="td center">{{ multiValue[1][index].text[0] }}</text>
@@ -123,10 +123,10 @@
   </view>
   <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
     <picker wx:for="{{ spaceArea[2] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiIndex="2" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[2][index].value }}" range="{{ multiArray }}">
-      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[2][index] }}" duration="0.5">
+      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="2" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[2][index] }}" duration="0.5">
         <view class="picker">
           <text class="td">{{ index + 1 }}. {{ item }}</text>
-          <text class="td center">{{ multiValue[2][index].text[0] }}</text>
+          <text class="td center">{{ multiValue[2][index].text[0] || '' }}</text>
           <view class="td center">
             <view class="control">
               <text class="sub {{ !multiValue[2][index].text[1] ? 'disable' : '' }}"  catch:tap="bindSubMultiValue" data-index="{{ index }}" data-multiindex="2">ー</text>

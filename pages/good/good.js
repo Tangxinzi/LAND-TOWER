@@ -1,18 +1,69 @@
-// pages/good/good.js
+import siteinfo from '../../lib/siteinfo';
+const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    siteinfo,
+    options: {},
+    good: {},
+    coll: {}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
+    wx.request({
+      url: `${ siteinfo.site }/land/good/show/${ options.id }?type=json`,
+      method: 'GET',
+      success: (response) => {
+        if (response.data.status == 200) {
+          response.data.data.detail = app.towxml(`${ response.data.data.detail }`, 'html', {
+            base: siteinfo.site,
+            theme: 'light',
+            events: {
+              tap: (e)=>{
+                console.log('tap',e);
+              }
+            }
+          })
 
+          this.setData({ options, good: response.data.data })
+          this.collStatus()
+        }
+      }
+    })
+  },
+
+  bindColl() {
+    wx.request({
+      url: `${ siteinfo.site }/land/user/like/${ this.data.options.id }`,
+      method: 'POST',
+      data: {
+        type: 'good',
+        openid: this.data.userinfo.wechat_open_id,
+      },
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.collStatus()
+        }
+      }
+    })
+  },
+
+  collStatus() {
+    wx.request({
+      url: `${ siteinfo.site }/land/user/like/${ this.data.options.id }`,
+      method: 'GET',
+      data: {
+        type: 'good',
+        openid: this.data.userinfo.wechat_open_id,
+      },
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({
+            coll: response.data.data
+          })
+        }
+      }
+    })
   },
 
   /**

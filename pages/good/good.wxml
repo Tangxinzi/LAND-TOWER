@@ -1,18 +1,16 @@
 <mp-navigation-bar ext-class="navigation-bar" title="好物详情" background="#FFF"></mp-navigation-bar>
 <view class="header-user">
-  <view class="image" style="background-image: url({{ siteinfo.site + good.avatar_url }})"></view>
-  <view class="header-info">
-    <view class="flex-between" style="width: 100%;">
-      <view class="nickname">{{ good.nickname }}</view>
-      <mp-icon bind:tap="bindColl" type="{{ coll.status ? 'field' : 'outline' }}" icon="like" color="{{ coll.status ? 'red' : '#FFF' }}" size="28"></mp-icon>
-    </view>
-    <view class="labels" wx:if="{{ good.labels.length }}">
-      <text wx:for="{{ good.labels }}" wx:key="label">{{ item }}</text>
-    </view>
-  </view>
+  <view class="image" style="background-image: url({{ siteinfo.site + good.good_theme_url }})"></view>
 </view>
 <view class="page good-detail">
   <view class="header">
+    <view class="flex-between" style="width: 100%;">
+      <view class="nickname">
+        <text>{{ good.good_name || '' }}</text>
+        <text style="font-size: 12px; color: #999;">\n{{ good.good_brand || '' }}</text>
+      </view>
+      <mp-icon bind:tap="bindColl" type="{{ coll.status ? 'field' : 'outline' }}" icon="like" color="{{ coll.status ? 'red' : '#000' }}" size="32"></mp-icon>
+    </view>
     <view class="detail">
       <towxml nodes="{{ good.detail }}" />
     </view>
@@ -33,3 +31,6 @@
     </view>
   </view>
 </view>
+<button class="button" open-type="contact">
+  联系购买
+</button>
