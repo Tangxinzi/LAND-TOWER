@@ -9,6 +9,7 @@
     "pages/logs/logs",
     "pages/detail/detail",
     "pages/mall/mall",
+    "pages/mall-catalog/mall-catalog",
     "pages/kefu/kefu",
     "pages/designer-detail/designer-detail",
     "pages/collection/collection",

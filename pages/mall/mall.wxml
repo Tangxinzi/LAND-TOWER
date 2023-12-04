@@ -1,4 +1,4 @@
-<mp-navigation-bar ext-class="navigation-bar" title="好物推荐" background="#FFF" back="{{ false }}">
+<mp-navigation-bar ext-class="navigation-bar" title="好物推荐" background="#FFF">
 </mp-navigation-bar>
 <mp-searchbar bindinput="bindInput" bindclear="bindClear" throttle="800" placeholder="输入商品 / 品牌名称"></mp-searchbar>
 

@@ -52,7 +52,7 @@
     <text>活动资讯<text class="sub">Event Information</text></text>
     <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
   </navigator>
-  <view class="list-posts list-case">
+  <view class="list-posts list-case" style="margin-bottom: 0; padding-bottom: 0; border: none;">
     <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
       <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
       <view class="content">
@@ -61,6 +61,10 @@
       </view>
     </navigator>
   </view>
+  <navigator url="/pages/information/information" class="all flex-between" hover-class="none">
+    <text>查看全部</text>
+    <mp-icon icon="arrow" size="14" color="#CCC"></mp-icon>
+  </navigator>
   <view class="page-title flex-between" style="margin-top: 0;" bind:tap="block" data-text="办公好物">
     <text>办公好物<text class="sub">Goods Recommend</text></text>
     <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
@@ -74,6 +78,10 @@
       </view>
     </navigator>
   </view>
+  <navigator url="/pages/mall-catalog/mall-catalog" class="all flex-between" hover-class="none">
+    <text>查看全部</text>
+    <mp-icon icon="arrow" size="14" color="#CCC"></mp-icon>
+  </navigator>
   <view style="display: none;">
     <view class="page-title">视频</view>
     <view class="list-videos">

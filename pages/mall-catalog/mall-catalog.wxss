@@ -1,0 +1,38 @@
+.mall-catalog {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.catalogs {
+  width: 25%;
+}
+
+.catalogs .catalog {
+  display: block;
+  padding: 1em;
+}
+
+.catalogs .catalog.active text {
+  padding-bottom: 3px;
+  border-bottom: 2px solid #009600;
+}
+
+.lists {
+  width: 75%;
+  padding-right: 1em;
+}
+
+.lists .image {
+  height: 130px;
+  text-align: center;
+  background-color: grey;
+  margin-bottom: 1em;
+}
+
+.lists .image text {
+  line-height: 130px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #FFF;
+}

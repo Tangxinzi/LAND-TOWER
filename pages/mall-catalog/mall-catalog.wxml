@@ -1,0 +1,14 @@
+<mp-navigation-bar ext-class="navigation-bar" title="办公好物" background="#FFF">
+</mp-navigation-bar>
+<view class="mall-catalog">
+  <view class="catalogs">
+    <view class="catalog {{ index == active ? 'active' : '' }}" wx:for="{{ catalogs }}" wx:key="catalog" bind:tap="switch" data-index="{{ index }}">
+      <text>{{ item.name }}</text>
+    </view>
+  </view>
+  <view class="lists">
+    <view wx:for="{{ catalogs[active].sub_catalog }}" wx:key="sub_catalog" class="list image" style="background-image: url({{ siteinfo.site + item.theme_url }});">
+      <text>{{ item.name }}</text>
+    </view>
+  </view>
+</view>
