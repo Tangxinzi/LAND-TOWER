@@ -27,7 +27,7 @@
     </view>
     <view class="cards">
       <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}" wx:for="{{ designer.works }}" wx:key="card">
-        <image class="" src="{{ item.theme_url }}" mode="aspectFill" />
+        <image class="" src="{{ siteinfo.site + item.theme_url }}" mode="aspectFill" />
         <view class="character-image" style="{{ siteinfo.site + item.theme_url }}"></view>
         <view class="title">{{ item.title }}</view>
         <view class="author one-line">

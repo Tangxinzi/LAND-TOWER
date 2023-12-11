@@ -1,0 +1,79 @@
+<mp-navigation-bar ext-class="navigation-bar" title="计算器" background="#FFF" back="{{ false }}">
+  <button slot="left" class="left" open-type="contact">
+    <image class="kefu" src="/assets/icons/kefu.png" mode="aspectFill" /> 咨询客服
+  </button>
+</mp-navigation-bar>
+
+<view class="">
+  <view class="section" style="padding: 0 1em;">
+    <view class="picker" style="border: 0;">
+      <text class="td">人工费</text>
+      <text class="td center">辅材费</text>
+      <text class="td right">主材费</text>
+    </view>
+    <block wx:if="{{ input.showPrice }}">
+      <view class="picker">
+        <text class="td">¥{{ estimatedNumber[0] }}</text>
+        <text class="td center">¥{{ estimatedNumber[1] }}</text>
+        <text class="td right">¥{{ estimatedNumber[2] }}</text>
+      </view>
+      <view class="picker right flex-between">
+        <view>预估功能区使用面积 <text style="color: {{ countArea > input.area ? 'red' : '#000' }}">{{ countArea || '0.00' }}㎡</text></view>
+        <view>预估总价 ¥{{ count || '0.00' }}</view>
+      </view>      
+    </block>
+    <block wx:else>
+      <view class="picker">
+        <text class="td">¥0.00</text>
+        <text class="td center">¥0.00</text>
+        <text class="td right">¥0.00</text>
+      </view>
+      <view class="picker right flex-between">
+        <view>预估功能区使用面积 0.00㎡</view>
+        <view>预估总价 ¥0.00</view>
+      </view>
+    </block>
+  </view>
+  <view class="section flex-between" bind:tap="{{ countArea > 0 ? 'ifReload' : '' }}">
+    <input disabled="{{ countArea > 0 ? true : false }}" type="number" value="{{ input.area || '' }}" data-type="area" bindblur="inputChange" placeholder="输入办公面积 150～2000㎡ 以内" style="width: 70%;" />
+    <text>㎡ 办公面积</text>
+  </view>
+  <!-- <view class="section flex-between">
+    <input type="number" data-type="phone" bindinput="inputChange" placeholder="留下您的联系方式" />
+    <text>联系方式</text>
+  </view> -->
+  <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
+    <view class="picker" style="border: 0;">
+      <text class="td">功能</text>
+      <text class="td center">子项</text>
+      <text class="td center">数量</text>
+    </view>
+    <picker wx:for="{{ spaceArea }}" wx:key="spaceArea" data-index="{{ index }}" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[index].value }}" range="{{ multiArray }}">
+      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[index] }}" duration="0.5">
+        <view class="picker" bind:tap="bindPicker" data-index="{{ index }}">
+          <text class="td">{{ index + 1 }}. {{ item }}</text>
+          <text class="td center">{{ multiValue[index].text[0] }}</text>
+          <view class="td center">
+            <text>{{ multiValue[index].text[1] }}</text>
+            <mp-icon style="margin: 0 1em 0 .5em;" data-index="{{ index }}" catch:tap="tapSlideShow" class="more" type="field" icon="more" color="#999" size="18"></mp-icon>
+          </view>
+        </view>
+      </mp-slideview>
+    </picker>
+    
+    <picker mode="selector" header-text="添加功能区" class="picker" range="{{ spaceAreaOrignal }}" bindchange="bindSelectorPickerChange">
+      <view style="text-align: center; color: #666; width: calc(100vw - 4em);">点击此处添加新的功能需求</view>
+    </picker>
+  </view>
+  <view class="tips">
+    <button open-type="contact">
+      <text style="font-weight: 800; color: #000;">本计算内容预估面积及价格仅供参考\n<text>如需了解请点击咨询</text>
+      </text>
+      <image class="kefu" src="/assets/icons/kefu.png" mode="aspectFill" />
+    </button>
+  </view>
+  <view class="calcs">
+    <view class="calc" bind:tap="reload">重置计算器</view>
+    <view class="calc" bind:tap="calcPrice" style="background-color: rgb(0, 0, 0);">计算预估总价</view>
+  </view>
+</view>

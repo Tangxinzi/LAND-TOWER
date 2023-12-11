@@ -4,8 +4,7 @@ Page({
   data: {
     siteinfo,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    items: [
-      {
+    items: [{
         text: '项目分享',
         icon: '/assets/icons/shouye-anli.png'
       },
@@ -25,16 +24,43 @@ Page({
     works: [],
     designer: {},
     articles: {},
-    goods: {}
+    goods: {},
+    search: '',
+    searchResult: {}
   },
-  
+
+  bindClear() {
+    this.setData({ search: '' })
+  },
+
+  bindInput(event) {
+    this.setData({ search: event.detail.value })
+    this.search()
+  },
+
+  search() {
+    wx.request({
+      url: `${ siteinfo.site }/land/search?search=${ this.data.search || '' }`,
+      method: 'GET',
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({
+            searchResult: response.data.data
+          })
+        }
+      }
+    })
+  },
+
   onLoad(options) {
     wx.request({
       url: `${ siteinfo.site }/land/article/catalog/1?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
-          this.setData({ articles: response.data.data })
+          this.setData({
+            articles: response.data.data
+          })
         }
       }
     })
@@ -44,7 +70,9 @@ Page({
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
-          this.setData({ designer: response.data.data })
+          this.setData({
+            designer: response.data.data
+          })
         }
       }
     })
@@ -55,38 +83,56 @@ Page({
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
-          this.setData({ goods: response.data.data })
+          this.setData({
+            goods: response.data.data
+          })
         }
       }
     })
-    
+
     wx.request({
       url: `${ siteinfo.site }/land/work/catalog/1?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
-          this.setData({ works: response.data.data })
+          this.setData({
+            works: response.data.data
+          })
         }
       }
     })
   },
 
+  onShow() {
+    this.setData({ search: '' })
+  },
+
   block(event) {
     switch (event.currentTarget.dataset.text) {
       case '项目分享':
-        wx.navigateTo({ url: '/pages/cases/cases' })
+        wx.navigateTo({
+          url: '/pages/cases/cases'
+        })
         break;
       case '设计师':
-        wx.switchTab({ url: '/pages/designer/designer' })
+        wx.switchTab({
+          url: '/pages/designer/designer'
+        })
         break;
       case '办公好物':
-        wx.navigateTo({ url: '/pages/mall/mall' })
+        wx.navigateTo({
+          url: '/pages/mall/mall'
+        })
         break;
       case '计算器':
-        wx.switchTab({ url: '/pages/calculator-level-0/calculator-level-0' })
+        wx.switchTab({
+          url: '/pages/calculator-level-0/calculator-level-0'
+        })
         break;
       case '联系我们':
-        wx.navigateTo({ url: '/pages/map/map' })
+        wx.navigateTo({
+          url: '/pages/map/map'
+        })
         // wx.switchTab({ url: '/pages/calculator-level-0/calculator-level-0' })
         break;
     }

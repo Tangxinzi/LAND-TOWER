@@ -14,7 +14,7 @@ Page({
   },
 
   onLoad(options) {
-    this.setData({ search: '' })
+    this.setData({ options, search: '' })
     this.catalog()
   },
 
@@ -31,9 +31,9 @@ Page({
     this.catalog()
   },
 
-  catalog(search) {
+  catalog() {
     wx.request({
-      url: `${ siteinfo.site }/land/good?type=json`,
+      url: `${ siteinfo.site }/land/good?type=json&search=${ this.data.search || '' }&catalog=${ this.data.options.catalog || '' }`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {

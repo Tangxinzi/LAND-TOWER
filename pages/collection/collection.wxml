@@ -4,7 +4,8 @@
 <view class="page mall">
   <view class="labels">
     <text class="{{ type == 0 ? 'active' : '' }}" bind:tap="switch" data-type="0">设计师</text>
-    <text class="{{ type == 1 ? 'active' : '' }}" bind:tap="switch" data-type="1">作品</text>
+    <text class="{{ type == 1 ? 'active' : '' }}" bind:tap="switch" data-type="1">优秀案例</text>
+    <text class="{{ type == 2 ? 'active' : '' }}" bind:tap="switch" data-type="2">办公好物</text>
   </view>
 
   <view class="lists" wx:if="{{ type == 0 }}">
@@ -31,5 +32,17 @@
         </view>
       </view>
     </navigator>
+  </view>
+
+  <view class="goods" wx:if="{{ type == 2 }}">
+    <view class="cards">
+      <navigator class="card" hover-class="none" url="/pages/good/good?id={{ item.id }}" wx:for="{{ data }}" wx:key="card">
+        <image class="" src="{{ siteinfo.site + item.good_theme_url[0] }}" mode="aspectFill" />
+        <view class="title">{{ item.good_name || '' }}</view>
+        <view class="author one-line">
+          {{ item.good_brand || '' }}
+        </view>
+      </navigator>
+    </view>
   </view>
 </view>

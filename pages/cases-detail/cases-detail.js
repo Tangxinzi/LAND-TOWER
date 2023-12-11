@@ -4,7 +4,7 @@ const app = getApp()
 Page({
   data: {
     siteinfo,
-    userinfo: wx.getStorageSync('userinfo'),
+    userinfo: wx.getStorageSync('userinfo') || {},
     coll: {},
     work: {}
   },

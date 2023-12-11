@@ -4,9 +4,16 @@ const app = getApp()
 Page({
   data: {
     siteinfo,
+    userinfo: wx.getStorageSync('userinfo') || {},
     options: {},
     good: {},
-    coll: {}
+    coll: {},
+    current: 1
+  },
+
+  swiperChange(event) {
+    const { current, source } = event.detail
+    this.setData({ current: current + 1 })
   },
 
   onLoad(options) {
@@ -44,6 +51,9 @@ Page({
         if (response.data.status == 200) {
           this.collStatus()
         }
+      },
+      fail: (err) => {
+        console.log(err);
       }
     })
   },

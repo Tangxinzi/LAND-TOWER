@@ -1,4 +1,5 @@
 {
+  "entryPagePath": "pages/event/event",
   "pages": [
     "pages/event/event",
     "pages/calculator-level-0/calculator-level-0",
@@ -19,7 +20,8 @@
     "pages/userinfo-update/userinfo-update",
     "pages/information/information",
     "pages/good/good",
-    "pages/web/web"
+    "pages/web/web",
+    "pages/back/back"
   ],
   "window": {
     "backgroundTextStyle": "light",

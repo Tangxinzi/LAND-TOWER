@@ -31,8 +31,9 @@ Page({
   },
 
   fetch(search) {
+    const type = ['designer', 'work', 'good']
     wx.request({
-      url: `${ siteinfo.site }/land/user/collection?openid=${ this.data.userinfo.wechat_open_id }&type=${ this.data.type == 0 ? 'designer' : 'work' }&search=${ this.data.search || '' }`,
+      url: `${ siteinfo.site }/land/user/collection?openid=${ this.data.userinfo.wechat_open_id }&type=${ type[this.data.type] }&search=${ this.data.search || '' }`,
       method: 'GET',
       success: (response) => {
         console.log(response.data.data);

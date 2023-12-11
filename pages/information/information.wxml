@@ -1,7 +1,7 @@
 <mp-navigation-bar ext-class="navigation-bar" title="全部资讯" background="#FFF"></mp-navigation-bar>
 <view style="padding: 1em;">
   <view class="list-posts list-case">
-    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/detail/detail?id={{ item.id }}">
+    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/web/web?src={{ item.article_original_url }}">
       <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
       <view class="content">
         <text class="title">{{ index }}{{ item.article_title }}</text>

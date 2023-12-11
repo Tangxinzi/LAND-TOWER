@@ -38,12 +38,12 @@
       </view>
       <view class="picker right flex-between">
         <view>建议面积</view>
-        <text style="color: {{ countArea > input.area ? 'red' : '#9a9a9a' }}">{{ countArea || '0.00' }}㎡</text>
+        <text style="color: {{ countArea > input.area ? '#9a9a9a' : '#009600' }}">{{ countArea || '0.00' }}㎡</text>
       </view>
       <view class="picker right flex-between">
         <view>预估总价</view>
-        <text data-value="{{ estimatedNumber[0] + estimatedNumber[1] + estimatedNumber[2] }}" style="color: {{ estimatedNumber[3] != count ? 'red' : '#9a9a9a;' }}">¥{{ count || '0.00' }}</text>
-      </view>   
+        <text data-value="{{ estimatedNumber[0] + estimatedNumber[1] + estimatedNumber[2] }}" style="color: {{ estimatedNumber[3] != count ? '#9a9a9a' : '#009600;' }}">¥{{ count || '0.00' }}</text>
+      </view>
     </block>
     <block wx:else>
       <view class="picker" style="border: 0; padding-top: 0;">
@@ -64,80 +64,65 @@
   <view style="font-size: 12px; color: #9a9a9a; padding-bottom: 1em;">
     <mp-icon style="margin: 0 0.3em 1em 1em; position: relative; top: -1px;" type="outline" icon="info" color="#999" size="16"></mp-icon> <text>输入办公面积，调整空间需求，计算预估价格</text>
   </view>
-  <!-- <view class="section flex-between">
-    <input type="number" data-type="phone" bindinput="inputChange" placeholder="留下您的联系方式" />
-    <text>联系方式</text>
-  </view> -->
   <view class="flex-between" style="margin: 1em 1em -0.5em;">
     <text style="color: #333;">办公区与协作空间</text>
-    <picker mode="selector" header-text="添加办公区与协作空间" class="add-bind" data-spaceType="0" range="{{ spaceAreaOrignal[0] }}" bindchange="bindSelectorPickerChange">
-      <mp-icon type="field" icon="add" color="#333" size="16"></mp-icon>
-      <text style="color: #333;">添加</text>
-    </picker>
   </view>
   <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
-    <picker wx:for="{{ spaceArea[0] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiIndex="0" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[0][index].value }}" range="{{ multiArray }}">
+    <view wx:for="{{ multiValue[0] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiindex="0" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[0][index].value }}" range="{{ multiArray }}">
       <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="0" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[0][index] }}" duration="0.5">
-        <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiIndex="0">
-          <text class="td">{{ index + 1 }}. {{ item }}</text>
-          <text class="td center">{{ multiValue[0][index].text[0] }}</text>
+        <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiindex="0">
+          <text class="td">{{ multiValue[0][index].text }}</text>
+          <text class="td center"></text>
           <view class="td center">
-            <text>{{ multiValue[0][index].text[1] }}</text>
-            <mp-icon style="margin: 0 1em 0 .5em;" data-index="{{ index }}" data-slide="0" catch:tap="tapSlideShow" class="more" type="field" icon="more" color="#999" size="18"></mp-icon>
+            <view class="control">
+              <text class="sub {{ !multiValue[0][index].number ? 'disable' : '' }}" catch:tap="bindCalcMultiValue" data-calc="ー" data-index="{{ index }}" data-multiindex="0">ー</text>
+              <text class="sum">{{ multiValue[0][index].number || 0 }}</text>
+              <text class="add" catch:tap="bindCalcMultiValue" data-calc="＋" data-index="{{ index }}" data-multiindex="0">＋</text>
+            </view>
           </view>
         </view>
       </mp-slideview>
-    </picker>
+    </view>
   </view>
   <view class="flex-between" style="margin: 1em 1em -0.5em;">
     <text style="color: #333;">公共区域</text>
-    <picker mode="selector" header-text="添加公共区域" class="add-bind" data-spaceType="1" range="{{ spaceAreaOrignal[1] }}" bindchange="bindSelectorPickerChange">
-      <mp-icon type="field" icon="add" color="#333" size="16"></mp-icon>
-      <text style="color: #333;">添加</text>
-    </picker>
   </view>
   <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
-    <picker wx:for="{{ spaceArea[1] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiIndex="1" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[1][index].value }}" range="{{ multiArray }}">
-      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="1" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[1][index] }}" duration="0.5">
-        <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiIndex="1">
-          <text class="td">{{ index + 1 }}. {{ item }}</text>
-          <text class="td center">{{ multiValue[1][index].text[0] }}</text>
+    <view wx:for="{{ multiValue[1] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiindex="1" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[1][index].value }}" range="{{ multiArray }}">
+      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="0" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[0][index] }}" duration="0.5">
+        <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiindex="1">
+          <text class="td">{{ multiValue[1][index].text }}</text>
+          <text class="td center"></text>
           <view class="td center">
             <view class="control">
-              <text class="sub {{ !multiValue[1][index].text[1] ? 'disable' : '' }}"  catch:tap="bindSubMultiValue" data-index="{{ index }}" data-multiindex="1">ー</text>
-              <text class="sum">{{ multiValue[1][index].text[1] || 0 }}</text>
-              <text class="add" catch:tap="bindAddMultiValue" data-index="{{ index }}" data-multiindex="1">＋</text>
+              <text class="sub {{ !multiValue[1][index].number ? 'disable' : '' }}" catch:tap="bindCalcMultiValue" data-calc="ー" data-index="{{ index }}" data-multiindex="1">ー</text>
+              <text class="sum">{{ multiValue[1][index].number || 0 }}</text>
+              <text class="add" catch:tap="bindCalcMultiValue" data-calc="＋" data-index="{{ index }}" data-multiindex="1">＋</text>
             </view>
-            <!-- <mp-icon style="margin: 0 1em 0 .5em;" data-index="{{ index }}" data-slide="1" catch:tap="tapSlideShow" class="more" type="field" icon="more" color="#999" size="18"></mp-icon> -->
           </view>
         </view>
       </mp-slideview>
-    </picker>
+    </view>
   </view>
   <view class="flex-between" style="margin: 1em 1em -0.5em;">
     <text style="color: #333;">支持空间</text>
-    <picker mode="selector" header-text="添加支持空间" class="add-bind" data-spaceType="2" range="{{ spaceAreaOrignal[2] }}" bindchange="bindSelectorPickerChange">
-      <mp-icon type="field" icon="add" color="#333" size="16"></mp-icon>
-      <text style="color: #333;">添加</text>
-    </picker>
   </view>
   <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
-    <picker wx:for="{{ spaceArea[2] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiIndex="2" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[2][index].value }}" range="{{ multiArray }}">
-      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="2" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[2][index] }}" duration="0.5">
-        <view class="picker">
-          <text class="td">{{ index + 1 }}. {{ item }}</text>
-          <text class="td center">{{ multiValue[2][index].text[0] || '' }}</text>
+    <view wx:for="{{ multiValue[2] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiindex="2" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[2][index].value }}" range="{{ multiArray }}">
+      <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="0" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[0][index] }}" duration="0.5">
+        <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiindex="2">
+          <text class="td">{{ multiValue[2][index].text }}</text>
+          <text class="td center"></text>
           <view class="td center">
             <view class="control">
-              <text class="sub {{ !multiValue[2][index].text[1] ? 'disable' : '' }}"  catch:tap="bindSubMultiValue" data-index="{{ index }}" data-multiindex="2">ー</text>
-              <text class="sum">{{ multiValue[2][index].text[1] || 0 }}</text>
-              <text class="add" catch:tap="bindAddMultiValue" data-index="{{ index }}" data-multiindex="2">＋</text>
+              <text class="sub {{ !multiValue[2][index].number ? 'disable' : '' }}" catch:tap="bindCalcMultiValue" data-calc="ー" data-index="{{ index }}" data-multiindex="2">ー</text>
+              <text class="sum">{{ multiValue[2][index].number || 0 }}</text>
+              <text class="add" catch:tap="bindCalcMultiValue" data-calc="＋" data-index="{{ index }}" data-multiindex="2">＋</text>
             </view>
-            <!-- <mp-icon style="margin: 0 1em 0 .5em;" data-index="{{ index }}" data-slide="2" catch:tap="tapSlideShow" class="more" type="field" icon="more" color="#999" size="18"></mp-icon> -->
           </view>
         </view>
       </mp-slideview>
-    </picker>
+    </view>
   </view>
   <view class="tips">
     <button open-type="contact">
@@ -147,6 +132,7 @@
     </button>
   </view>
   <view class="calcs">
+    <navigator url=""></navigator>
     <view class="calc" bind:tap="reload" style="flex: 1; background-color: #025402;">重置计算器</view>
     <view class="calc" bind:tap="calcPrice" style="flex: 3; background-color: #009600;">计算预估总价</view>
   </view>

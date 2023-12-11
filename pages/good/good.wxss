@@ -14,6 +14,12 @@ page {
   justify-content: space-between; */
 }
 
+.header-user .number-current {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}
+
 .header-user::before {
   content: '';
   width: 100%;
@@ -40,6 +46,8 @@ page {
 .header-user mp-icon {
 }
 
+.header-user swiper,
+.header-user swiper-item,
 .header-user .image {
   width: 100vw;
   height: 600px;
@@ -85,6 +93,9 @@ page {
 .header .detail {
   color: #9a9a9a;
   font-size: 12px;
+  margin-top: 2em;
+  padding-top: 2em;
+  border-top: 0.5px solid rgb(233, 233, 233);
 }
 
 .header .detail .labels {

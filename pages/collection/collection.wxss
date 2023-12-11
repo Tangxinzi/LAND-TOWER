@@ -115,3 +115,43 @@ page {
   color: #65b55c;
   border-bottom: 2px solid #65b55c;
 }
+
+/* cards */
+
+.cards {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cards .card {
+  width: 47%;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+.cards .card:nth-child(even) {
+  margin-left: 6%;
+}
+
+.cards .card .title {
+  color: #333;
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.cards .card .author {
+  color: #999;
+  font-size: 12px;
+}
+
+.cards .card image {
+  width: 100%;
+  height: 180px;
+  font-size: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(128, 128, 128, 0.1);
+}

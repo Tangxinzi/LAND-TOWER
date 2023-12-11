@@ -67,7 +67,7 @@
 }
 
 .header-user .labels text {
-  font-size: 12.5px;
+  font-size: 14.5px;
   color: #FFF;
   padding-right: 1em;
   margin-right: 1em;
