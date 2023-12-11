@@ -35,6 +35,47 @@ Page({
     })
   },
 
+  inputChange(event) {
+    if (event.currentTarget.dataset.type == 'area' && event.detail.value > 0 && event.detail.value < 150) {
+      wx.showModal({
+        title: '提示',
+        content: '办公面积过低了哦，需要联系我们的客服咨询吗？',
+        confirmText: '去联系',
+        complete: (res) => {
+          if (res.cancel) {
+            
+          }
+      
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/kefu/kefu',
+            })
+          }
+        }
+      })
+    } else if (event.currentTarget.dataset.type == 'area' && event.detail.value > 2000) {
+      wx.showModal({
+        title: '提示',
+        content: '您输入的办公面积过大，需要联系我们的客服咨询吗？',
+        confirmText: '去联系',
+        complete: (res) => {
+          if (res.cancel) {
+            
+          }
+      
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/kefu/kefu',
+            })
+          }
+        }
+      })
+    } else {
+      this.setData({ ['input.showPrice']: false })
+      this.setData({ [ `input.${ event.currentTarget.dataset.type }` ]: parseFloat(event.detail.value) })  
+    }
+  },
+
   calcPrice() {
     if (!this.data.userinfo.wechat_open_id) {
       wx.showModal({
