@@ -21,7 +21,11 @@
     </view>
   </view>
   <mp-cells>
-    <button class="navigate button flex-between" open-type="contact">
+    <button class="navigate button flex-between" open-type="share">
+      <text>推荐注册</text>
+      <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>
+    </button>
+    <button class="navigate button flex-between" bind:tap="contact">
       <text>联系客服</text>
       <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>
     </button>

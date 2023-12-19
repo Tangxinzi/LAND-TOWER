@@ -32,7 +32,7 @@ page {
 }
 
 .section {
-  padding: 1em;
+  padding: 0 1em;
   margin: 1em;
   background-color: #FFF;
   border-radius: 0;
@@ -97,6 +97,14 @@ page {
 
 .picker .center {
   text-align: center;
+}
+
+.picker .center .control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
 }
 
 .picker .right {
@@ -175,6 +183,12 @@ button .kefu {
   font-size: 12px;
   border-radius: 3px;
   border: 1px solid #CCC;
+}
+
+.control input {
+  margin: 0 8px !important;
+  border-bottom: 2px solid #CCC;
+  width: 100%;
 }
 
 .control .disable {

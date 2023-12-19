@@ -43,6 +43,22 @@ page {
   font-size: 14px;
 }
 
+.lists .list .content.disginer {
+  line-height: 16px;
+}
+
+.lists .list .content.disginer .nickname {
+  color: #333;
+  font-size: 14px;
+  width: 100%;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  /* line-height: 14px; */
+}
+
 .lists .list .content .info text {
   font-size: 12px;
   color: #8e8e8e;

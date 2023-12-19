@@ -1,11 +1,11 @@
 <mp-navigation-bar ext-class="navigation-bar" title="计算器" background="#FFF" back="{{ false }}">
-  <button slot="left" class="left" open-type="contact">
+  <button slot="left" class="left" bind:tap="contact">
     <image class="kefu" src="/assets/icons/kefu.png" mode="aspectFill" />
   </button>
 </mp-navigation-bar>
 
 <view class="">
-  <view class="section flex-between" bind:tap="{{ countArea > 0 ? 'ifReload' : '' }}">
+  <view class="section flex-between" style="padding: 1em" bind:tap="{{ countArea > 0 ? 'ifReload' : '' }}">
     <text>办公面积 ㎡<text style="color: rgb(238, 93, 93);"> *</text></text>
     <input class="text-right" disabled="{{ countArea > 0 ? true : false }}" type="number" value="{{ input.area || '' }}" data-type="area" bindblur="inputChange" placeholder="输入办公面积 150～2000㎡ 以内" style="width: 70%;" />
   </view>
@@ -67,16 +67,17 @@
   <view class="flex-between" style="margin: 1em 1em -0.5em;">
     <text style="color: #333;">办公区与协作空间</text>
   </view>
-  <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
+  <view class="section" bind:tap="checkArea">
     <view wx:for="{{ multiValue[0] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiindex="0" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[0][index].value }}" range="{{ multiArray }}">
       <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="0" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[0][index] }}" duration="0.5">
         <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiindex="0">
           <text class="td">{{ multiValue[0][index].text }}</text>
           <text class="td center"></text>
-          <view class="td center">
+          <view class="td center" style="display: flex; justify-content: flex-end;">
             <view class="control">
               <text class="sub {{ !multiValue[0][index].number ? 'disable' : '' }}" catch:tap="bindCalcMultiValue" data-calc="ー" data-index="{{ index }}" data-multiindex="0">ー</text>
-              <text class="sum">{{ multiValue[0][index].number || 0 }}</text>
+              <input wx:if="{{ multiValue[0][index].text == '工位数' }}" class="sum" type="number" value="{{ multiValue[0][index].number || 0 }}" data-index="{{ index }}" data-multiindex="0" data-type="gongweishu" bindblur="inputChange" />
+              <text wx:else class="sum">{{ multiValue[0][index].number || 0 }}</text>
               <text class="add" catch:tap="bindCalcMultiValue" data-calc="＋" data-index="{{ index }}" data-multiindex="0">＋</text>
             </view>
           </view>
@@ -87,13 +88,13 @@
   <view class="flex-between" style="margin: 1em 1em -0.5em;">
     <text style="color: #333;">公共区域</text>
   </view>
-  <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
+  <view class="section" bind:tap="checkArea">
     <view wx:for="{{ multiValue[1] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiindex="1" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[1][index].value }}" range="{{ multiArray }}">
       <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="0" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[0][index] }}" duration="0.5">
         <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiindex="1">
           <text class="td">{{ multiValue[1][index].text }}</text>
           <text class="td center"></text>
-          <view class="td center">
+          <view class="td center" style="display: flex; justify-content: flex-end;">
             <view class="control">
               <text class="sub {{ !multiValue[1][index].number ? 'disable' : '' }}" catch:tap="bindCalcMultiValue" data-calc="ー" data-index="{{ index }}" data-multiindex="1">ー</text>
               <text class="sum">{{ multiValue[1][index].number || 0 }}</text>
@@ -107,13 +108,13 @@
   <view class="flex-between" style="margin: 1em 1em -0.5em;">
     <text style="color: #333;">支持空间</text>
   </view>
-  <view class="section" style="padding: 0 0 0 1em;" bind:tap="checkArea">
+  <view class="section" bind:tap="checkArea">
     <view wx:for="{{ multiValue[2] }}" wx:key="spaceArea" data-index="{{ index }}" data-multiindex="2" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{ multiValue[2][index].value }}" range="{{ multiArray }}">
       <mp-slideview buttons="{{ slideButtons }}" icon="{{ false }}" bindbuttontap="slideButtonTap" data-spaceType="0" data-index="{{ index }}" data-value="{{ item }}" show="{{ slideShow[0][index] }}" duration="0.5">
         <view class="picker" bind:tap="bindPicker" data-index="{{ index }}" data-multiindex="2">
           <text class="td">{{ multiValue[2][index].text }}</text>
           <text class="td center"></text>
-          <view class="td center">
+          <view class="td center" style="display: flex; justify-content: flex-end;">
             <view class="control">
               <text class="sub {{ !multiValue[2][index].number ? 'disable' : '' }}" catch:tap="bindCalcMultiValue" data-calc="ー" data-index="{{ index }}" data-multiindex="2">ー</text>
               <text class="sum">{{ multiValue[2][index].number || 0 }}</text>
@@ -125,7 +126,7 @@
     </view>
   </view>
   <view class="tips">
-    <button open-type="contact">
+    <button bind:tap="contact">
       <text style="font-weight: 800; color: #000;">本计算内容预估面积及价格仅供参考\n<text>如未解决您的问题，请请点击客服进行咨询</text>
       </text>
       <image class="kefu" src="/assets/icons/kefu.png" mode="aspectFill" />

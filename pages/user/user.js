@@ -30,12 +30,22 @@ Page({
     })
   },
 
+  contact() {
+    wx.openCustomerServiceChat({
+      extInfo: {
+        url: 'https://work.weixin.qq.com/kfid/kfcc165f42e757e49cb'
+      },
+      corpId: 'ww38c652abe66e0fc1',
+      success(res) {}
+    })
+  },
+
   getPhoneNumber(e) {
     wx.showLoading({ title: 'Loading...' })
     wx.login({
       success: (login) => {
         wx.request({
-          url: `${ siteinfo.site }/land/user/wx-login?code=${ login.code }`,
+          url: `${ siteinfo.site }/land/user/wx-login?code=${ login.code }&recommend=${ wx.getStorageSync('recommend_openid') || '' }`,
           success: (loginResponse) => {
             wx.request({
               url: `${ siteinfo.site }/land/user/get-phone-number?code=${ e.detail.code }&openid=${ loginResponse.data.wechat_open_id }`,
@@ -60,5 +70,25 @@ Page({
         })
       },
     })
+  },
+
+  
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage(event) {
+    if (event.from == 'button') {
+      return {
+        title: `欢迎使用办公室设计大师`,
+        // imageUrl: this.data.siteinfo.media + this.data.data.userinfo.photos[0],
+        path: 'pages/event/event?recommend_openid=' + this.data.userinfo.wechat_open_id
+      }
+    }
+
+    return {
+      title: `欢迎使用办公室设计大师`,
+      // imageUrl: this.data.siteinfo.media + this.data.data.userinfo.photos[0],
+      path: 'pages/event/event?recommend_openid=' + this.data.userinfo.wechat_open_id
+    }
   }
 })

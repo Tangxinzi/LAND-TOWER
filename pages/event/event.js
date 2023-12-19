@@ -53,6 +53,8 @@ Page({
   },
 
   onLoad(options) {
+    wx.setStorageSync('recommend_openid', options.recommend_openid || '') // 推荐注册
+
     wx.request({
       url: `${ siteinfo.site }/land/article/catalog/1?type=json`,
       method: 'GET',
@@ -180,10 +182,10 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  onShareAppMessage(event) {
+    return {
+      title: `欢迎使用办公室设计大师`,
+      path: 'pages/event/event?recommend_openid=' + this.data.userinfo.wechat_open_id
+    }
   }
 })

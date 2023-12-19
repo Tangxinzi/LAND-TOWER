@@ -50,9 +50,10 @@ page {
 .header-user swiper-item,
 .header-user .image {
   width: 100vw;
-  height: 600px;
+  height: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .header-user .labels .label {

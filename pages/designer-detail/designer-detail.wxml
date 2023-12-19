@@ -21,7 +21,7 @@
       <towxml nodes="{{ designer.detail }}" />
     </view>
   </view>
-  <view class="character-container">
+  <view class="character-container" wx:if="{{ designer.works.length }}">
     <view class="title flex-between">
       <text>项目作品</text>
     </view>

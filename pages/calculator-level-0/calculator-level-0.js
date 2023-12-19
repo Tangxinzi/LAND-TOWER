@@ -34,6 +34,16 @@ Page({
       userinfo: wx.getStorageSync('userinfo') || {}
     })
   },
+  
+  contact() {
+    wx.openCustomerServiceChat({
+      extInfo: {
+        url: 'https://work.weixin.qq.com/kfid/kfcc165f42e757e49cb'
+      },
+      corpId: 'ww38c652abe66e0fc1',
+      success(res) {}
+    })
+  },
 
   inputChange(event) {
     if (event.currentTarget.dataset.type == 'area' && event.detail.value > 0 && event.detail.value < 150) {
@@ -70,6 +80,13 @@ Page({
           }
         }
       })
+    } else if (event.currentTarget.dataset.type == 'gongweishu') {
+      // 输入工位数
+      const dataset = event.currentTarget.dataset, multiValue = this.data.multiValue
+      this.setData({
+        [`multiValue[${ dataset.multiindex }][${ dataset.index }].number`]: parseInt(event.detail.value)
+      })
+      this.bindMultiPickerChange(event)
     } else {
       this.setData({ ['input.showPrice']: false })
       this.setData({ [ `input.${ event.currentTarget.dataset.type }` ]: parseFloat(event.detail.value) })  

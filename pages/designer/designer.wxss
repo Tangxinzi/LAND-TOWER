@@ -34,6 +34,7 @@ page {
   box-sizing: border-box;
   margin-top: 0.5em;
   font-size: 14px;
+  line-height: 18px;
   background-color: #FFF;
 }
 
@@ -45,6 +46,7 @@ page {
   word-break: keep-all;
   white-space: nowrap;
   overflow: hidden;
+  display: inline-block;
 }
 
 .lists .list .content .info {

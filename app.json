@@ -6,7 +6,7 @@
     "pages/calculator-level-00/calculator-level-0",
     "pages/calculator/calculator",
     "pages/designer/designer",
-    "pages/index/index",
+    "pages/user/user",
     "pages/logs/logs",
     "pages/detail/detail",
     "pages/mall/mall",
@@ -53,7 +53,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/user/user",
         "iconPath": "/assets/bottom-icons/tab-04.png",
         "selectedIconPath": "/assets/bottom-icons/tab-04-active.png"
       }

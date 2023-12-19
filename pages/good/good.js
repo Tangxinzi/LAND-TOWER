@@ -76,6 +76,16 @@ Page({
     })
   },
 
+  contact() {
+    wx.openCustomerServiceChat({
+      extInfo: {
+        url: 'https://work.weixin.qq.com/kfid/kfcc165f42e757e49cb'
+      },
+      corpId: 'ww38c652abe66e0fc1',
+      success(res) {}
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -34,6 +34,7 @@
     </view>
   </view>
 </view>
-<button class="button" open-type="contact">
-  联系购买
+<!-- <button class="button" open-type="contact">详情咨询</button> -->
+<button class="button" bind:tap="contact">
+  详情咨询
 </button>
