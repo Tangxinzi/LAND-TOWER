@@ -87,7 +87,7 @@ page .page-title .sub {
   margin-right: 1em;
   overflow: hidden;
   box-sizing: border-box;
-  border: 1px solid rgba(128, 128, 128, 0.1);
+  /* border: 1px solid rgba(128, 128, 128, 0.1); */
   background-color: rgba(128, 128, 128, 0.1);
 }
 
