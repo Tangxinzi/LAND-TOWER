@@ -9,7 +9,7 @@ Page({
    */
   onLoad(options) {
     wx.request({
-      url: `${ siteinfo.site }/land/article/catalog/1?type=json`,
+      url: `${ siteinfo. apiroot }/land/article/catalog/1?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {

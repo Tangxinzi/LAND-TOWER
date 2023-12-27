@@ -9,7 +9,7 @@ Page({
   
   onShow() {
     wx.request({
-      url: `${ siteinfo.site }/land/user/info?openid=${ this.data.userinfo.wechat_open_id }`,
+      url: `${ siteinfo. apiroot }/land/user/info?openid=${ this.data.userinfo.wechat_open_id }`,
       method: 'GET',
       success: (response) => {
         this.setData({ userinfo: response.data })
@@ -45,10 +45,10 @@ Page({
     wx.login({
       success: (login) => {
         wx.request({
-          url: `${ siteinfo.site }/land/user/wx-login?code=${ login.code }&recommend=${ wx.getStorageSync('recommend_openid') || '' }`,
+          url: `${ siteinfo. apiroot }/land/user/wx-login?code=${ login.code }&recommend=${ wx.getStorageSync('recommend_openid') || '' }`,
           success: (loginResponse) => {
             wx.request({
-              url: `${ siteinfo.site }/land/user/get-phone-number?code=${ e.detail.code }&openid=${ loginResponse.data.wechat_open_id }`,
+              url: `${ siteinfo. apiroot }/land/user/get-phone-number?code=${ e.detail.code }&openid=${ loginResponse.data.wechat_open_id }`,
               success: (response) => {
                 if (response.data.status == 200) {
                   loginResponse.data.phone = response.data.phoneNumber

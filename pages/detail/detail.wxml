@@ -2,10 +2,10 @@
 </mp-navigation-bar>
 <view class="page detail">
   <view class="title">{{ article.article_title }}</view>
-  <view class="info">
-    <text>{{ article.article_author }}\n{{ article.created_at }}</text>
+  <view class="info" style="font-size: 14px;">
+    <text>{{ article.article_author }} {{ article.created_at }}</text>
     <!-- <text>Share</text> -->
-    <navigator url="/pages/web/web?src={{ article.article_original_url }}">原文查看</navigator>
+    <navigator wx:if="{{ article.article_original_url }}" url="/pages/web/web?src={{ article.article_original_url }}">原文查看</navigator>
   </view>
   <view class="content">
     <!-- <rich-text nodes="{{ article.article_detail }}"></rich-text> -->

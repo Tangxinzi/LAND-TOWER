@@ -2,7 +2,7 @@
 <view class="header-user">
   <swiper circular="{{ true }}" bindchange="swiperChange">
     <swiper-item wx:for="{{ good.good_theme_url }}" wx:key="theme_url">
-      <view class="image" style="background-image: url({{ siteinfo.site + item }})"></view>      
+      <view class="image" style="background-image: url({{ siteinfo.media + item }})"></view>      
     </swiper-item>
   </swiper>
   <view wx:if="{{ current && good.good_theme_url.length }}" class="number-current">{{ current }} / {{ good.good_theme_url.length }}</view>
@@ -24,8 +24,8 @@
     </view>
     <view class="cards">
       <navigator class="card" hover-class="none" url="/pages/good/good?id={{ item.id }}" wx:for="{{ good.catalog_goods }}" wx:key="card" wx:if="{{ options.id != item.id }}">
-        <image class="" src="{{ siteinfo.site + item.good_theme_url[0] }}" mode="aspectFill" />
-        <!-- <view class="character-image" style="background-image: url({{ siteinfo.site + item.good_theme_url[0] }});"></view> -->
+        <image class="" src="{{ siteinfo.media + item.good_theme_url[0] }}" mode="aspectFill" />
+        <!-- <view class="character-image" style="background-image: url({{ siteinfo.media + item.good_theme_url[0] }});"></view> -->
         <view class="title">{{ item.good_name || '' }}</view>
         <view class="author one-line">
           {{ item.good_brand || '' }}

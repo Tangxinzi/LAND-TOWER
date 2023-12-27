@@ -40,7 +40,7 @@ Page({
 
   search() {
     wx.request({
-      url: `${ siteinfo.site }/land/search?search=${ this.data.search || '' }`,
+      url: `${ siteinfo. apiroot }/land/search?search=${ this.data.search || '' }`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -56,7 +56,7 @@ Page({
     wx.setStorageSync('recommend_openid', options.recommend_openid || '') // 推荐注册
 
     wx.request({
-      url: `${ siteinfo.site }/land/article/catalog/1?type=json`,
+      url: `${ siteinfo. apiroot }/land/article/catalog/1?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -68,7 +68,7 @@ Page({
     })
 
     wx.request({
-      url: `${ siteinfo.site }/land/designer?type=json`,
+      url: `${ siteinfo. apiroot }/land/designer?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -81,7 +81,7 @@ Page({
 
 
     wx.request({
-      url: `${ siteinfo.site }/land/good?type=json`,
+      url: `${ siteinfo. apiroot }/land/good?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -93,7 +93,7 @@ Page({
     })
 
     wx.request({
-      url: `${ siteinfo.site }/land/work/catalog/1?type=json`,
+      url: `${ siteinfo. apiroot }/land/work/catalog/1?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {

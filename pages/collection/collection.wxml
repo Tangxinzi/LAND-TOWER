@@ -11,7 +11,7 @@
   <view class="lists" wx:if="{{ type == 0 }}">
     <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.id }}" hover-class="none" wx:for="{{ data }}" wx:key="designer">
       <view class="theme">
-        <view class="theme" style="background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
+        <view class="theme" style="background-image: url({{ siteinfo.media + item.avatar_url }});"></view>
       </view>
       <view class="content designer">
         <view class="nickname" wx:for="{{ item.labels }}" wx:for-item="label" wx:key="label" wx:if="{{ index < 2 }}">{{ label }} </view>
@@ -24,7 +24,7 @@
 
   <view class="cases" wx:if="{{ type == 1 }}">
     <navigator class="list" url="/pages/cases-detail/cases-detail?id={{ item.id }}" hover-class="none" wx:for="{{ data }}" wx:key="work">
-      <view class="theme" style="background-image: url({{ siteinfo.site + item.theme_url }});"></view>
+      <view class="theme" style="background-image: url({{ siteinfo.media + item.theme_url }});"></view>
       <view class="content">
         <text class="title">{{ item.title }}</text>
         <view class="author one-line">
@@ -37,7 +37,7 @@
   <view class="goods" wx:if="{{ type == 2 }}">
     <view class="cards">
       <navigator class="card" hover-class="none" url="/pages/good/good?id={{ item.id }}" wx:for="{{ data }}" wx:key="card">
-        <image class="" src="{{ siteinfo.site + item.good_theme_url[0] }}" mode="aspectFill" />
+        <image class="" src="{{ siteinfo.media + item.good_theme_url[0] }}" mode="aspectFill" />
         <view class="title">{{ item.good_name || '' }}</view>
         <view class="author one-line">
           {{ item.good_brand || '' }}

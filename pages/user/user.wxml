@@ -4,7 +4,7 @@
   <view class="container">
     <navigator class="userinfo" hover-class="none" url="/pages/userinfo-update/userinfo-update">
       <view class="userinfo-avatar" bindtap="bindViewTap">
-        <image src="{{ userinfo.avatar_url ? siteinfo.site + userinfo.avatar_url : '/assets/icons/avatar.png' }}" mode="aspectFill" />
+        <image src="{{ userinfo.avatar_url ? siteinfo.media + userinfo.avatar_url : '/assets/icons/avatar.png' }}" mode="aspectFill" />
       </view>
       <text>{{ userinfo.nickname || '点击完善信息' }}</text>
     </navigator>

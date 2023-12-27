@@ -25,7 +25,7 @@ Page({
 
   catalog(search) {
     wx.request({
-      url: `${ siteinfo.site }/land/designer/catalog/${ this.data.type }?type=json&search=${ this.data.search || '' }`,
+      url: `${ siteinfo. apiroot }/land/designer/catalog/${ this.data.type }?type=json&search=${ this.data.search || '' }`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -46,7 +46,7 @@ Page({
   onLoad(options) {
     this.catalog()
     // wx.request({
-    //   url: `${ siteinfo.site }/land/designer?type=json`,
+    //   url: `${ siteinfo. apiroot }/land/designer?type=json`,
     //   method: 'GET',
     //   success: (response) => {
     //     if (response.data.status == 200) {

@@ -1,6 +1,6 @@
 <mp-navigation-bar ext-class="navigation-bar" title="设计师" background="#FFF"></mp-navigation-bar>
 <view class="header-user">
-  <view class="image" style="background-image: url({{ siteinfo.site + designer.avatar_url }})"></view>
+  <view class="image" style="background-image: url({{ siteinfo.media + designer.avatar_url }})"></view>
   <view class="header-info">
     <view class="flex-between" style="width: 100%;">
       <view class="nickname">{{ designer.nickname }}</view>
@@ -27,8 +27,8 @@
     </view>
     <view class="cards">
       <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}" wx:for="{{ designer.works }}" wx:key="card">
-        <image class="" src="{{ siteinfo.site + item.theme_url }}" mode="aspectFill" />
-        <view class="character-image" style="{{ siteinfo.site + item.theme_url }}"></view>
+        <image class="" src="{{ siteinfo.media + item.theme_url }}" mode="aspectFill" />
+        <view class="character-image" style="{{ siteinfo.media + item.theme_url }}"></view>
         <view class="title">{{ item.title }}</view>
         <view class="author one-line">
           <text wx:for="{{ item.labels }}" wx:key="label" wx:for-item="label">{{ label }} </text>

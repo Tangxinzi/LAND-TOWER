@@ -156,7 +156,7 @@ swiper image {
 
 .contact .content {
   font-size: 14px;
-  padding: 1em;
+  padding: 1.5em;
   width: 100%;
   box-sizing: border-box;
   color: #FFF;

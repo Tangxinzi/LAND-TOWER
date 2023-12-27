@@ -1,4 +1,4 @@
-<mp-navigation-bar ext-class="navigation-bar" title="" background="#FFF" back="{{ false }}">
+<mp-navigation-bar ext-class="navigation-bar" title="办公室设计大师" background="#FFF" back="{{ false }}">
 </mp-navigation-bar>
 <view class="search-container">
   <mp-searchbar placeholder="搜索案例名称 / 设计师 / 办公好物" bindinput="bindInput" bindclear="bindClear" throttle="800"></mp-searchbar>
@@ -46,7 +46,7 @@
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
     <navigator url="/pages/cases-detail/cases-detail?id={{ item.id }}" class="scroll-view-item_H" hover-class="none" wx:for="{{ works }}" wx:key="item">
       <view class="list-item">
-        <view class="theme" style="width: 270px; background-image: url({{ siteinfo.site + item.theme_url }});"></view>
+        <view class="theme" style="width: 270px; background-image: url({{ siteinfo.media + item.theme_url }});"></view>
         <view class="content">
           <text class="title">{{ item.title }}</text>
           <view class="author one-line">
@@ -63,7 +63,7 @@
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
     <view class="scroll-view-item_H" style="width: 160px;" wx:for="{{ designer }}" wx:key="designer">
       <navigator class="list-item" hover-class="none" url="/pages/designer-detail/designer-detail?id={{ item.id }}">
-        <view class="theme" style="background-image: url({{ siteinfo.site + item.avatar_url }});"></view>
+        <view class="theme" style="background-image: url({{ siteinfo.media + item.avatar_url }});"></view>
         <view class="content">
           <text class="title">{{ item.nickname }}</text>
           <view class="author">{{ item.labels[0] }}</view>
@@ -76,10 +76,10 @@
     <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
   </navigator>
   <view class="list-posts list-case" style="margin-bottom: 0; padding-bottom: 0; border: none;">
-    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/web/web?src={{ item.article_original_url }}">
-      <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
+    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="{{ item.target == 0 ? '/pages/web/web?src=' + item.article_original_url : '/pages/detail/detail?id=' + item.id }}">
+      <image src="{{ siteinfo.media + item.article_theme_url }}" mode="aspectFill" />
       <view class="content">
-        <text class="title">{{ index }}{{ item.article_title }}</text>
+        <text class="title">{{ item.article_title }}</text>
         <view class="author">{{ item.created_at }}</view>
       </view>
     </navigator>
@@ -94,7 +94,7 @@
   </navigator>
   <view class="list-posts list-case list-goods">
     <navigator wx:for="{{ goods }}" wx:key="good" class="list-item" hover-class="none" url="/pages/good/good?id={{ item.id }}">
-      <image src="{{ siteinfo.site + item.good_theme_url[0] }}" mode="aspectFill" />
+      <image src="{{ siteinfo.media + item.good_theme_url[0] }}" mode="aspectFill" />
       <view class="content">
         <text class="title">{{ item.good_name }}</text>
         <view class="author">{{ item.good_brand }}</view>
@@ -146,7 +146,7 @@
       </view>
       <view class="flex-between">
         <text></text>
-        <text style="text-align: right;">电子城国际电子总部 7号楼19层106</text>
+        <text style="text-align: right;">电子城国际电子总部 7号楼19层</text>
       </view>
     </view>
     <navigator url="/pages/map/map" hover-class="none">

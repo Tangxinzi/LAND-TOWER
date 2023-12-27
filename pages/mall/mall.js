@@ -33,7 +33,7 @@ Page({
 
   catalog() {
     wx.request({
-      url: `${ siteinfo.site }/land/good?type=json&search=${ this.data.search || '' }&catalog=${ this.data.options.catalog || '' }`,
+      url: `${ siteinfo. apiroot }/land/good?type=json&search=${ this.data.search || '' }&catalog=${ this.data.options.catalog || '' }`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {

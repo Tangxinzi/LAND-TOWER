@@ -50,7 +50,7 @@ Page({
       success: (login) => {
         wx.showLoading({ title: 'Loading...', mask: true })
         wx.request({
-          url: `${ siteinfo.site }/land/user/info/upload?code=${ login.code }`,
+          url: `${ siteinfo. apiroot }/land/user/info/upload?code=${ login.code }`,
           data: {
             ...this.data.userinfo
           },
@@ -62,6 +62,7 @@ Page({
               console.log(response)
               this.setData({ userinfo: response.data })
               wx.setStorageSync('userinfo', response.data)
+              wx.navigateBack()
             }
           },
           fail: (err) => {

@@ -1,7 +1,7 @@
 <mp-navigation-bar ext-class="navigation-bar" title="详情" background="#FFF">
 </mp-navigation-bar>
 <view class="header-user" wx:if="{{ work }}">
-  <view class="image" style="background-image: url({{ siteinfo.site + work.theme_url }})"></view>
+  <view class="image" style="background-image: url({{ siteinfo.media + work.theme_url }})"></view>
   <view class="header-info">
     <view class="flex-between" style="width: 100%;">
       <view class="nickname">{{ work.title }}</view>

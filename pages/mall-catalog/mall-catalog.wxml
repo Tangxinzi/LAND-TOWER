@@ -7,7 +7,7 @@
     </view>
   </view>
   <view class="lists">
-    <navigator wx:for="{{ catalogs[active].sub_catalog }}" wx:key="sub_catalog" class="list image" hover-class="none" url="/pages/mall/mall?catalog={{ item.id }}&name={{ item.name }}" style="background-image: url({{ siteinfo.site + item.theme_url }});">
+    <navigator wx:for="{{ catalogs[active].sub_catalog }}" wx:key="sub_catalog" class="list image" hover-class="none" url="/pages/mall/mall?catalog={{ item.id }}&name={{ item.name }}" style="background-image: url({{ siteinfo.media + item.theme_url }});">
       <text>{{ item.name }}</text>
     </navigator>
   </view>

@@ -1,10 +1,10 @@
 <mp-navigation-bar ext-class="navigation-bar" title="全部资讯" background="#FFF"></mp-navigation-bar>
 <view style="padding: 1em;">
   <view class="list-posts list-case">
-    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="/pages/web/web?src={{ item.article_original_url }}">
-      <image src="{{ siteinfo.site + item.article_theme_url }}" mode="aspectFill" />
+    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="{{ item.target == 0 ? '/pages/web/web?src=' + item.article_original_url : '/pages/detail/detail?id=' + item.id }}">
+      <image src="{{ siteinfo.media + item.article_theme_url }}" mode="aspectFill" />
       <view class="content">
-        <text class="title">{{ index }}{{ item.article_title }}</text>
+        <text class="title">{{ item.article_title }}</text>
         <view class="author">{{ item.created_at }}</view>
       </view>
     </navigator>

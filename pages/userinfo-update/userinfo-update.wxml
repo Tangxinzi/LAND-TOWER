@@ -1,7 +1,7 @@
 <view class="container">
   <view>
     <button class="avatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-      <image wx:if="{{ userinfo.avatar_url }}" src="{{ siteinfo.site + userinfo.avatar_url }}" mode="aspectFill" />
+      <image wx:if="{{ userinfo.avatar_url }}" src="{{ siteinfo.media + userinfo.avatar_url }}" mode="aspectFill" />
       <mp-icon wx:else icon="me" color="#666" size="40"></mp-icon>
     </button> 
     <view class="nickname">

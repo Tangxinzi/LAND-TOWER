@@ -21,7 +21,7 @@ Page({
 
   catalog() {
     wx.request({
-      url: `${ siteinfo.site }/land/good/catalog?type=json`,
+      url: `${ siteinfo. apiroot }/land/good/catalog?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {

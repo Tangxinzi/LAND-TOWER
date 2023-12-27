@@ -9,7 +9,7 @@
 
   <view class="cases">
     <navigator class="case" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}" hover-class="none" wx:for="{{ works }}" wx:key="works">
-      <view class="theme" style="background-image: url({{ siteinfo.site + item.theme_url }});"></view>
+      <view class="theme" style="background-image: url({{ siteinfo.media + item.theme_url }});"></view>
       <view class="content">
         <text class="title">{{ item.title || '' }}</text>
         <view class="info">

@@ -18,12 +18,12 @@ Page({
 
   onLoad(options) {
     wx.request({
-      url: `${ siteinfo.site }/land/good/show/${ options.id }?type=json`,
+      url: `${ siteinfo. apiroot }/land/good/show/${ options.id }?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
           response.data.data.detail = app.towxml(`${ response.data.data.detail }`, 'html', {
-            base: siteinfo.site,
+            base: siteinfo.media,
             theme: 'light',
             events: {
               tap: (e)=>{
@@ -41,7 +41,7 @@ Page({
 
   bindColl() {
     wx.request({
-      url: `${ siteinfo.site }/land/user/like/${ this.data.options.id }`,
+      url: `${ siteinfo. apiroot }/land/user/like/${ this.data.options.id }`,
       method: 'POST',
       data: {
         type: 'good',
@@ -60,7 +60,7 @@ Page({
 
   collStatus() {
     wx.request({
-      url: `${ siteinfo.site }/land/user/like/${ this.data.options.id }`,
+      url: `${ siteinfo. apiroot }/land/user/like/${ this.data.options.id }`,
       method: 'GET',
       data: {
         type: 'good',

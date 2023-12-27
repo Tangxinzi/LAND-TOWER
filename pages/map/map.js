@@ -8,8 +8,8 @@ Page({
     maker: [
       {
         id: 1,
-        longitude: "116.48124",
-        latitude: "39.99025",
+        longitude: "116.49148",
+        latitude: "39.98089",
         title: '岚图共建'
       }
     ]
