@@ -1,3 +1,5 @@
+<import src="/templates/loaders/loaders" />
+
 <mp-navigation-bar ext-class="navigation-bar" title="办公室项目分享" background="#FFF"></mp-navigation-bar>
 <mp-searchbar bindinput="bindInput" bindclear="bindClear" throttle="800"></mp-searchbar>
 
@@ -18,4 +20,7 @@
       </view>
     </navigator>
   </view>
+
+  <!-- loading... -->
+  <template data="{{ loading }}" is="spinner" />
 </view>

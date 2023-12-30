@@ -1,10 +1,12 @@
+<import src="/templates/loaders/loaders" />
+
 <mp-navigation-bar ext-class="navigation-bar" title="{{ options.name ? options.name + ' - ' : '' }}好物推荐" background="#FFF">
 </mp-navigation-bar>
 <mp-searchbar bindinput="bindInput" bindclear="bindClear" throttle="800" placeholder="输入商品 / 品牌名称"></mp-searchbar>
 
 <view class="page mall">
-  <view class="lists">
-    <navigator class="list" url="" wx:for="{{ goods }}" wx:key="data" url="/pages/good/good?id={{ item.id }}" hover-class="none">
+  <view class="lists" wx:if="{{ goods.length }}">
+    <navigator class="list" wx:for="{{ goods }}" wx:key="data" url="/pages/good/good?id={{ item.id }}" hover-class="none">
       <view class="theme">
         <image src="{{ siteinfo.media + item.good_theme_url[0] }}" mode="aspectFill" />
       </view>
@@ -15,4 +17,7 @@
       </view>
     </navigator>
   </view>
+  
+  <!-- loading... -->
+  <template data="{{ loading }}" is="spinner" />
 </view>

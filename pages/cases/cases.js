@@ -3,8 +3,10 @@ import siteinfo from '../../lib/siteinfo';
 Page({
   data: {
     siteinfo,
-    designer: [],
+    works: [],
     type: 1,
+    page: 1,
+    loading: false,
     search: ''
   },
 
@@ -25,6 +27,9 @@ Page({
 
   switch(event) {
     this.setData({
+      page: 1,
+      works: [],
+      loading: false,
       type: event.currentTarget.dataset.type
     })
 
@@ -33,11 +38,16 @@ Page({
 
   catalog(search) {
     wx.request({
-      url: `${ siteinfo. apiroot }/land/work/catalog/${ this.data.type }?type=json&search=${ this.data.search || '' }`,
+      url: `${ siteinfo. apiroot }/land/work/catalog/${ this.data.type }?type=json&search=${ this.data.search || '' }&page=${ this.data.page || 1 }`,
       method: 'GET',
       success: (response) => {
-        if (response.data.status == 200) {
-          this.setData({ works: response.data.data })
+        this.setData({ loading: false })
+        if (response.data.data.length == 0) {
+          wx.showToast({ title: '没有更多了', icon: 'none' })
+        }
+
+        if (response.data.status == 200 && response.data.data.length) {
+          this.setData({ works: [...this.data.works, ...response.data.data] })
         }
       }
     })
@@ -79,7 +89,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    this.setData({ page: this.data.page + 1, loading: true })
+    setTimeout(() => this.catalog(), 1500)
   },
 
   /**

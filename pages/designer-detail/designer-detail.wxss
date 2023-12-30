@@ -37,6 +37,7 @@
 }
 
 .header-user mp-icon {
+  padding-left: 1em;
 }
 
 .header-user .image {

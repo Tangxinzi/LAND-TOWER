@@ -27,7 +27,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50
   },
   "tabBar": {
     "color": "#707070",
