@@ -11,7 +11,7 @@
       <text class="title one-line">{{ item.good_name }}</text>
       <text class="info">办公好物</text>
     </navigator>
-    <navigator class="flex-between" hover-class="none" url="/pages/designer-detail/designer-detail?id={{ item.id }}" wx:for="{{ searchResult.designers }}" wx:key="designers">
+    <navigator class="flex-between" hover-class="none" url="/pages/desginer-detail/desginer-detail?id={{ item.id }}" wx:for="{{ searchResult.desginers }}" wx:key="desginers">
       <text class="title one-line">{{ item.nickname }}</text>
       <text class="info">设计师</text>
     </navigator>
@@ -61,8 +61,8 @@
     <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
   </view>
   <scroll-view type="list" class="list-case scroll-view_H"  scroll-x="true" bindscroll="scroll" style="width: 100%;">
-    <view class="scroll-view-item_H" style="width: 160px;" wx:for="{{ designer }}" wx:key="designer">
-      <navigator class="list-item" hover-class="none" url="/pages/designer-detail/designer-detail?id={{ item.id }}">
+    <view class="scroll-view-item_H" style="width: 160px;" wx:for="{{ desginer }}" wx:key="desginer">
+      <navigator class="list-item" hover-class="none" url="/pages/desginer-detail/desginer-detail?id={{ item.id }}">
         <view class="theme" style="background-image: url({{ siteinfo.media + item.avatar_url }});"></view>
         <view class="content">
           <text class="title">{{ item.nickname }}</text>

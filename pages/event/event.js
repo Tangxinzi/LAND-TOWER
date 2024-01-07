@@ -22,7 +22,7 @@ Page({
       },
     ],
     works: [],
-    designer: {},
+    desginer: {},
     articles: {},
     goods: {},
     search: '',
@@ -68,12 +68,12 @@ Page({
     })
 
     wx.request({
-      url: `${ siteinfo. apiroot }/land/designer?type=json`,
+      url: `${ siteinfo. apiroot }/land/desginer?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
           this.setData({
-            designer: response.data.data
+            desginer: response.data.data
           })
         }
       }
@@ -118,7 +118,7 @@ Page({
         break;
       case '设计师':
         wx.switchTab({
-          url: '/pages/designer/designer'
+          url: '/pages/desginer/desginer'
         })
         break;
       case '办公好物':

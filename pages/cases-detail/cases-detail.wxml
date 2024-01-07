@@ -9,7 +9,7 @@
     </view>
   </view>
 </view>
-<view class="page designer-detail">
+<view class="page desginer-detail">
   <view class="header">
     <view class="detail">
       <!-- <text>{{ work.introduction || '' }}\n</text> -->

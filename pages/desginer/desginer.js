@@ -3,7 +3,7 @@ import siteinfo from '../../lib/siteinfo';
 Page({
   data: {
     siteinfo,
-    designer: [],
+    desginer: [],
     type: 1,
     page: 1,
     loading: false,
@@ -27,7 +27,7 @@ Page({
 
   catalog(search) {
     wx.request({
-      url: `${ siteinfo. apiroot }/land/designer/catalog/${ this.data.type }?type=json&search=${ this.data.search || '' }&page=${ this.data.page || 1 }`,
+      url: `${ siteinfo. apiroot }/land/desginer/catalog/${ this.data.type }?type=json&search=${ this.data.search || '' }&page=${ this.data.page || 1 }`,
       method: 'GET',
       success: (response) => {
         this.setData({ loading: false })
@@ -35,7 +35,7 @@ Page({
           wx.showToast({ title: '没有更多了', icon: 'none' })
         }
         if (response.data.status == 200 && response.data.data.length) {
-          this.setData({ designer: [...this.data.designer, ...response.data.data] })
+          this.setData({ desginer: [...this.data.desginer, ...response.data.data] })
         }
       }
     })
@@ -44,7 +44,7 @@ Page({
   switch(event) {
     this.setData({
       page: 1,
-      designer: [],
+      desginer: [],
       loading: false,
       type: event.currentTarget.dataset.type
     })
@@ -55,11 +55,11 @@ Page({
   onLoad(options) {
     this.catalog()
     // wx.request({
-    //   url: `${ siteinfo. apiroot }/land/designer?type=json`,
+    //   url: `${ siteinfo. apiroot }/land/desginer?type=json`,
     //   method: 'GET',
     //   success: (response) => {
     //     if (response.data.status == 200) {
-    //       this.setData({ designer: response.data.data })
+    //       this.setData({ desginer: response.data.data })
     //     }
     //   }
     // })

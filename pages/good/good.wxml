@@ -18,7 +18,7 @@
       <towxml nodes="{{ good.detail }}" />
     </view>
   </view>
-  <view class="character-container">
+  <view class="character-container" wx:if="{{ good.catalog_goods.length - 1 }}">
     <view class="title flex-between">
       <text>相关推荐</text>
     </view>

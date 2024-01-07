@@ -9,11 +9,11 @@
   </view>
 
   <view class="lists" wx:if="{{ type == 0 }}">
-    <navigator class="list" url="/pages/designer-detail/designer-detail?id={{ item.id }}" hover-class="none" wx:for="{{ data }}" wx:key="designer">
+    <navigator class="list" url="/pages/desginer-detail/desginer-detail?id={{ item.id }}" hover-class="none" wx:for="{{ data }}" wx:key="desginer">
       <view class="theme">
         <view class="theme" style="background-image: url({{ siteinfo.media + item.avatar_url }});"></view>
       </view>
-      <view class="content designer">
+      <view class="content desginer">
         <view class="nickname" wx:for="{{ item.labels }}" wx:for-item="label" wx:key="label" wx:if="{{ index < 2 }}">{{ label }} </view>
         <view class="info">
           <text>{{ item.nickname }}</text>

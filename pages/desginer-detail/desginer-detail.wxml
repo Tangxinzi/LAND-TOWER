@@ -1,32 +1,32 @@
 <mp-navigation-bar ext-class="navigation-bar" title="设计师" background="#FFF"></mp-navigation-bar>
 <view class="header-user">
-  <view class="image" style="background-image: url({{ siteinfo.media + designer.avatar_url }})"></view>
+  <view class="image" style="background-image: url({{ siteinfo.media + desginer.avatar_url }})"></view>
   <view class="header-info">
     <view class="flex-between" style="width: 100%;">
-      <view class="nickname">{{ designer.nickname }}</view>
+      <view class="nickname">{{ desginer.nickname }}</view>
       <mp-icon bind:tap="bindColl" type="{{ coll.status ? 'field' : 'outline' }}" icon="like" color="{{ coll.status ? 'red' : '#FFF' }}" size="28"></mp-icon>
     </view>
-    <view class="labels" wx:if="{{ designer.labels.length }}">
-      <text wx:for="{{ designer.labels }}" wx:key="label">{{ item }}</text>
+    <view class="labels" wx:if="{{ desginer.labels.length }}">
+      <text wx:for="{{ desginer.labels }}" wx:key="label">{{ item }}</text>
     </view>
   </view>
 </view>
-<view class="page designer-detail">
+<view class="page desginer-detail">
   <view class="header">
     <view class="detail">
       <!-- <view class="labels">
-        标签：<text wx:for="{{ designer.labels }}" wx:key="label" wx:if="{{ index < 3 }}">{{ item }}</text>
+        标签：<text wx:for="{{ desginer.labels }}" wx:key="label" wx:if="{{ index < 3 }}">{{ item }}</text>
       </view> -->
-      <!-- <text>{{ designer.detail }}</text> -->
-      <towxml nodes="{{ designer.detail }}" />
+      <!-- <text>{{ desginer.detail }}</text> -->
+      <towxml nodes="{{ desginer.detail }}" />
     </view>
   </view>
-  <view class="character-container" wx:if="{{ designer.works.length }}">
+  <view class="character-container" wx:if="{{ desginer.works.length }}">
     <view class="title flex-between">
       <text>项目作品</text>
     </view>
     <view class="cards">
-      <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}" wx:for="{{ designer.works }}" wx:key="card">
+      <navigator class="card" hover-class="none" url="/pages/cases-detail/cases-detail?id={{ item.id }}" wx:for="{{ desginer.works }}" wx:key="card">
         <image class="" src="{{ siteinfo.media + item.theme_url }}" mode="aspectFill" />
         <view class="character-image" style="{{ siteinfo.media + item.theme_url }}"></view>
         <view class="title">{{ item.title }}</view>

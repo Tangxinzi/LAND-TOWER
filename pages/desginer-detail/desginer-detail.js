@@ -6,12 +6,12 @@ Page({
     siteinfo,
     userinfo: wx.getStorageSync('userinfo') || {},
     coll: {},
-    designer: {}
+    desginer: {}
   },
 
   fetch(options) {
     wx.request({
-      url: `${ siteinfo. apiroot }/land/designer/show/${ options.id }?type=json`,
+      url: `${ siteinfo. apiroot }/land/desginer/show/${ options.id }?type=json`,
       method: 'GET',
       success: (response) => {
         if (response.data.status == 200) {
@@ -25,7 +25,7 @@ Page({
             }
           })
           
-          this.setData({ designer: response.data.data, options })
+          this.setData({ desginer: response.data.data, options })
           this.collStatus()
         }
       }
@@ -37,7 +37,7 @@ Page({
       url: `${ siteinfo. apiroot }/land/user/like/${ this.data.options.id }`,
       method: 'GET',
       data: {
-        type: 'designer',
+        type: 'desginer',
         openid: this.data.userinfo.wechat_open_id,
       },
       success: (response) => {
@@ -59,7 +59,7 @@ Page({
       url: `${ siteinfo. apiroot }/land/user/like/${ this.data.options.id }`,
       method: 'POST',
       data: {
-        type: 'designer',
+        type: 'desginer',
         openid: this.data.userinfo.wechat_open_id,
       },
       success: (response) => {

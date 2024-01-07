@@ -31,7 +31,7 @@ Page({
   },
 
   fetch(search) {
-    const type = ['designer', 'work', 'good']
+    const type = ['desginer', 'work', 'good']
     wx.request({
       url: `${ siteinfo. apiroot }/land/user/collection?openid=${ this.data.userinfo.wechat_open_id }&type=${ type[this.data.type] }&search=${ this.data.search || '' }`,
       method: 'GET',
