@@ -1,4 +1,6 @@
-<mp-navigation-bar ext-class="navigation-bar" title="设计师" background="#FFF"></mp-navigation-bar>
+<mp-navigation-bar ext-class="navigation-bar" title="设计师" back="{{ false }}" background="#FFF">
+  <mp-icon slot="left" bind:tap="barLeft" icon="{{ (option.scene == 1001 || option.scene == 1005 || option.scene == 1006) ? 'back' : 'home' }}" size="{{ option.scene == 1001 || option.scene == 1005 || option.scene == 1006 ? '12' : '28' }}" color="#000" />
+</mp-navigation-bar>
 <view class="header-user">
   <view class="image" style="background-image: url({{ siteinfo.media + desginer.avatar_url }})"></view>
   <view class="header-info">

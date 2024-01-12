@@ -16,10 +16,14 @@ Page({
         text: '计算器',
         icon: '/assets/icons/shouye-jisuanqi.png'
       },
+      // {
+      //   text: '联系我们',
+      //   icon: '/assets/icons/shouye-guanzhuwomen.png'
+      // },
       {
-        text: '联系我们',
-        icon: '/assets/icons/shouye-guanzhuwomen.png'
-      },
+        text: '好物分享',
+        icon: '/assets/icons/shouye-haowushangcheng.png'
+      }
     ],
     works: [],
     desginer: {},
@@ -123,12 +127,17 @@ Page({
         break;
       case '办公好物':
         wx.navigateTo({
-          url: '/pages/mall/mall'
+          url: '/pages/mall-catalog/mall-catalog'
         })
         break;
       case '计算器':
         wx.switchTab({
           url: '/pages/calculator-level-0/calculator-level-0'
+        })
+        break;
+      case '好物分享':
+        wx.navigateTo({
+          url: '/pages/mall-catalog/mall-catalog'
         })
         break;
       case '联系我们':

@@ -46,6 +46,16 @@ Page({
   },
 
   updateUserinfo() {
+    if (!this.data.userinfo.nickname) {
+      wx.showToast({ title: '昵称不能为空', icon: 'none' })
+      return
+    }
+
+    if (!this.data.userinfo.avatar_url) {
+      wx.showToast({ title: '您还未上传头像', icon: 'none' })
+      return
+    }
+
     wx.login({
       success: (login) => {
         wx.showLoading({ title: 'Loading...', mask: true })

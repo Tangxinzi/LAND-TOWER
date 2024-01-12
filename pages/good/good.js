@@ -40,6 +40,21 @@ Page({
   },
 
   bindColl() {
+    if (!this.data.userinfo.wechat_open_id) {
+      wx.showModal({
+        title: '提示',
+        content: '您当前尚未登录，无法进行操作哦',
+        confirmText: '去登录',
+        complete: (res) => {
+          if (res.confirm) {
+            wx.switchTab({ url: '/pages/user/user' })
+          }
+        }
+      })
+
+      return
+    }
+
     wx.request({
       url: `${ siteinfo. apiroot }/land/user/like/${ this.data.options.id }`,
       method: 'POST',

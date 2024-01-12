@@ -1,6 +1,6 @@
 <import src="/templates/loaders/loaders" />
 
-<mp-navigation-bar ext-class="navigation-bar" title="{{ options.name ? options.name + ' - ' : '' }}好物推荐" background="#FFF">
+<mp-navigation-bar ext-class="navigation-bar" title="{{ options.name ? options.name + ' - ' : '' }}好物分享" background="#FFF">
 </mp-navigation-bar>
 <mp-searchbar bindinput="bindInput" bindclear="bindClear" throttle="800" placeholder="输入商品 / 品牌名称"></mp-searchbar>
 

@@ -5,6 +5,7 @@ Page({
   data: {
     siteinfo,
     userinfo: wx.getStorageSync('userinfo') || {},
+    option: {},
     coll: {},
     desginer: {}
   },
@@ -32,6 +33,15 @@ Page({
     })
   },
 
+  barLeft() {
+    const options = this.data.options
+    if (options.scene == '1001' || options.scene == '1005' || options.scene == '1006') {
+      wx.navigateBack()
+    } else {
+      wx.switchTab({ url: '/pages/desginer/desginer' })
+    }
+  },
+
   collStatus() {
     wx.request({
       url: `${ siteinfo. apiroot }/land/user/like/${ this.data.options.id }`,
@@ -51,10 +61,28 @@ Page({
   },
 
   onLoad(options) {
+    const option = wx.getLaunchOptionsSync()
+    console.log(option);
+    this.setData({ option })
     this.fetch(options)
   },
 
   bindColl() {
+    if (!this.data.userinfo.wechat_open_id) {
+      wx.showModal({
+        title: '提示',
+        content: '您当前尚未登录，无法进行操作哦',
+        confirmText: '去登录',
+        complete: (res) => {
+          if (res.confirm) {
+            wx.switchTab({ url: '/pages/user/user' })
+          }
+        }
+      })
+
+      return
+    }
+
     wx.request({
       url: `${ siteinfo. apiroot }/land/user/like/${ this.data.options.id }`,
       method: 'POST',
