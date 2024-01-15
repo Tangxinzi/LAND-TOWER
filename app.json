@@ -21,7 +21,8 @@
     "pages/information/information",
     "pages/good/good",
     "pages/web/web",
-    "pages/back/back"
+    "pages/back/back",
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "light",

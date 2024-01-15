@@ -3,7 +3,7 @@
   "projectname": "LAND%26TOWER",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": false
+    "urlCheck": true
   },
   "libVersion": "3.2.4"
 }

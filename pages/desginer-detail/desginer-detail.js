@@ -52,9 +52,7 @@ Page({
       },
       success: (response) => {
         if (response.data.status == 200) {
-          this.setData({
-            coll: response.data.data
-          })
+          this.setData({ coll: response.data.data })
         }
       }
     })
@@ -93,6 +91,7 @@ Page({
       success: (response) => {
         if (response.data.status == 200) {
           this.collStatus()
+          wx.vibrateShort()
         }
       }
     })

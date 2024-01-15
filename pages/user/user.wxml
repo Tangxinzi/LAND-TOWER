@@ -29,7 +29,8 @@
       <text>联系客服</text>
       <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>
     </button>
-    <mp-cell value="关于我们" bind:tap="navigator" data-url="/pages/map/map" link></mp-cell>
+    <mp-cell value="办公装修咨询" bind:tap="navigator" data-url="/pages/feedback/feedback" link />
+    <mp-cell value="关于我们" bind:tap="navigator" data-url="/pages/map/map" link />
     <!-- <mp-cell value="关注公众号" link></mp-cell> -->
   </mp-cells>
 </view>

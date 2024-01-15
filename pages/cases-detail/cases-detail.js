@@ -77,6 +77,7 @@ Page({
       success: (response) => {
         if (response.data.status == 200) {
           this.collStatus()
+          wx.vibrateShort()
         }
       }
     })

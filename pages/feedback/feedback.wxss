@@ -1,0 +1,20 @@
+@import '../calculator-level-0/calculator-level-0.wxss';
+
+.input.center {
+  display: flex; 
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.input.center input {
+  width: 70%;
+}
+
+.picker .td.textarea {
+  margin-top: 0.5em;
+}
+
+.picker .td.textarea, .picker .td.textarea textarea {
+  width: 100%;
+  text-align: left;
+}
