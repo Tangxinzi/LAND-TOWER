@@ -384,4 +384,10 @@ Page({
   reload() {
     wx.reLaunch({ url: '/pages/calculator-level-0/calculator-level-0' })
   },
+
+  onShareTimeline() {
+    return {
+      title: '办公室设计大师'
+    }
+  }
 })

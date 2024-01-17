@@ -25,6 +25,7 @@ Page({
         icon: '/assets/icons/shouye-haowushangcheng.png'
       }
     ],
+    banner: [],
     works: [],
     desginer: {},
     articles: {},
@@ -58,6 +59,18 @@ Page({
 
   onLoad(options) {
     wx.setStorageSync('recommend_openid', options.recommend_openid || '') // 推荐注册
+
+    wx.request({
+      url: `${ siteinfo. apiroot }/land/article/catalog/2?type=json`,
+      method: 'GET',
+      success: (response) => {
+        if (response.data.status == 200) {
+          this.setData({
+            banner: response.data.data
+          })
+        }
+      }
+    })
 
     wx.request({
       url: `${ siteinfo. apiroot }/land/article/catalog/1?type=json`,
@@ -195,6 +208,12 @@ Page({
     return {
       title: `欢迎使用办公室设计大师`,
       path: 'pages/event/event?recommend_openid=' + this.data.userinfo.wechat_open_id
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '办公室设计大师'
     }
   }
 })

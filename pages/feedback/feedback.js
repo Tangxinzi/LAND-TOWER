@@ -28,9 +28,15 @@ Page({
       return
     }
 
+    if (this.data.input.phone) {
+      if (!(/^1[0-9]{10}$/.test(this.data.input.phone))) {
+        wx.showToast({ title: '手机号格式有误', icon: 'none' })
+        return
+      }
+    }
+    
     wx.request({
       url: `${ siteinfo.apiroot }/land/feedback/submit?openid=${ this.data.userinfo.wechat_open_id || '' }`,
-      // url: `http://0.0.0.0:4444/land/feedback/submit?openid=${ this.data.userinfo.wechat_open_id || '' }`,
       method: 'POST',
       data: this.data.input,
       success: (response) => {

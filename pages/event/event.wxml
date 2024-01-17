@@ -22,10 +22,12 @@
   </view>
 </view>
 <swiper indicator-dots="{{ true }}" autoplay="{{ true }}" interval="3000" duration="500" circular="{{ true }}">
-    <swiper-item>
-      <image src="/assets/images/header-03.png" mode="aspectFill" />
+    <swiper-item wx:for="{{ banner }}" wx:key="banner">
+      <navigator hover-class="none" url="{{ item.target == 0 ? '/pages/web/web?src=' + item.article_original_url : '' }}{{ item.target == 1 ? '/pages/detail/detail?id=' + item.id : '' }}{{ item.target == 1000 ? '' : '' }}">
+        <image src="{{ siteinfo.media + item.article_theme_url }}" mode="aspectFill" />
+      </navigator>
     </swiper-item>
-    <swiper-item>
+    <swiper-item wx:if="{{ banner.length == 0 }}">
       <image src="/assets/images/header-04.png" mode="aspectFill" />
     </swiper-item>
 </swiper>
@@ -76,7 +78,7 @@
     <mp-icon icon="arrow" size="14" color="#FFF"></mp-icon>
   </navigator>
   <view class="list-posts list-case" style="margin-bottom: 0; padding-bottom: 0; border: none;">
-    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="{{ item.target == 0 ? '/pages/web/web?src=' + item.article_original_url : '/pages/detail/detail?id=' + item.id }}">
+    <navigator wx:for="{{ articles }}" wx:key="articles" class="list-item" hover-class="none" url="{{ item.target == 0 ? '/pages/web/web?src=' + item.article_original_url : '' }}{{ item.target == 1 ? '/pages/detail/detail?id=' + item.id : '' }}{{ item.target == 1000 ? '' : '' }}">
       <image src="{{ siteinfo.media + item.article_theme_url }}" mode="aspectFill" />
       <view class="content">
         <text class="title">{{ item.article_title }}</text>

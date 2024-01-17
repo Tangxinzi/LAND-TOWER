@@ -110,5 +110,11 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  onShareTimeline() {
+    return {
+      title: '办公室设计大师'
+    }
   }
 })

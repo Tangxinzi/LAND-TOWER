@@ -90,5 +90,11 @@ Page({
       // imageUrl: this.data.siteinfo.media + this.data.data.userinfo.photos[0],
       path: 'pages/event/event?recommend_openid=' + this.data.userinfo.wechat_open_id
     }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '办公室设计大师'
+    }
   }
 })
