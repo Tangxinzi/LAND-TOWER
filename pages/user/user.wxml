@@ -29,16 +29,24 @@
       <text>联系客服</text>
       <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>
     </button>
-    <mp-cell value="办公装修咨询" bind:tap="navigator" data-url="/pages/feedback/feedback" link />
-    <mp-cell value="关于我们" bind:tap="navigator" data-url="/pages/map/map" link />
+    <view class="navigate button flex-between" bind:tap="navigator" data-url="/pages/feedback/feedback">
+      <text>办公装修咨询</text>
+      <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>
+    </view>
+    <view class="navigate button flex-between" bind:tap="navigator" data-url="/pages/web/web?src=https://mp.weixin.qq.com/s/tsQgiwDzWRfwORYHMgTh8g">
+      <text>关于我们</text>
+      <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>
+    </view>
+    <!-- <mp-cell value="办公装修咨询" link />
+    <mp-cell value="关于我们" bind:tap="navigator" data-url="/pages/web/web?src=https://mp.weixin.qq.com/s/tsQgiwDzWRfwORYHMgTh8g" link /> -->
     <!-- <mp-cell value="关注公众号" link></mp-cell> -->
   </mp-cells>
 </view>
 <view class="login" wx:else>
   <view class="container" style="justify-content: space-around;">
     <view class="logo">
-      <image src="/assets/icons/avatar.png" mode="" />
-      <view>办公室设计大师</view>
+      <image src="/assets/logo.png" mode="" />
+      <view>办公设计大师</view>
     </view>
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号登录</button>
   </view>

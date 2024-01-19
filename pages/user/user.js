@@ -79,14 +79,14 @@ Page({
   onShareAppMessage(event) {
     if (event.from == 'button') {
       return {
-        title: `欢迎使用办公室设计大师`,
+        title: `欢迎使用办公设计大师`,
         // imageUrl: this.data.siteinfo.media + this.data.data.userinfo.photos[0],
         path: 'pages/event/event?recommend_openid=' + this.data.userinfo.wechat_open_id
       }
     }
 
     return {
-      title: `欢迎使用办公室设计大师`,
+      title: `欢迎使用办公设计大师`,
       // imageUrl: this.data.siteinfo.media + this.data.data.userinfo.photos[0],
       path: 'pages/event/event?recommend_openid=' + this.data.userinfo.wechat_open_id
     }
@@ -94,7 +94,7 @@ Page({
 
   onShareTimeline() {
     return {
-      title: '办公室设计大师'
+      title: '办公设计大师'
     }
   }
 })

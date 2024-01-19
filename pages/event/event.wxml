@@ -1,4 +1,4 @@
-<mp-navigation-bar ext-class="navigation-bar" title="办公室设计大师" background="#FFF" back="{{ false }}">
+<mp-navigation-bar ext-class="navigation-bar" title="办公设计大师" background="#FFF" back="{{ false }}">
 </mp-navigation-bar>
 <view class="search-container">
   <mp-searchbar placeholder="搜索案例名称 / 设计师 / 办公好物" bindinput="bindInput" bindclear="bindClear" throttle="800"></mp-searchbar>
@@ -135,7 +135,7 @@
         <text>周一到周五 9:00-18:00</text>
       </view>
       <view class="flex-between">
-        <text>联系方式服务：</text>
+        <text>联系方式：</text>
         <text>13810085564</text>
       </view>
       <view class="flex-between">

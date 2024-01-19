@@ -152,8 +152,9 @@ page {
 }
 
 .button {
-  background-color: #009600;
-  color: #FFF;
+  background-color: #ffcc00;
+  /* color: #FFF; */
+  font-weight: 400;
   padding: 1em 1em 1.5em 1em;
   position: fixed;
   bottom: 0;

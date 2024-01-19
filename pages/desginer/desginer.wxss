@@ -86,6 +86,6 @@ page {
 }
 
 .labels text.active {
-  color: #65b55c;
-  border-bottom: 2px solid #65b55c;
+  color: #000;
+  border-bottom: 2px solid #ffcc00;
 }

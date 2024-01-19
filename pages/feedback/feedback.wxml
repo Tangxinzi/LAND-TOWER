@@ -16,7 +16,7 @@
     <view class="picker">
       <text class="td">联系电话<text style="color: rgb(238, 93, 93);"> *</text></text>
       <view class="td center input">
-        <input class="text-right" type="number" value="{{ input.phone || '' }}" data-type="phone" bindblur="inputChange" placeholder="请输入完整座机或手机号" />
+        <input class="text-right" type="number" value="{{ input.number || '' }}" data-type="number" bindblur="inputChange" placeholder="请输入完整座机或手机号" />
       </view>
     </view>
     <view class="picker">
@@ -63,6 +63,6 @@
     </view>
   </view>
   <view class="calcs">
-    <view class="calc" bind:tap="submit" style="flex: 1; background-color: #009600;">提交</view>
+    <view class="calc" bind:tap="submit" style="flex: 1; background-color: #ffcc00;">提交</view>
   </view>
 </view>

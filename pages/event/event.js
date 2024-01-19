@@ -206,14 +206,14 @@ Page({
 
   onShareAppMessage(event) {
     return {
-      title: `欢迎使用办公室设计大师`,
+      title: `欢迎使用办公设计大师`,
       path: 'pages/event/event?recommend_openid=' + this.data.userinfo.wechat_open_id
     }
   },
 
   onShareTimeline() {
     return {
-      title: '办公室设计大师'
+      title: '办公设计大师'
     }
   }
 })

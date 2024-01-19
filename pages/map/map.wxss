@@ -5,10 +5,10 @@
 
 .contact .content {
   font-size: 14px;
-  padding: 1.5em;
+  padding: 12px;
   width: 100%;
   box-sizing: border-box;
-  color: #FFF;
+  color: #000;
 }
 
 .contact .content .flex-between {

@@ -53,7 +53,9 @@ page {
 .calc {
   flex: 1;
   padding: 1em;
-  text-align: center; background-color: grey; color: #FFF;
+  text-align: center; 
+  background-color: grey; 
+  /* color: #FFF; */
 }
 
 .flex-between {

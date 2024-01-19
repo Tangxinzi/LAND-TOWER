@@ -19,7 +19,7 @@
 
 .catalogs .catalog.active text {
   padding-bottom: 3px;
-  border-bottom: 2px solid #009600;
+  border-bottom: 2px solid #ffcc00;
 }
 
 .lists {

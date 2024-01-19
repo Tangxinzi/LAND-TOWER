@@ -114,7 +114,7 @@ Page({
 
   onShareTimeline() {
     return {
-      title: '办公室设计大师'
+      title: '办公设计大师'
     }
   }
 })

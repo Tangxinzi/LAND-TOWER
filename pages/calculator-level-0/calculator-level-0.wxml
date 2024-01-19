@@ -38,11 +38,11 @@
       </view>
       <view class="picker right flex-between">
         <view>建议面积</view>
-        <text style="color: {{ countArea > input.area ? '#9a9a9a' : '#009600' }}">{{ countArea || '0.00' }}㎡</text>
+        <text style="color: {{ countArea > input.area ? '#9a9a9a' : '#ffcc00' }}">{{ countArea || '0.00' }}㎡</text>
       </view>
       <view class="picker right flex-between">
         <view>预估总价</view>
-        <text data-value="{{ estimatedNumber[0] + estimatedNumber[1] + estimatedNumber[2] }}" style="color: {{ estimatedNumber[3] != count ? '#9a9a9a' : '#009600;' }}">¥{{ count || '0.00' }}</text>
+        <text data-value="{{ estimatedNumber[0] + estimatedNumber[1] + estimatedNumber[2] }}" style="color: {{ estimatedNumber[3] != count ? '#9a9a9a' : '#ffcc00;' }}">¥{{ count || '0.00' }}</text>
       </view>
     </block>
     <block wx:else>
@@ -134,7 +134,7 @@
   </view>
   <view class="calcs">
     <navigator url=""></navigator>
-    <view class="calc" bind:tap="reload" style="flex: 1; background-color: #025402;">重置计算器</view>
-    <view class="calc" bind:tap="calcPrice" style="flex: 3; background-color: #009600;">计算预估总价</view>
+    <view class="calc" bind:tap="reload" style="flex: 1; background-color: #ffe399;">重置计算器</view>
+    <view class="calc" bind:tap="calcPrice" style="flex: 3; background-color: #ffcc00;">计算预估总价</view>
   </view>
 </view>
