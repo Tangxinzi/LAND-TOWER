@@ -27,3 +27,5 @@
     <towxml nodes="{{ work.detail }}" />
   </view>
 </view>
+
+<navigator class="button" url="/pages/feedback/feedback">留下联系方式，咨询案例详情</navigator>

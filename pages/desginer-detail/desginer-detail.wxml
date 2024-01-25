@@ -39,3 +39,5 @@
     </view>
   </view>
 </view>
+
+<navigator class="button" url="/pages/feedback/feedback">留下联系方式，咨询合作</navigator>

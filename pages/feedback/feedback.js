@@ -23,13 +23,13 @@ Page({
       return
     }
 
-    if (!this.data.input.phone) {
+    if (!this.data.input.number) {
       wx.showToast({ title: '请输入完整座机或手机号', icon: 'none' })
       return
     }
 
-    if (this.data.input.phone) {
-      if (!(/^1[0-9]{10}$/.test(this.data.input.phone))) {
+    if (this.data.input.number) {
+      if (!(/^1[0-9]{10}$/.test(this.data.input.number))) {
         wx.showToast({ title: '手机号格式有误', icon: 'none' })
         return
       }

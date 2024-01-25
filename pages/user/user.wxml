@@ -19,6 +19,13 @@
         <text>消息</text>
       </view>
     </view>
+    <view class="navigate button contact flex-between" bind:tap="navigator" data-url="/pages/feedback/feedback">
+      <view>
+        <view style="font-weight: 600; font-size: 15px;">办公装修咨询</view>
+        <text style="font-size: 13.5px;">留下联系方式，我们与您联系</text>
+      </view>
+      <view class="button">去咨询</view>
+    </view>
   </view>
   <mp-cells>
     <button class="navigate button flex-between" open-type="share">
@@ -29,10 +36,6 @@
       <text>联系客服</text>
       <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>
     </button>
-    <view class="navigate button flex-between" bind:tap="navigator" data-url="/pages/feedback/feedback">
-      <text>办公装修咨询</text>
-      <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>
-    </view>
     <view class="navigate button flex-between" bind:tap="navigator" data-url="/pages/web/web?src=https://mp.weixin.qq.com/s/tsQgiwDzWRfwORYHMgTh8g">
       <text>关于我们</text>
       <mp-icon icon="arrow" size="13" color="rgba(0, 0, 0, 0.3)"></mp-icon>

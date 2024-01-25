@@ -8,6 +8,7 @@ Page({
       [
         {area: 0, number: 0, text: '工位数', value: 0},
         {area: 0, number: 0, text: '独立办公室', value: 0},
+        {area: 0, number: 0, text: '4人洽谈间', value: 0},
         {area: 0, number: 0, text: '8人会议室', value: 0},
         {area: 0, number: 0, text: '14人会议室', value: 0},
         {area: 0, number: 0, text: '20人会议室', value: 0},
@@ -165,6 +166,11 @@ Page({
         value = 1400 * area * unit;
         flag = unit <= 18
         break;
+      case '4人洽谈间':
+        area = this.getAreaBetween(arrayValue.text);
+        value = 2600 * area * unit;
+        flag = unit <= 26
+        break;
       case '8人会议室':
         area = this.getAreaBetween(arrayValue.text);
         value = 2600 * area * unit;
@@ -237,6 +243,9 @@ Page({
       case '独立办公室':
         area = [15.6, 15.6, 15.6, 15.6]
         break;
+      case '4人洽谈间':
+        area = [7.8, 7.8, 7.8, 7.8]
+        break;
       case '8人会议室':
         area = [15.6, 15.6, 15.6, 15.6]
         break;
@@ -290,6 +299,9 @@ Page({
             break;
           case '等候座位':
             estimatedNumber[0] += value * 0.25, estimatedNumber[1] += value * 0.25, estimatedNumber[2] += value * 0.5;
+            break;
+          case '4人洽谈间':
+            estimatedNumber[0] += value * 0.3, estimatedNumber[1] += value * 0.17, estimatedNumber[2] += value * 0.53;
             break;
           case '8人会议室':
             estimatedNumber[0] += value * 0.3, estimatedNumber[1] += value * 0.17, estimatedNumber[2] += value * 0.53;

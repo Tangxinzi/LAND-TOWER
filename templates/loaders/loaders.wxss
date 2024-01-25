@@ -8,7 +8,7 @@
 
 .spinner > view {
   margin: 0 1px;
-  background-color: #ffcc0077;
+  background-color: #ffcc3377;
   height: 100%;
   width: 4px;
   display: inline-block;

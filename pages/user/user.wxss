@@ -93,3 +93,19 @@ page {
   padding: 12px 16px;
   font-size: 14px;
 }
+
+.navigate.button.contact {
+  width: calc(100% - 64px) !important;
+  margin: 1em 1em 0;
+  padding: 1em;
+  border-radius: 8px;
+  background-color: #ffcc33;
+}
+
+.navigate.button.contact .button {
+  color: #ffcc33;
+  background-color: #000;
+  padding: 0.7em 1em;
+  border-radius: 10px;
+  font-size: 14px;
+}

@@ -11,6 +11,7 @@
 }
 
 .catalogs .catalog {
+  position: relative;
   display: block;
   padding: 1em;
   font-size: 14px;
@@ -18,8 +19,17 @@
 }
 
 .catalogs .catalog.active text {
-  padding-bottom: 3px;
-  border-bottom: 2px solid #ffcc00;
+  position: relative;
+}
+
+.catalogs .catalog.active text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  border-bottom: 10.5px solid #ffcc33cc;
+  z-index: -1;
 }
 
 .lists {

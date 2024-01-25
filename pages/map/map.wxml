@@ -1,7 +1,7 @@
 <mp-navigation-bar ext-class="navigation-bar" title="联系我们" background="#FFF">
 </mp-navigation-bar>
 <view class="contact">
-  <view class="content" style="position: absolute;">
+  <!-- <view class="content" style="position: absolute;">
     <view class="flex-between">
       <text>在线时间：</text>
       <text>周一到周五 9:00-18:00</text>
@@ -22,7 +22,7 @@
       <text></text>
       <text style="text-align: right;">电子城国际电子总部 7号楼19层</text>
     </view>
-  </view>
+  </view> -->
   <navigator url="/pages/map/map" hover-class="none">
     <image style="width: 100%;" src="/assets/images/contact-us-01.png" mode="widthFix" />
   </navigator>

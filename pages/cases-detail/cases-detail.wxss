@@ -1,5 +1,5 @@
 .page {
-  padding: 30px 35px;
+  padding: 30px 35px 100px;
 }
 
 .header-user {
@@ -120,4 +120,18 @@
   width: 100%;
   border-radius: 0;
   height: 160px;
+}
+
+.button {
+  background-color: #ffcc33;
+  /* color: #FFF; */
+  font-weight: 400;
+  padding: 1em 1em 1.5em 1em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100% !important;
+  border-radius: 0;
+  text-align: center;
+  box-sizing: border-box;
 }

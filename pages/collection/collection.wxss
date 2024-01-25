@@ -122,14 +122,20 @@ page {
 }
 
 .labels text {
+  position: relative;
   font-size: 14px;
   margin-right: 20px;
   padding-bottom: 4px;
 }
 
-.labels text.active {
-  color: #000;
-  border-bottom: 2px solid #ffcc00;
+.labels text.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  border-bottom: 10.5px solid #ffcc33cc;
+  z-index: -1;
 }
 
 /* cards */
