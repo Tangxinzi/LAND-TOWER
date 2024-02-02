@@ -104,7 +104,7 @@ Page({
           }
       
           if (res.confirm) {
-            wx.switchTab('/pages/index/index')
+            wx.switchTab({ url: '/pages/user/user' })
           }
         }
       })
@@ -342,7 +342,7 @@ Page({
           }
       
           if (res.confirm) {
-            wx.switchTab('/pages/index/index')
+            wx.switchTab({ url: '/pages/user/user' })
           }
         }
       })
