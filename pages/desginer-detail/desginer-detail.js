@@ -95,5 +95,19 @@ Page({
         }
       }
     })
+  },
+
+  onShareAppMessage(event) {
+    return {
+      title: `${ this.data.desginer.nickname } - 办公设计大师`,
+      path: 'pages/desginer-detail/desginer-detail?id=' + this.data.options.id
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: `${ this.data.desginer.nickname } - 办公设计大师`,
+      path: 'pages/desginer-detail/desginer-detail?id=' + this.data.options.id
+    }
   }
 })
