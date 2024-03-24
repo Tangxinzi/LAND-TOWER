@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/event/event",
+  "entryPagePath": "pages/office-demand-marketing/office-demand-marketing",
   "pages": [
     "pages/event/event",
     "pages/calculator-level-0/calculator-level-0",
@@ -22,7 +22,8 @@
     "pages/good/good",
     "pages/web/web",
     "pages/back/back",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/office-demand-marketing/office-demand-marketing"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,54 @@
+page, .page {
+  position: relative;
+  box-sizing: border-box;
+  background-color: #f2f1f6;
+}
+
+.page .header {
+  padding: 16px;
+}
+
+swiper {
+  margin: 16px;
+  padding: 32px;
+}
+
+swiper, swiper-item {
+  height: 50vh;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #FFF;
+}
+
+swiper .title {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+swiper .description {
+  font-size: 16px;
+  color: grey;
+}
+
+.position.buttons {
+  position: fixed;
+  width: 100%;
+  bottom: 50px;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.position.buttons .button {
+  display: block;
+  text-align: center;
+  color: #FFF;
+  background-color: rgb(44, 177, 230);
+  height: 45px;
+  line-height: 45px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
