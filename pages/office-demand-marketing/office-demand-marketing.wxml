@@ -1,45 +1,85 @@
 <mp-navigation-bar title="" />
 <mp-toptips ext-class="mp-toptips mp-toptips-full" msg="{{ toptips.msg }}" type="{{ toptips.type }}" show="{{ toptips.show }}" delay="{{ toptips.delay || '2000' }}" />
-<view class="page create">
-  <view class="header">
-    0元解决办公室功能规划；先设计后装修；复合空间=扩容30%；快速5步测试，匹配您的专属方案
-  </view>
+<image class="header" src="/assets/office-demand-marketing/header.png" mode="widthFix" />
+<image class="footer" src="/assets/office-demand-marketing/footer.png" mode="widthFix" />
+<view class="page odm">
   <swiper current="{{ swiper.current }}" bindchange="swiperChange" easing-function="easeInOutbic">
-    <swiper-item wx:if="{{ swiper.contents.renovation.show }}" catchtouchmove="stopTouchMove" item-id="renovation" class="renovation">
+    <swiper-item wx:if="{{ swiper.contents.renovation.show }}" item-id="renovation" class="renovation">
       <view class="title">{{ swiper.contents.renovation.title }}</view>
       <view class="description">{{ swiper.contents.renovation.description }}</view>
-      <view class="content">
-        <label class="checkbox">
-          <checkbox value="cb" checked="true"/>选中
-        </label>
-        <label class="checkbox">
-          <checkbox value="cb" />未选中
-        </label>
+      <view class="content items">
+        <view class="item checkbox" wx:for="{{ swiper.contents.renovation.items }}" wx:key="renovationItems" bind:tap="bindChecked" data-type="renovation" data-item="{{ index }}">
+          <image src="{{ item.image }}" mode="aspectFit" />
+          <view class="checked">
+            <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
+            <text>{{ item.text }}</text>
+          </view>
+        </view>
       </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.area.show }}" catchtouchmove="stopTouchMove" item-id="area">
+    <swiper-item wx:if="{{ swiper.contents.area.show }}" item-id="area">
       <view class="title">{{ swiper.contents.area.title }}</view>
       <view class="description">{{ swiper.contents.area.description }}</view>
+      <view class="content items">
+        <view class="item checkbox" wx:for="{{ swiper.contents.area.items }}" wx:key="areaItems" bind:tap="bindChecked" data-type="area" data-item="{{ index }}">
+          <image src="{{ item.image }}" mode="aspectFit" />
+          <view class="checked">
+            <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
+            <text>{{ item.text }}</text>
+          </view>
+        </view>
+      </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.space.show }}" catchtouchmove="stopTouchMove" item-id="space">
+    <swiper-item wx:if="{{ swiper.contents.space.show }}" item-id="space">
       <view class="title">{{ swiper.contents.space.title }}</view>
       <view class="description">{{ swiper.contents.space.description }}</view>
+      <view class="content items">
+        <view class="item checkbox" wx:for="{{ swiper.contents.space.items }}" wx:key="spaceItems" bind:tap="bindChecked" data-type="space" data-item="{{ index }}">
+          <image src="{{ item.image }}" mode="aspectFit" />
+          <view class="checked">
+            <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
+            <text>{{ item.text }}</text>
+          </view>
+        </view>
+      </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.style.show }}" catchtouchmove="stopTouchMove" item-id="style">
+    <swiper-item wx:if="{{ swiper.contents.style.show }}" item-id="style">
       <view class="title">{{ swiper.contents.style.title }}</view>
       <view class="description">{{ swiper.contents.style.description }}</view>
+      <view class="content items">
+        <view class="item checkbox" wx:for="{{ swiper.contents.style.items }}" wx:key="styleItems" bind:tap="bindChecked" data-type="style" data-item="{{ index }}">
+          <image src="{{ item.image }}" mode="aspectFit" />
+          <view class="checked">
+            <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
+            <text>{{ item.text }}</text>
+          </view>
+        </view>
+      </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.service.show }}" catchtouchmove="stopTouchMove" item-id="service">
+    <swiper-item wx:if="{{ swiper.contents.service.show }}" item-id="service">
       <view class="title">{{ swiper.contents.service.title }}</view>
       <view class="description">{{ swiper.contents.service.description }}</view>
+      <view class="content items">
+        <view class="item checkbox" wx:for="{{ swiper.contents.service.items }}" wx:key="serviceItems" bind:tap="bindChecked" data-type="service" data-item="{{ index }}">
+          <image src="{{ item.image }}" mode="aspectFit" />
+          <view class="checked">
+            <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
+            <text>{{ item.text }}</text>
+          </view>
+        </view>
+      </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.result.show }}" catchtouchmove="stopTouchMove" item-id="result">
+    <swiper-item wx:if="{{ swiper.contents.result.show }}" item-id="result">
       <view class="title">{{ swiper.contents.result.title }}</view>
       <view class="description">{{ swiper.contents.result.description }}</view>
     </swiper-item>
   </swiper>
 </view>
 <view class="position buttons">
-  <view class="button next" bind:tap="next">下一步（还有 {{ 5 - swiper.current  }} 步）</view>
-  <view class="prev" bind:tap="prev">上一步</view>
+  <view class="button next" bind:tap="next">
+    {{ swiper.current >= 5 ? '最后一步 点击领取' : '下一步（还有 ' + (5 - swiper.current) +' 步）' }}
+  </view>
+  <view class="prev" bind:tap="prev" style="height: 20px;">
+    {{ swiper.current > 0 ? '返回上一步' : '' }}
+  </view>
 </view>

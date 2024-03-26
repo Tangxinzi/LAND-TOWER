@@ -1,20 +1,35 @@
-page, .page {
-  position: relative;
-  box-sizing: border-box;
-  background-color: #f2f1f6;
+page {
+  background-color: #ececed;
 }
 
-.page .header {
-  padding: 16px;
+.page {
+  position: relative;
+  top: 100px;
+  box-shadow: 0 0 5px #CCC;
+  z-index: 1;
+}
+
+image.header {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+image.footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
 }
 
 swiper {
   margin: 16px;
-  padding: 32px;
+  padding: 24px 32px;
+  min-height: 46vh;
 }
 
 swiper, swiper-item {
-  height: 50vh;
   border-radius: 10px;
   overflow: hidden;
   background-color: #FFF;
@@ -24,11 +39,40 @@ swiper .title {
   font-size: 20px;
   text-align: center;
   font-weight: 600;
+  margin-bottom: 16px;
 }
 
 swiper .description {
   font-size: 16px;
   color: grey;
+}
+
+swiper .content.items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+swiper .content.items .item {
+  width: 50%;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+swiper .content.items .item image {
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+swiper .content.items .item .checked icon {
+  position: relative;
+  top: -1px;
+  margin-left: 3px;
+  margin-right: 2px;
 }
 
 .position.buttons {
@@ -39,6 +83,7 @@ swiper .description {
   text-align: center;
   font-size: 14px;
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .position.buttons .button {

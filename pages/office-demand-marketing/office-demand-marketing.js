@@ -1,11 +1,151 @@
 import siteinfo from '../../lib/siteinfo';
 
 const contents = {
-  renovation: {title: '选择您的装修类型', description: '', show: true},
-  area: {title: '选择您的办公室面积', description: '', show: true},
-  space: {title: '您需要配置的空间类型', description: '', show: true},
-  style: {title: '风格', description: '', show: true},
-  service: {title: '倾向我们提供何种服务', description: '', show: true},
+  renovation: {
+    title: '选择您的装修类型（单选）', 
+    description: '', 
+    show: true,
+    items: [
+      {
+        image: '/assets/office-demand-marketing/1-1.jpg',
+        text: '仅设计',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/1-2.jpg',
+        text: '设计施工一体',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/1-3.jpg',
+        text: '利旧改造',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/1-4.jpg',
+        text: '工程管理',
+        checked: false,
+      }
+    ]
+  },
+  area: {
+    title: '选择您的办公室面积（单选）', 
+    description: '', 
+    show: true,
+    items: [
+      {
+        image: '/assets/office-demand-marketing/2-1.jpg',
+        text: '300m² 以下',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/2-2.jpg',
+        text: '300m² ~ 1000m²',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/2-3.jpg',
+        text: '1000m² ~ 2000m²',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/2-4.jpg',
+        text: '2000m² 以上',
+        checked: false,
+      }
+    ]
+  },
+  space: {
+    title: '您需要配置的空间类型（多选）', 
+    description: '', 
+    show: true,
+    items: [
+      {
+        image: '/assets/office-demand-marketing/3-1.jpg',
+        text: '个人办公：开放工位、独立办公室',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/3-2.jpg',
+        text: '协作空间：电话间、洽谈间、头脑风暴区',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/3-3.jpg',
+        text: '支持空间：茶水区、打印区、储藏室',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/3-4.jpg',
+        text: '公共空间：前台接待、展示区',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/3-5.jpg',
+        text: '配套空间：休息室、卫生间',
+        checked: false,
+      }
+    ]
+  },
+  style: {
+    title: '请选择您喜欢办公室风格（多选）', 
+    description: '', 
+    show: true,
+    items: [
+      {
+        image: '/assets/office-demand-marketing/4-1.jpeg',
+        text: '现代简约',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/4-2.jpeg',
+        text: '工业风',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/4-3.jpg',
+        text: '绿植风',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/4-4.jpg',
+        text: '智能办公',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/4-5.jpg',
+        text: '创意空间',
+        checked: false,
+      }
+    ]
+  },
+  service: {
+    title: '倾向我们提供何种服务（多选）', 
+    description: '', 
+    show: true,
+    items: [
+      {
+        image: '/assets/office-demand-marketing/4-1.jpg',
+        text: '精确报价无增项',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/4-2.jpg',
+        text: '免费上门量房',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/4-3.jpg',
+        text: '工程管理不踩坑',
+        checked: false,
+      },
+      {
+        image: '/assets/office-demand-marketing/4-4.jpg',
+        text: '实景案例更多灵感',
+        checked: false,
+      }
+    ]
+  },
   result: {title: '结果已提交，获取您的专属规划方案', description: '', show: true},
 }
 
@@ -42,12 +182,21 @@ Page({
   },
 
   prev() {
-    this.setData({ ['swiper.current']: this.data.swiper.current - 1 })
+    const current = this.data.swiper.current - 1
+    this.setData({ ['swiper.current']: current < 0 ? 0 : current })
   },
 
   next() {
-    this.setData({ ['swiper.current']: this.data.swiper.current + 1 })
+    const current = this.data.swiper.current + 1
+    this.setData({ ['swiper.current']: current > 5 ? 5 : current })
     this.updateStayValue(), this.startTimeRecord(); // 埋点时间监控
+
+    if (current == 5) {
+      wx.showToast({
+        title: '提交成功',
+        icon: 'success'
+      })
+    }
   },
 
   reportData (data) {
@@ -92,6 +241,42 @@ Page({
     this.setData({
       // ['swiper.current']: event.detail.current,
       ['swiper.currentItemId']: event.detail.currentItemId
+    })
+  },
+
+  bindChecked(event) {
+    let items = []
+    switch (event.currentTarget.dataset.type) {
+      case 'renovation':
+        items = this.data.swiper.contents.renovation.items
+        items[0].checked = false
+        items[1].checked = false
+        items[2].checked = false
+        items[3].checked = false
+        break;
+      case 'area':
+        items = this.data.swiper.contents.area.items
+        items[0].checked = false
+        items[1].checked = false
+        items[2].checked = false
+        items[3].checked = false
+        break;
+      case 'space':
+        items = this.data.swiper.contents.space.items
+        break;
+      case 'style':
+        items = this.data.swiper.contents.style.items
+        break;
+      case 'service':
+        items = this.data.swiper.contents.service.items
+        break;
+      case 'result':
+        items = this.data.swiper.contents.result.items
+        break;
+    }
+    
+    this.setData({
+      [`swiper.contents.${ event.currentTarget.dataset.type }.items[${ event.currentTarget.dataset.item }].checked`]: !items[event.currentTarget.dataset.item].checked
     })
   },
 
