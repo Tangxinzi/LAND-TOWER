@@ -1,10 +1,18 @@
-<mp-navigation-bar title="" />
+<mp-navigation-bar title="" back="{{ false }}">
+  <image class="logo" slot="left" bind:tap="home" src="/assets/logo.png" mode="" />
+</mp-navigation-bar>
 <mp-toptips ext-class="mp-toptips mp-toptips-full" msg="{{ toptips.msg }}" type="{{ toptips.type }}" show="{{ toptips.show }}" delay="{{ toptips.delay || '2000' }}" />
-<image class="header" src="/assets/office-demand-marketing/header.png" mode="widthFix" />
+<view class="header">
+  <image class="header_01" src="/assets/office-demand-marketing/header/底纹.png" mode="widthFix" />
+  <image class="header_02" src="/assets/office-demand-marketing/header/主体文字.png" mode="widthFix" />
+  <image class="header_03" src="/assets/office-demand-marketing/header/黑字.png" mode="widthFix" />
+  <image class="header_04" src="/assets/office-demand-marketing/header/小字.png" mode="widthFix" />
+</view>
+<!-- <image class="header" src="/assets/office-demand-marketing/header.png" mode="widthFix" /> -->
 <image class="footer" src="/assets/office-demand-marketing/footer.png" mode="widthFix" />
 <view class="page odm">
   <swiper current="{{ swiper.current }}" bindchange="swiperChange" easing-function="easeInOutbic">
-    <swiper-item wx:if="{{ swiper.contents.renovation.show }}" item-id="renovation" class="renovation">
+    <swiper-item wx:if="{{ swiper.contents.renovation.show }}" catchtouchmove="stopTouchMove" item-id="renovation" class="renovation">
       <view class="title">{{ swiper.contents.renovation.title }}</view>
       <view class="description">{{ swiper.contents.renovation.description }}</view>
       <view class="content items">
@@ -17,7 +25,7 @@
         </view>
       </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.area.show }}" item-id="area">
+    <swiper-item wx:if="{{ swiper.contents.area.show }}" catchtouchmove="stopTouchMove" item-id="area">
       <view class="title">{{ swiper.contents.area.title }}</view>
       <view class="description">{{ swiper.contents.area.description }}</view>
       <view class="content items">
@@ -30,7 +38,7 @@
         </view>
       </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.space.show }}" item-id="space">
+    <swiper-item wx:if="{{ swiper.contents.space.show }}" catchtouchmove="stopTouchMove" item-id="space">
       <view class="title">{{ swiper.contents.space.title }}</view>
       <view class="description">{{ swiper.contents.space.description }}</view>
       <view class="content items">
@@ -43,7 +51,7 @@
         </view>
       </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.style.show }}" item-id="style">
+    <swiper-item wx:if="{{ swiper.contents.style.show }}" catchtouchmove="stopTouchMove" item-id="style">
       <view class="title">{{ swiper.contents.style.title }}</view>
       <view class="description">{{ swiper.contents.style.description }}</view>
       <view class="content items">
@@ -56,7 +64,7 @@
         </view>
       </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.service.show }}" item-id="service">
+    <swiper-item wx:if="{{ swiper.contents.service.show }}" catchtouchmove="stopTouchMove" item-id="service">
       <view class="title">{{ swiper.contents.service.title }}</view>
       <view class="description">{{ swiper.contents.service.description }}</view>
       <view class="content items">
@@ -69,17 +77,14 @@
         </view>
       </view>
     </swiper-item>
-    <swiper-item wx:if="{{ swiper.contents.result.show }}" item-id="result">
+    <swiper-item wx:if="{{ swiper.contents.result.show }}" catchtouchmove="stopTouchMove" item-id="result">
       <view class="title">{{ swiper.contents.result.title }}</view>
       <view class="description">{{ swiper.contents.result.description }}</view>
+      <image style="width: 100%;" src="/assets/office-demand-marketing/header/6-1.jpg" mode="widthFix" />
     </swiper-item>
   </swiper>
 </view>
 <view class="position buttons">
-  <view class="button next" bind:tap="next">
-    {{ swiper.current >= 5 ? '最后一步 点击领取' : '下一步（还有 ' + (5 - swiper.current) +' 步）' }}
-  </view>
-  <view class="prev" bind:tap="prev" style="height: 20px;">
-    {{ swiper.current > 0 ? '返回上一步' : '' }}
-  </view>
+  <view class="button next" bind:tap="next">{{ swiper.current >= 5 ? '最后一步 点击领取' : '下一步（还有 ' + (5 - swiper.current) +' 步）' }}</view>
+  <view class="prev" bind:tap="prev" style="height: 20px;">{{ swiper.current > 0 ? '返回上一步' : '' }}</view>
 </view>
