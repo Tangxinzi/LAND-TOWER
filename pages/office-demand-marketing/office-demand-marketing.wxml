@@ -18,7 +18,7 @@
         <view class="description">{{ swiper.contents.renovation.description }}</view>
         <view class="content items">
           <view class="item checkbox" wx:for="{{ swiper.contents.renovation.items }}" wx:key="renovationItems" bind:tap="bindChecked" data-type="renovation" data-item="{{ index }}">
-            <image src="{{ item.image }}" mode="aspectFit" />
+            <image src="{{ item.image }}" mode="widthFix" />
             <view class="checked">
               <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
               <text>{{ item.text }}</text>
@@ -33,7 +33,7 @@
         <view class="description">{{ swiper.contents.area.description }}</view>
         <view class="content items">
           <view class="item checkbox" wx:for="{{ swiper.contents.area.items }}" wx:key="areaItems" bind:tap="bindChecked" data-type="area" data-item="{{ index }}">
-            <image src="{{ item.image }}" mode="aspectFit" />
+            <image src="{{ item.image }}" mode="widthFix" />
             <view class="checked">
               <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
               <text>{{ item.text }}</text>
@@ -48,7 +48,7 @@
         <view class="description">{{ swiper.contents.space.description }}</view>
         <view class="content items">
           <view class="item checkbox" wx:for="{{ swiper.contents.space.items }}" wx:key="spaceItems" bind:tap="bindChecked" data-type="space" data-item="{{ index }}" style="height: 190px;">
-            <image src="{{ item.image }}" mode="aspectFit" />
+            <image src="{{ item.image }}" mode="widthFix" />
             <view class="checked">
               <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
               <text>{{ item.text }}</text>
@@ -63,7 +63,7 @@
         <view class="description">{{ swiper.contents.style.description }}</view>
         <view class="content items">
           <view class="item checkbox" wx:for="{{ swiper.contents.style.items }}" wx:key="styleItems" bind:tap="bindChecked" data-type="style" data-item="{{ index }}">
-            <image src="{{ item.image }}" mode="aspectFit" />
+            <image src="{{ item.image }}" mode="widthFix" />
             <view class="checked">
               <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
               <text>{{ item.text }}</text>
@@ -78,7 +78,7 @@
         <view class="description">{{ swiper.contents.service.description }}</view>
         <view class="content items">
           <view class="item checkbox" wx:for="{{ swiper.contents.service.items }}" wx:key="serviceItems" bind:tap="bindChecked" data-type="service" data-item="{{ index }}">
-            <image src="{{ item.image }}" mode="aspectFit" />
+            <image src="{{ item.image }}" mode="widthFix" />
             <view class="checked">
               <icon type="{{ item.checked ? 'success' : 'circle' }}" size="17" />
               <text>{{ item.text }}</text>
@@ -92,13 +92,45 @@
         <text class="title">{{ swiper.contents.result.title }}</text>
         <view class="description">{{ swiper.contents.result.description }}</view>
         <image style="width: 100%;" src="/assets/office-demand-marketing/header/6-1.jpg" mode="widthFix" />
+        <view class="lines">
+          <view class="line">
+            <text class="key">装修类型</text>
+            <text class="value">
+              <block wx:for="{{ swiper.contents.renovation.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
+            </text>
+          </view>
+          <view class="line">
+            <text class="key">办公室面积</text>
+            <text class="value">
+              <block wx:for="{{ swiper.contents.area.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
+            </text>
+          </view>
+          <view class="line">
+            <text class="key">配置空间类型</text>
+            <text class="value">
+              <block wx:for="{{ swiper.contents.space.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
+            </text>
+          </view>
+          <view class="line">
+            <text class="key">办公室风格</text>
+            <text class="value">
+              <block wx:for="{{ swiper.contents.style.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
+            </text>
+          </view>
+          <view class="line">
+            <text class="key">所需服务</text>
+            <text class="value">
+              <block wx:for="{{ swiper.contents.service.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
+            </text>
+          </view>
+        </view>
         <view class="input">
           <text>您的姓名</text>
           <input type="text" bindchange="bindChange" data-name="name" placeholder="请输入您的姓名" />
         </view>
         <view class="input">
           <text>您的号码</text>
-          <input type="number" bindchange="bindChange" data-name="number" placeholder="请输入您的手机号码" />
+          <input type="number" bindchange="bindChange" data-name="number" placeholder="请输入您的手机号码" value="{{ swiper.userinfo.phone || '' }}" />
         </view>
       </scroll-view>
     </swiper-item>
@@ -106,10 +138,7 @@
 </view>
 <view class="position buttons">
   <button wx:if="{{ swiper.current == 4 }}" class="button next" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">提交</button>
+  <button wx:elif="{{ swiper.current == 5 }}" class="button next" bind:tap="contact">获取您的专属客服经理</button>
   <view wx:else class="button next" bind:tap="next">{{ swiper.current >= 5 ? '最后一步 点击领取' : '下一步（还有 ' + (5 - swiper.current) +' 步）' }}</view>
-
-  <!-- <button class="contact" bind:tap="contact">联系客服</button> -->
   <view class="prev" bind:tap="prev" style="height: 20px;">{{ swiper.current > 0 ? '返回上一步' : '' }}</view>
-  <!-- <view class="flex-between"> -->
-  <!-- </view> -->
 </view>
