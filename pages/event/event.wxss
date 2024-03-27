@@ -292,3 +292,20 @@ button.contact-button .kefu {
 .search-result .info {
   color: #999;
 }
+
+.odm {
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.odm image {
+  width: 20%;
+  background-color: #FFF;
+  padding: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #CCC;
+}

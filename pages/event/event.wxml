@@ -21,6 +21,11 @@
     </navigator>
   </view>
 </view>
+<view class="odm">
+  <navigator url="/pages/office-demand-marketing/office-demand-marketing" hover-class="none">
+    <image src="/assets/office-demand-marketing/header/主体文字.png" mode="widthFix" />
+  </navigator>
+</view>
 <swiper indicator-dots="{{ true }}" autoplay="{{ true }}" interval="3000" duration="500" circular="{{ true }}">
     <swiper-item wx:for="{{ banner }}" wx:key="banner">
       <navigator hover-class="none" url="{{ item.target == 0 ? '/pages/web/web?src=' + item.article_original_url : '' }}{{ item.target == 1 ? '/pages/detail/detail?id=' + item.id : '' }}{{ item.target == 1000 ? '' : '' }}">

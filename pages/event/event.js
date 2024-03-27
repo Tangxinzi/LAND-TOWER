@@ -66,6 +66,7 @@ Page({
       success: (response) => {
         if (response.data.status == 200) {
           this.setData({
+            options,
             banner: response.data.data
           })
         }

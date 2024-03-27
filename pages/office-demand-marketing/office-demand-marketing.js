@@ -5,6 +5,7 @@ Page({
     siteinfo,
     options: {},
     swiper: {
+      userinfo: {},
       contents: {
         renovation: {
           title: '选择您的装修类型（单选）', 
@@ -151,7 +152,11 @@ Page({
             }
           ]
         },
-        result: {title: '结果已提交，获取您的专属规划方案', description: '', show: true},
+        result: {title: '结果已提交\n获取您的专属规划方案', description: '', show: true},
+      },
+      form: {
+        name: '',
+        number: ''
       },
       current: 0,
       currentItemId: 'renovation',
@@ -168,11 +173,21 @@ Page({
   },
 
   home() {
-    wx.reLaunch({ url: '/pages/event/event' })
+    wx.reLaunch({ url: '/pages/event/event?source=odm' })
   },
 
   onLoad(options) {
     this.startTimeRecord();
+  },
+
+  contact() {
+    wx.openCustomerServiceChat({
+      extInfo: {
+        url: 'https://work.weixin.qq.com/kfid/kfcc165f42e757e49cb'
+      },
+      corpId: 'ww38c652abe66e0fc1',
+      success(res) {}
+    })
   },
 
   inputBlur(event) {
@@ -194,18 +209,86 @@ Page({
     this.updateStayValue(), this.startTimeRecord(); // 埋点时间监控
 
     if (current == 5) {
-      wx.showToast({
-        title: '提交成功',
-        icon: 'success'
-      })
+      // wx.showToast({
+      //   title: '提交成功',
+      //   icon: 'success'
+      // })
+    }
+
+    if (current == 6) {
+      if (!this.data.swiper.form.name) {
+        wx.showToast({ title: '填写您的姓名', icon: 'none' })
+        return
+      }
+  
+      if (!this.data.swiper.form.number) {
+        wx.showToast({ title: '请输入完整座机或手机号', icon: 'none' })
+        return
+      }
+  
+      if (!this.data.swiper.form.number) {
+        if (!(/^1[0-9]{10}$/.test(this.data.swiper.form.number))) {
+          wx.showToast({ title: '手机号格式有误', icon: 'none' })
+          return
+        }
+      }
     }
   },
 
-  over(event) {
+  getPhoneNumber(e) {
+    wx.showLoading({ title: 'Loading...' })
+    wx.login({
+      success: (login) => {
+        wx.request({
+          url: `${ siteinfo. apiroot }/land/user/wx-login?code=${ login.code }&recommend=${ wx.getStorageSync('recommend_openid') || '' }`,
+          success: (loginResponse) => {
+            wx.request({
+              url: `${ siteinfo. apiroot }/land/user/get-phone-number?code=${ e.detail.code }&openid=${ loginResponse.data.wechat_open_id }`,
+              success: (response) => {
+                if (response.data.status == 200) {
+                  loginResponse.data.phone = response.data.phoneNumber
+                  this.setData({ ['swiper.userinfo']: loginResponse.data })
+                  wx.setStorageSync('userinfo', loginResponse.data)
+                  wx.hideLoading()
+                }
+                this.next()
+              },
+              fail: () => {
+                wx.hideLoading()
+                this.next()
+              }
+            })
+          },
+          fail: () => {
+            wx.hideLoading()
+            this.next()
+          }
+        })
+      },
+      fail: (error) => {
+        console.log(error);
+        wx.hideLoading()
+        this.next()
+      }
+    })
+    wx.hideLoading()
   },
 
   reportData (data) {
-    
+    console.log('report', data);
+    wx.request({
+      url: `${ siteinfo.apiroot }/land/datas/tracking/odm`,
+      method: 'POST',
+      data: {
+        ...this.data.swiper
+      },
+      success: (response) => {
+
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
   },
 
   startTimeRecord () {
@@ -226,6 +309,12 @@ Page({
     this.setData({
       // ['swiper.current']: event.detail.current,
       ['swiper.currentItemId']: event.detail.currentItemId
+    })
+  },
+
+  bindChange(event) {
+    this.setData({
+      [`swiper.form.${ event.currentTarget.dataset.name }`]: event.detail.value
     })
   },
 
@@ -316,10 +405,6 @@ Page({
     })
   },
 
-  bindChange(event) {
-    
-  },
-
   onShareAppMessage(event) {
     return {
       title: `办公设计大师营销方案`,
@@ -332,5 +417,11 @@ Page({
       title: `办公设计大师营销方案`,
       path: 'pages/office-demand-marketing/office-demand-marketing'
     }
-  }
+  },
+
+  onUnload() {
+    console.log('onUnload');
+    this.setData({ ['swiper.current']: this.data.swiper.current + 1 })
+    this.updateStayValue(), this.startTimeRecord(), this.reportData()
+  },
 })
