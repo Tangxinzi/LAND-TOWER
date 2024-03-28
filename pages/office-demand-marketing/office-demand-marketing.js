@@ -11,6 +11,7 @@ Page({
           title: '选择您的装修类型（单选）', 
           description: '', 
           show: true,
+          checked: false,
           items: [
             {
               image: '/assets/office-demand-marketing/1-1.jpg',
@@ -38,6 +39,7 @@ Page({
           title: '选择您的办公室面积（单选）', 
           description: '', 
           show: true,
+          checked: false,
           items: [
             {
               image: '/assets/office-demand-marketing/2-1.jpg',
@@ -65,6 +67,7 @@ Page({
           title: '您需要配置的空间类型（多选）', 
           description: '', 
           show: true,
+          checked: false,
           items: [
             {
               image: '/assets/office-demand-marketing/3-1.jpg',
@@ -97,6 +100,7 @@ Page({
           title: '请选择您喜欢办公室风格（多选）', 
           description: '', 
           show: true,
+          checked: false,
           items: [
             {
               image: '/assets/office-demand-marketing/4-1.jpeg',
@@ -129,6 +133,7 @@ Page({
           title: '倾向我们提供何种服务（多选）', 
           description: '', 
           show: true,
+          checked: false,
           items: [
             {
               image: '/assets/office-demand-marketing/4-1.jpeg',
@@ -186,13 +191,13 @@ Page({
       return
     }
 
-    if (!this.data.swiper.form.number) {
+    if (!this.data.swiper.form.number || !this.data.swiper.userinfo.phone.phoneNumber) {
       wx.showToast({ title: '请输入手机号', icon: 'none' })
       return
     }
 
-    if (!this.data.swiper.form.number) {
-      if (!(/^1[0-9]{10}$/.test(this.data.swiper.form.number))) {
+    if (!this.data.swiper.form.number || !this.data.swiper.userinfo.phone.phoneNumber) {
+      if (!(/^1[0-9]{10}$/.test(this.data.swiper.form.number)) || !(/^1[0-9]{10}$/.test(this.data.swiper.userinfo.phone.phoneNumber))) {
         wx.showToast({ title: '手机号格式有误', icon: 'none' })
         return
       }
@@ -319,6 +324,7 @@ Page({
         title: '选择您的装修类型（单选）', 
         description: '', 
         show: true,
+        checked: false,
         items: [
           {
             image: '/assets/office-demand-marketing/1-1.jpg',
@@ -346,6 +352,7 @@ Page({
         title: '选择您的办公室面积（单选）', 
         description: '', 
         show: true,
+        checked: false,
         items: [
           {
             image: '/assets/office-demand-marketing/2-1.jpg',
@@ -374,21 +381,38 @@ Page({
     switch (event.currentTarget.dataset.type) {
       case 'renovation':
         this.setData({ ['swiper.contents.renovation.items']: contents.renovation.items })
-        console.log(contents.renovation.items);
         items = this.data.swiper.contents.renovation.items
+        if (!items[event.currentTarget.dataset.item].checked) {
+          this.setData({ ['swiper.contents.renovation.checked']: true })
+        }
         break;
       case 'area':
         this.setData({ ['swiper.contents.area']: contents.area })
         items = this.data.swiper.contents.area.items
+        if (!items[event.currentTarget.dataset.item].checked) {
+          this.setData({ ['swiper.contents.area.checked']: true })
+        }
         break;
       case 'space':
+        this.setData({ ['swiper.contents.space.checked']: false })
         items = this.data.swiper.contents.space.items
+        if (!items[event.currentTarget.dataset.item].checked) {
+          this.setData({ ['swiper.contents.area.checked']: true })
+        }
         break;
       case 'style':
+        this.setData({ ['swiper.contents.style.checked']: false })
         items = this.data.swiper.contents.style.items
+        if (!items[event.currentTarget.dataset.item].checked) {
+          this.setData({ ['swiper.contents.style.checked']: true })
+        }
         break;
       case 'service':
+        this.setData({ ['swiper.contents.service.checked']: false })
         items = this.data.swiper.contents.service.items
+        if (!items[event.currentTarget.dataset.item].checked) {
+          this.setData({ ['swiper.contents.service.checked']: true })
+        }
         break;
       case 'result':
         items = this.data.swiper.contents.result.items

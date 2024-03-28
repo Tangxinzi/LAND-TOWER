@@ -80,7 +80,7 @@ swiper {
 }
 
 .swiper_2 {
-  min-height: 400px;
+  min-height: 410px;
 }
 
 .swiper_3 {

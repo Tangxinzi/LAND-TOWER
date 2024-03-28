@@ -23,7 +23,7 @@
 </view>
 <view class="odm">
   <navigator url="/pages/office-demand-marketing/office-demand-marketing" hover-class="none">
-    <image src="/assets/office-demand-marketing/header/主体文字.png" mode="widthFix" />
+    <image src="/assets/office-demand-marketing/header/主体文字.png" mode="" />
   </navigator>
 </view>
 <swiper indicator-dots="{{ true }}" autoplay="{{ true }}" interval="3000" duration="500" circular="{{ true }}">

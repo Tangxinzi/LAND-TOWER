@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/office-demand-marketing/office-demand-marketing",
+  "entryPagePath": "pages/event/event",
   "pages": [
     "pages/event/event",
     "pages/calculator-level-0/calculator-level-0",

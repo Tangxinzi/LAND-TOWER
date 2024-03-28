@@ -302,10 +302,11 @@ button.contact-button .kefu {
 }
 
 .odm image {
-  width: 20%;
+  width: 110px;
+  height: 35px;
   background-color: #FFF;
   padding: 10px;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 0 5px #CCC;
+  box-shadow: 0 0 5px #c3c3c3;
 }

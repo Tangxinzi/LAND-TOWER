@@ -95,38 +95,43 @@
         <view class="lines">
           <view class="line">
             <text class="key">装修类型</text>
-            <text class="value">
+            <text wx:if="{{ swiper.contents.renovation.checked }}" class="value">
               <block wx:for="{{ swiper.contents.renovation.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
             </text>
+            <text wx:else class="value">-</text>
           </view>
           <view class="line">
             <text class="key">办公室面积</text>
-            <text class="value">
+            <text wx:if="{{ swiper.contents.area.checked }}" class="value">
               <block wx:for="{{ swiper.contents.area.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
             </text>
+            <text wx:else class="value">-</text>
           </view>
           <view class="line">
             <text class="key">配置空间类型</text>
-            <text class="value">
+            <text wx:if="{{ swiper.contents.space.checked }}" class="value">
               <block wx:for="{{ swiper.contents.space.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
             </text>
+            <text wx:else class="value">-</text>
           </view>
           <view class="line">
             <text class="key">办公室风格</text>
-            <text class="value">
+            <text wx:if="{{ swiper.contents.style.checked }}" class="value">
               <block wx:for="{{ swiper.contents.style.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
             </text>
+            <text wx:else class="value">-</text>
           </view>
           <view class="line">
             <text class="key">所需服务</text>
-            <text class="value">
+            <text wx:if="{{ swiper.contents.service.checked }}" class="value">
               <block wx:for="{{ swiper.contents.service.items }}" wx:if="{{ item.checked }}">{{ item.text }}</block>
             </text>
+            <text wx:else class="value">-</text>
           </view>
         </view>
         <view class="input">
           <text>您的姓名</text>
-          <input type="text" bindchange="bindChange" data-name="name" placeholder="请输入您的姓名" />
+          <input type="nickname" bindchange="bindChange" bindinput="inputUserinfo" bindnicknamereview="nicknameReview" bindblur="inputBlur" data-name="name" placeholder="请输入您的姓名" />
         </view>
         <view class="input">
           <text>您的号码</text>
