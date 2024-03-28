@@ -57,7 +57,7 @@ page {
 }
 
 .scroll-view {
-  height: inherit; 
+  /* height: inherit;  */
   /* flex-direction: row; */
 }
 
@@ -76,6 +76,19 @@ swiper {
   border-radius: 15px;
   overflow: hidden;
   background-color: #FFF;
+  transition: all .3s;
+}
+
+.swiper_2 {
+  min-height: 400px;
+}
+
+.swiper_3 {
+  min-height: 540px;
+}
+
+.swiper_5 {
+  min-height: 500px;
 }
 
 swiper .title {
@@ -173,10 +186,10 @@ swiper .content.items .item .checked icon {
 }
 
 .position.buttons {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  padding: 32px;
+  /* position: fixed; */
+  /* width: 100%; */
+  /* bottom: 0; */
+  padding: 0 32px;
   text-align: center;
   font-size: 14px;
   box-sizing: border-box;

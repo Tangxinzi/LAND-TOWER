@@ -11,7 +11,7 @@
 <!-- <image class="header" src="/assets/office-demand-marketing/header.png" mode="widthFix" /> -->
 <image class="footer" src="/assets/office-demand-marketing/footer.png" mode="widthFix" />
 <view class="page odm">
-  <swiper current="{{ swiper.current }}" bindchange="swiperChange" easing-function="easeInOutbic">
+  <swiper current="{{ swiper.current }}" class="swiper_{{ swiper.current }}" bindchange="swiperChange" easing-function="easeInOutbic">
     <swiper-item wx:if="{{ swiper.contents.renovation.show }}" catchtouchmove="stopTouchMove" item-id="renovation" class="renovation">
       <scroll-view class="scroll-view" scroll-y enable-flex enhanced="{{ true }}" show-scrollbar="{{ false }}">
         <view class="title">{{ swiper.contents.renovation.title }}</view>
@@ -130,15 +130,15 @@
         </view>
         <view class="input">
           <text>您的号码</text>
-          <input type="number" bindchange="bindChange" data-name="number" placeholder="请输入您的手机号码" value="{{ swiper.userinfo.phone || '' }}" />
+          <input type="number" bindchange="bindChange" data-name="number" placeholder="请输入您的手机号码" value="{{ swiper.userinfo.phone ? swiper.userinfo.phone.phoneNumber : '' }}" />
         </view>
       </scroll-view>
     </swiper-item>
   </swiper>
-</view>
-<view class="position buttons">
-  <button wx:if="{{ swiper.current == 4 }}" class="button next" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">提交</button>
-  <button wx:elif="{{ swiper.current == 5 }}" class="button next" bind:tap="contact">获取您的专属客服经理</button>
-  <view wx:else class="button next" bind:tap="next">{{ swiper.current >= 5 ? '最后一步 点击领取' : '下一步（还有 ' + (5 - swiper.current) +' 步）' }}</view>
-  <view class="prev" bind:tap="prev" style="height: 20px;">{{ swiper.current > 0 ? '返回上一步' : '' }}</view>
+  <view class="position buttons">
+    <button wx:if="{{ swiper.current == 4 }}" class="button next" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">提交</button>
+    <button wx:elif="{{ swiper.current == 5 }}" class="button next" bind:tap="contact">获取您的专属客服经理</button>
+    <view wx:else class="button next" bind:tap="next">{{ swiper.current >= 5 ? '最后一步 点击领取' : '下一步（还有 ' + (5 - swiper.current) +' 步）' }}</view>
+    <view class="prev" bind:tap="prev" style="height: 20px;">{{ swiper.current > 0 ? '返回上一步' : '' }}</view>
+  </view>
 </view>

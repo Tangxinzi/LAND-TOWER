@@ -181,6 +181,25 @@ Page({
   },
 
   contact() {
+    if (!this.data.swiper.form.name) {
+      wx.showToast({ title: '填写您的姓名', icon: 'none' })
+      return
+    }
+
+    if (!this.data.swiper.form.number) {
+      wx.showToast({ title: '请输入手机号', icon: 'none' })
+      return
+    }
+
+    if (!this.data.swiper.form.number) {
+      if (!(/^1[0-9]{10}$/.test(this.data.swiper.form.number))) {
+        wx.showToast({ title: '手机号格式有误', icon: 'none' })
+        return
+      }
+    }
+
+    this.reportData()
+
     wx.openCustomerServiceChat({
       extInfo: {
         url: 'https://work.weixin.qq.com/kfid/kfcc165f42e757e49cb'
@@ -207,32 +226,6 @@ Page({
     const current = this.data.swiper.current + 1
     this.setData({ ['swiper.current']: current > 5 ? 5 : current })
     this.updateStayValue(), this.startTimeRecord(); // 埋点时间监控
-
-    if (current == 5) {
-      // wx.showToast({
-      //   title: '提交成功',
-      //   icon: 'success'
-      // })
-    }
-
-    if (current == 6) {
-      if (!this.data.swiper.form.name) {
-        wx.showToast({ title: '填写您的姓名', icon: 'none' })
-        return
-      }
-  
-      if (!this.data.swiper.form.number) {
-        wx.showToast({ title: '请输入完整座机或手机号', icon: 'none' })
-        return
-      }
-  
-      if (!this.data.swiper.form.number) {
-        if (!(/^1[0-9]{10}$/.test(this.data.swiper.form.number))) {
-          wx.showToast({ title: '手机号格式有误', icon: 'none' })
-          return
-        }
-      }
-    }
   },
 
   getPhoneNumber(e) {
@@ -246,9 +239,12 @@ Page({
               url: `${ siteinfo. apiroot }/land/user/get-phone-number?code=${ e.detail.code }&openid=${ loginResponse.data.wechat_open_id }`,
               success: (response) => {
                 if (response.data.status == 200) {
-                  loginResponse.data.phone = response.data.phoneNumber
+                  loginResponse.data.phone = {
+                    ...response.data.data
+                  }
                   this.setData({ ['swiper.userinfo']: loginResponse.data })
                   wx.setStorageSync('userinfo', loginResponse.data)
+                  this.reportData()
                   wx.hideLoading()
                 }
                 this.next()
@@ -274,8 +270,7 @@ Page({
     wx.hideLoading()
   },
 
-  reportData (data) {
-    console.log('report', data);
+  reportData () {
     wx.request({
       url: `${ siteinfo.apiroot }/land/datas/tracking/odm`,
       method: 'POST',
